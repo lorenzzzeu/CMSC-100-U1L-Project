@@ -35,7 +35,7 @@ function Login() {
           />
         </div>
         {/* CAN STILL CHANGE */}
-        <Link to="/customer-home"><button type="submit">Login</button></Link>
+        <Link to="/customer-page"><button type="submit">Login</button></Link>
       </form>
       <p>
         Don't have an account? <Link to="/register">Register</Link>
