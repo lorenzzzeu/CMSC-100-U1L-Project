@@ -1,28 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './index.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';import './index.css';
 import Home from './pages/Home';
 import Root from './pages/Root';
 import Login from './pages/Login';
 import Register from './pages/Register';
 
-const App = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Root />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-    </Routes>
-  );
-};
+const router = createBrowserRouter([
+  { path: '/', element: <Root />, children: [
+    { path: '/', element: <Home /> },
+    { path: 'login', element: <Login /> },
+    { path: 'register', element: <Register /> }
+  ]}
+])
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(
   <React.StrictMode>
-    <Router>
-      <App />
-      <Home />
-    </Router>
-  </React.StrictMode>,
-  document.getElementById('root')
+    <RouterProvider router={router} />    
+  </React.StrictMode>
 );
