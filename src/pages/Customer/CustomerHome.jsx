@@ -1,8 +1,8 @@
 // pages/CustomerHome.jsx
 import React from 'react';
-import ProductList from '../components/Customer/ProductList';
-import ShoppingCart from '../components/Customer/ShoppingCart';
-import OrderList from '../components/Customer/OrderList';
+import ProductList from '../../components/Customer/ProductList';
+import ShoppingCart from '../../components/Customer/ShoppingCart';
+import OrderList from '../../components/Customer/OrderList';
 
 const CustomerHome = () => {
   // Assume cartItems and orders are fetched from the server or passed as props
