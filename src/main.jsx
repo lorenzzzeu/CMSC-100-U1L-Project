@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './index.css';
-
+import Home from './pages/Home';
 import Root from './pages/Root';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -21,6 +21,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <App />
+      <Home />
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
