@@ -5,14 +5,14 @@ import './index.css';
 
 import Root from './pages/Root';
 import Login from './pages/Login';
-// import Register from './pages/Register';
+import Register from './pages/Register';
 
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Root />} />
       <Route path="/login" element={<Login />} />
-      {/* <Route path="/register" element={<Register />} /> */}
+      <Route path="/register" element={<Register />} />
     </Routes>
   );
 };
