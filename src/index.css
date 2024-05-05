@@ -67,10 +67,29 @@ nav a:hover {
 
 .main-content h1{
   font-size: 75px;
+  animation: 2s anim-lineUp ease-out;
 }
 
 .main-content > .welcome2{
   font-size: 50px;
+}
+
+@keyframes anim-lineUp {
+  0% {
+    opacity: 0;
+    transform: translateY(80%);
+  }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }
 
 .main-content > button{
