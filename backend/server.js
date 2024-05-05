@@ -4,7 +4,6 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const bodyParser = require('body-parser')
 const User = require('./model/userSchema')
 
 const SECRET_KEY = 'secretkey' // Must be in .env file
