@@ -37,30 +37,31 @@ function Login() {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div className='login'>
+      <div className='logo-container'><img src='src\img\100-logo.png'></img></div>
+      <h2>Log In To Your Account</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Email:</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            placeholder='Email'
           />
         </div>
         <div>
-          <label>Password:</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder='Password'
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">LOG IN</button>
       </form>
-      <p>
+      <p className='clickRegister'>
         Don't have an account? <Link to="/register">Register</Link>
       </p>
     </div>

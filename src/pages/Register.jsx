@@ -38,50 +38,53 @@ function Register() {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
+    <div className='register-main'>
+    <div className='register-card'>
+      <div className='logo-container'><img src='src\img\100-logo.png'></img></div>
+      <h2>Register Account</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>First Name:</label>
           <input
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required
+            placeholder='First Name'
           />
         </div>
         <div>
-          <label>Last Name:</label>
           <input
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
+            placeholder='Last Name'
           />
         </div>
         <div>
-          <label>Email:</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            placeholder='Email Address'
           />
         </div>
         <div>
-          <label>Password:</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder='Password'
           />
         </div>
-        <button type="submit">Register</button>
+        <button type="submit">REGISTER</button>
       </form>
       <p>
-        Already have an account? <Link to="/login">Login</Link>
+        Already have an account? <Link to="/">Login</Link>
       </p>
+    </div>
     </div>
   );
 }

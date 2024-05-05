@@ -1,9 +1,33 @@
 /* index.css */
 
+@font-face {
+  font-family: "Circular";
+  src: url("font/CircularStd-Medium.otf") format("opentype");
+}
+
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  transition: all .3s ease-in-out;
+  font-family: "Circular";
+}
+
+html {
+  height: 100%;
+  --primary: #DFDCDC;
+  --background-color: #b9b9b9;
+  --shadow-1: rgba(126, 125, 125, 0.127);
+  --hover: #ff4500;
+}
+
 body {
-  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
   margin: 0;
-  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background-color);
 }
 
 nav {
@@ -18,45 +42,117 @@ nav a {
 }
 
 nav a:hover {
-  color: #ff4500;
+  color: var(--hover);
 }
 
-form {
+.appContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.main-content{
+  color: white;
+  background-image: url('src/img/farmers.png');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 80%;
+  min-height: 94.5vh;
+  justify-content: center;
+  padding: 0px 80px 0px 80px;
+  text-shadow: 2px 2px 10px black;
+}
+
+.main-content h1{
+  font-size: 75px;
+}
+
+.main-content > .welcome2{
+  font-size: 50px;
+}
+
+.main-content > button{
+  background-color: white;
+  font-weight: bold;
+  border-radius: 40px;
+  border-style: none;
+  height: 50px;
+  width: 150px;
   margin-top: 20px;
 }
 
-form div {
-  margin-bottom: 10px;
+.main-content > button:hover{
+  background-color: var(--hover);
+  color: white;
 }
 
-form label {
-  display: block;
-  margin-bottom: 5px;
+.login{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+  width: 40%;
+  margin: 20px;
 }
 
-form input[type="text"],
-form input[type="email"],
-form input[type="password"] {
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.logo-container img {
+  width: 20%;
+}
+
+form div{
+  margin: 10px 0px;
+}
+
+form input{
   width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid grey;
+  border-radius: 40px;
   box-sizing: border-box;
 }
 
-form input[type="submit"] {
-  background-color: #4caf50;
+form > button {
+  background-color: black;
+  font-weight: bold;
+  border-radius: 40px;
+  border-style: none;
+  padding: 15px;
+  width: 100%;
   color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  margin-bottom: 10px;
 }
 
-form input[type="submit"]:hover {
-  background-color: #45a049;
+form > button:hover{
+  background-color: var(--hover);
+  color: black;
 }
 
-p {
-  margin-top: 10px;
+.register-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('img/farmers-bg.png');
+  background-size: cover;
+  min-height: 94.5vh;
+}
+
+.register-card{
+  background-color: var(--background-color);
+  box-shadow: 0 4px 8px var(--shadow-1);
+  border-radius: 10px;
+  text-align: center;
+  justify-content: center;
+  width: 500px;
+  padding: 15px;
+  overflow: hidden;
 }
