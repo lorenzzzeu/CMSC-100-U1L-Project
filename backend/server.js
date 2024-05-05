@@ -30,3 +30,25 @@ app.use(cors())
 
 // Routes
 // User registration
+// Post
+app.post('/register', async (req, res) => {
+    try {
+        const { firstName, lastName, email, password } = req.body
+        const hashedPassword = await bcrypt.hash(password, 10)
+        const newUser = new User({ firstName, lastName, email, password:hashedPassword })
+        await newUser.save()
+        res.status(201).json({ message: 'User created successfully'})
+    } catch(error) {
+        res.status(500).json({ server: 'Error signing up' })
+    }
+})
+
+// Get
+app.get('/register', async (req, res) => {
+    try {
+        const users = await User.find()
+        res.status(201).json(users)
+    } catch(error) {
+        res.status(500).json({ message: 'Unable to get users' })
+    }
+})
