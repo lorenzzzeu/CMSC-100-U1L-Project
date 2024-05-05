@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken')
 const bodyParser = require('body-parser')
 const User = require('./model/userSchema')
 
+const SECRET_KEY = 'secretkey' // Must be in .env file
 
 // Connect to express
 const app = express()
