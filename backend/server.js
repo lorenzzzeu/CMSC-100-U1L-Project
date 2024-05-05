@@ -52,3 +52,23 @@ app.get('/register', async (req, res) => {
         res.status(500).json({ message: 'Unable to get users' })
     }
 })
+
+// Log in
+// Post
+app.post('/login', async (req, res) => {
+    try {
+        const { email, password } = req.body
+        const user = await User.findOne({ email })
+        if(!user){
+            return res.status(401).json({ error: 'Invalid credentials' })
+        }
+        const isPasswordValid = await bcrypt.compare(password, user.password)
+        if(!isPasswordValid){
+            return res.status(401).json({ error: 'Invalid password' })
+        }
+        const token = jwt.sign({ userId: user._id}, SECRET_KEY, { expiresIn: '1hr' })
+        res.json({ message: 'Login successful '})
+    } catch(error) {
+        res.status(500).json({ error: 'Error logging in' })
+    }
+})
