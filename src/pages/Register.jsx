@@ -1,17 +1,40 @@
 // pages/Register.jsx
 
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Register() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchUsers();
+  }, [])
+
+  const fetchUsers = () => {
+    axios.get('http://localhost:3001/register').then((res) => {
+      console.log(res.data) // Just for checking, must remove this later
+    })
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Implement registration functionality here
+    axios.post('http://localhost:3001/register', { firstName, lastName, email, password }).then(() => {
+      alert('Successful') // Just for checking
+      setFirstName('')
+      setLastName('')
+      setEmail('')
+      setPassword('')
+      fetchUsers()
+      navigate('/login')
+    }).catch((error) => {
+      console.log('Unable to register user')
+    });
   };
 
   return (
