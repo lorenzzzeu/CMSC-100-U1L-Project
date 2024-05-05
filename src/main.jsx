@@ -16,12 +16,14 @@ import ShoppingCart from './pages/Customer/ShoppingCart';
 import ProductList from './pages/Customer/ProductList';
 import CustomerHome from './pages/Customer/CustomerHome';
 import OrderList from './pages/Customer/OrderList';
+import Explore from './pages/Explore';
 
 const router = createBrowserRouter([
   { path: '/', element: <Root />, children: [
     { path: '/', element: <Home /> },
     { path: 'login', element: <Login /> },
-    { path: 'register', element: <Register /> }
+    { path: 'register', element: <Register /> },
+    { path: 'explore', element: <Explore /> }
   ]},
   {path: '/customer-page', element: <CustomerPage />, children: [
     { path: '/customer-page', element: <CustomerHome />},

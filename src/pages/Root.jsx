@@ -7,8 +7,8 @@ function Root() {
   return (
     <div>
       <nav>
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
+        {/* <Link to="/login">Login</Link> */}
+        {/* <Link to="/register">Register</Link> */}
         <Link to="/admin-page">Admin</Link>
       </nav>
       <Outlet />
