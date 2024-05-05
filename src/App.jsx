@@ -8,12 +8,15 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 
 const App = () => {
+  const isUserSignedIn = !!localStorage.getItem('token')
+
   return (
     <Routes>
       <Route path="/" element={<Root />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/customer-home" element={<CustomerHome />} />
+      {/* subject to change */}
+      {isUserSignedIn && <Route path="/customer-home" element={<CustomerHome />} />}
       <Route path="/admin-page" element={<AdminPage />} />  
       {/* <Route path="/admin-home/*" element={<AdminHome />} /> */}
       <Route path="/admin-page/user-management" element={<UserManagement />} />
