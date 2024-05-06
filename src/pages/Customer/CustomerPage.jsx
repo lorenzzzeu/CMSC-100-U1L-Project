@@ -38,8 +38,9 @@ const CustomerPage = () => {
           </>
         ) : (
           <>
-            <Root/>
+          <Root/>
           </>
+            
         ) }
     </nav>
     <Outlet />
