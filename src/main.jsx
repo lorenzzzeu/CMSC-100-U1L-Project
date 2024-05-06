@@ -21,7 +21,7 @@ import Explore from './pages/Explore';
 const router = createBrowserRouter([
   { path: '/', element: <Root />, children: [
     { path: '/', element: <Home /> },
-    { path: 'login', element: <Login /> },
+    // { path: 'login', element: <Login /> },
     { path: 'register', element: <Register /> },
     { path: 'explore', element: <Explore /> }
   ]},
