@@ -18,7 +18,7 @@ mongoose.connect(dbURI, {
     useUnifiedTopology: true
 }).then(()=>{
     app.listen(3001, () => {
-        console.log('Server connected to port 3000 and MongoDB')
+        console.log('Server connected to port 3001 and MongoDB')
     })
 }).catch((error) =>{
     console.log('Unable to connect to server')
