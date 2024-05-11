@@ -7,7 +7,7 @@ const OrderList = () => {
   return (
     <div>
       <h2>Order List</h2>
-      {/* Display sales reports */}
+      {/* Display order list of the customers here */}
     </div>
   );
 };

@@ -19,12 +19,6 @@ const CustomerPage = () => {
     navigate('/')
   };
   return (
-    // <div>
-    //   <ProductList />
-    //   <ShoppingCart cartItems={cartItems} />
-    //   <OrderList orders={orders} />
-    // </div>
-
   <div>
     {isUserSignedIn ? (
         <div>
