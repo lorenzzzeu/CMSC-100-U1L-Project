@@ -10,10 +10,10 @@ const CustomerHome = () => {
       <div className='imgCustomer'></div>
       <div className='titleCustomer'>
         <h1>WELCOME TO</h1>
-        <h1>the Farm-to-Table E-Commerce Website</h1>
+        <h1>The Farm-to-Table E-Commerce Website</h1>
         {/* <button>Shop now</button> */}
       </div>
-      <hr></hr>
+      <hr/>
       <div className='customer-container'>
         <div className='customer-cards'>
           <FontAwesomeIcon icon={faBowlFood} size='5x' className='icon'/>

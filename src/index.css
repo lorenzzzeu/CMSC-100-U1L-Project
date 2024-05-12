@@ -5,6 +5,8 @@
 @import url('style/customerhome.css');
 @import url('style/about.css');
 @import url('style/customerproduct.css');
+@import url('style/adminhome.css');
+@import url('style/adminproduct.css');
 
 @font-face {
   font-family: "Circular";

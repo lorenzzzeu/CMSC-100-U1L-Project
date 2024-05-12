@@ -24,40 +24,27 @@ function ProductListings()  {
   };
 
   return (
-    <div>
-      <h2>Product Listings</h2>
-      <hr/>
-      <div id='productInput'>
-        <form id="prodForm" onSubmit={handleSubmit}>
-          <label className="inputlabel"> Product Name </label>
-          <br />
-          <input type="text" id="prodName" name="prodName" value={prodName} onChange={(e) => setprodName(e.target.value)} required placeholder="Product Name" />
-          <br />
-          <br />
-          <label className="inputlabel"> Product Type </label>
-          <br />
-          <input type="text" id="prodType" name="prodType" value={prodType} onChange={(e) => setprodType(e.target.value)} required placeholder="Product Type" />
-          <br />
-          <br />
-          <label className="inputlabel"> Product Price </label>
-          <br />
-          <input type="text" id="prodPrice" name="prodPrice" value={prodPrice} onChange={(e) => setprodPrice(e.target.value)} required placeholder="Product Price" />
-          <br />
-          <br />
-          <label className="inputlabel"> Product Description </label>
-          <br />
-          <input type="text" id="prodDesc" name="prodDesc" value={prodDesc} onChange={(e) => setDesc(e.target.value)} required placeholder="Product Description" />
-          <br />
-          <br />
-          <label className="inputlabel"> Product Quantity </label>
-          <br />
-          <input type="text" id="prodQuant" name="prodQuant" value={prodQuant} onChange={(e) => setQuant(e.target.value)} required placeholder="Product Quantity" />
-          <br />
-          <br />
-          <input type="submit" value="Submit" id="submitButton" />
-        </form>
+    <>
+      <div className='imgAdmin'></div>
+      <div className='admin-product'>
+        <h1>PRODUCT LISTINGS</h1>
       </div>
+      <div>
+      <div className='input-container'>
+        <div id='productInput'>
+          <form id="prodForm" onSubmit={handleSubmit}>
+            <input type="text" id="prodName" name="prodName" value={prodName} onChange={(e) => setprodName(e.target.value)} required placeholder="Product Name" />
+            <input type="text" id="prodType" name="prodType" value={prodType} onChange={(e) => setprodType(e.target.value)} required placeholder="Product Type" />
+            <input type="text" id="prodPrice" name="prodPrice" value={prodPrice} onChange={(e) => setprodPrice(e.target.value)} required placeholder="Product Price" />
+            <input type="text" id="prodDesc" name="prodDesc" value={prodDesc} onChange={(e) => setDesc(e.target.value)} required placeholder="Product Description" />
+            <input type="text" id="prodQuant" name="prodQuant" value={prodQuant} onChange={(e) => setQuant(e.target.value)} required placeholder="Product Quantity" />
+            <input type="submit" value="Submit" id="submitButton" />
+          </form>
+        </div>
+      </div> 
     </div>
+    </>
+
   );
 };
 
