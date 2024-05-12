@@ -1,0 +1,49 @@
+.searchProduct{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchProduct > select{
+    margin: 15px;
+    padding: 5px;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.product-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.product-cards{
+    background-color: rgb(238, 237, 237);
+    box-shadow: 0 4px 8px var(--shadow-1);
+    border-radius: 10px;
+    width: 350px;
+    height: 250px;
+    margin: 30px 20px 0px 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-img {
+    flex: 1;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.card-img img {
+    max-width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+

@@ -1,0 +1,56 @@
+.imgAdmin {
+    background-image: url('../img/adminHeader.png');
+    background-position: center;
+    background-size: cover;
+    height: 100px;
+    background-color: aqua;
+}
+
+.admin-product > h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+#productInput{
+    background-color: rgb(236, 236, 236);
+    box-shadow: 0 4px 8px var(--shadow-1);
+    border-radius: 10px;
+    text-align: center;
+    justify-content: center;
+    width: 500px;
+    padding: 15px;
+    overflow: hidden;
+}
+
+form input{
+    margin: 10px 0px;
+}
+
+form input[type='submit'] {
+    background-color: black;
+    font-weight: bold;
+    border-radius: 40px;
+    border-style: none;
+    padding: 15px;
+    width: 100%;
+    color: white;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px var(--shadow-1);
+}
+
+form input[type='submit']:hover{
+    background-color: var(--hover);
+    color: black;
+}
+  
+p {
+    font-family: "Satoshi";
+}
