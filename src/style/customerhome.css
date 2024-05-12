@@ -19,7 +19,8 @@
 }
 
 .navCustomer > button {
-    background-color: var(--hover);
+    background-color: black;
+    color: white;
     font-size: medium;
     border-radius: 40px;
     border-style: none;
@@ -29,8 +30,8 @@
 }
 
 .navCustomer > button:hover{
-    background-color: black;
-    color: white;
+    background-color: var(--hover);
+    color: black;
 }
 
 /* header */

@@ -28,32 +28,33 @@ const ProductList = () => {
 
 
   return (
-    <div>
-      <div>
-        <h1>View All Products</h1>
-        <div>
-          <label htmlFor='search'>Search by product type </label>
-          <select name='search' onChange={handleTypeChange} value={selectedType}>
-              <option value="All">All</option>
-              <option value="Cereals">Cereals</option>
-              <option value="Seeds">Seeds</option>
-              <option value="Vegetables">Vegetables</option>
-              <option value="Fruits">Fruits</option>
-          </select>
-        
-        </div>
-        <div>
-          {/* MANAGE THE DESIGN AND SIZE OF PRODUCT CARDS HERE */}
-          {filteredProds.map((product) =>
-            <div key={product._id}>
-              <img src={product.prodImage}/>
-              <h3>{product.prodName}</h3>
-              <h4>{product.prodPrice}</h4>
-            </div>
-          )}
-        </div>
+    <>
+      <div className='imgCustomer'></div>
+      <div className='titleCustomer'>
+        <h1>VIEW ALL AVAILABLE PRODUCTS</h1>
       </div>
-    </div>
+      <div className='searchProduct'>
+        <label htmlFor='search'>Search by Product Type </label>
+        <select name='search' onChange={handleTypeChange} value={selectedType}>
+            <option value="All">All</option>
+            <option value="Cereals">Cereals</option>
+            <option value="Seeds">Seeds</option>
+            <option value="Vegetables">Vegetables</option>
+            <option value="Fruits">Fruits</option>
+        </select>
+      </div>
+      <div className='product-container'>
+        {/* MANAGE THE DESIGN AND SIZE OF PRODUCT CARDS HERE */}
+        {filteredProds.map((product) =>
+          <div className='product-cards' key={product._id}>
+            <div className='card-img'><img src={product.prodImage}/></div>
+            <h3>{product.prodName}</h3>
+            <h4>Php {product.prodPrice}</h4>
+          </div>
+        )}
+      </div>
+        
+    </>
   );
 };
 
