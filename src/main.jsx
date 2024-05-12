@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';import './index.css';
 import Home from './pages/Home';
 import Root from './pages/Root';
-import Login from './pages/Login';
 import Register from './pages/Register';
 import CustomerPage from './pages/Customer/CustomerPage';
 import AdminPage from './pages/Admin/AdminPage';
@@ -22,7 +21,6 @@ const router = createBrowserRouter([
   { path: '/', element: <Root />, children: [
     { path: '/', element: <Home /> },
     { path: 'register', element: <Register /> },
-    // { path: 'explore', element: <Explore /> }
   ]},
   {
     path: 'explore', element: <Explore />
