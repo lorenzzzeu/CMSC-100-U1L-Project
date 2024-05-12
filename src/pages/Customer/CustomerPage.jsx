@@ -1,10 +1,11 @@
 // pages/CustomerHome.jsx
 import React from 'react';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Link, Navigate, Outlet, useNavigate } from 'react-router-dom';
 import ProductList from '../../components/Customer/ProductList';
 import ShoppingCart from '../../components/Customer/ShoppingCart';
 import OrderList from '../../components/Customer/OrderList';
 import Root from '../Root';
+import Home from '../Home';
 
 const CustomerPage = () => {
   // Assume cartItems and orders are fetched from the server or passed as props
@@ -33,7 +34,7 @@ const CustomerPage = () => {
         </div>
       ) : (
         <>
-        <Root />
+        <Navigate to = '/'/>
         </>
       )}
   </div>
