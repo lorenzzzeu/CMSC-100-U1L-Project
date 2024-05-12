@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const User = require('./model/userSchema')
-const Product = require('./model/productSchema')
+const Product = require('./model/productSchema');
 
 const SECRET_KEY = 'secretkey' // Must be in .env file
 
@@ -14,6 +14,7 @@ const app = express()
 
 // Connect to MongoDB
 const dbURI = 'mongodb+srv://100project:1NOQRTS4svS5WIxn@cluster100.n6lrd2x.mongodb.net/UsersDB?retryWrites=true&w=majority&appName=Cluster100'
+
 mongoose.connect(dbURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -74,27 +75,14 @@ app.post('/login', async (req, res) => {
     }
 })
 
-//Products 
-// Get
-app.get('/product-list', async (req, res) => {
+app.post('/admin-page/product-listings', async (req, res) => {
     try {
-        const products = await Product.find()
-        res.status(201).json(products)
-    } catch(error) {
-        res.status(500).json({ message: 'Unable to get products' })
+        const { prodName, prodType, prodPrice, prodDesc, prodQuant } = req.body;
+        const newProduct = new Product({ prodName, prodType, prodPrice, prodDesc, prodQuant });
+        await newProduct.save();
+        res.status(201).json({ message: 'Product added successfully' });
+    } catch (error) {
+        console.error('Error adding product:', error);
+        res.status(500).json({ error: 'Error adding product' });
     }
-})
-
-app.post('/product-list', async (req, res) => {
-    try {
-        const { prodType } = req.body
-        const product = await Product.find({prodType})
-        if(!product){
-            return res.status(401).json({ error: 'No products found' })
-        }
-        res.status(200).json(product)
-        
-    } catch(error) {
-        res.status(500).json({ error: 'Error in database' })
-    }
-})
+});
