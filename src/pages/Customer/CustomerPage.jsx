@@ -34,7 +34,7 @@ const CustomerPage = () => {
         </div>
       ) : (
         <>
-        <Root />
+        <Navigate to = '/'/>
         </>
       )}
   </div>
