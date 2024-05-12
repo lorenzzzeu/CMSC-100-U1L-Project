@@ -1,0 +1,24 @@
+.register-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../img/farmers-bg.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+  
+.register-card{
+    background-color: var(--background-color);
+    box-shadow: 0 4px 8px var(--shadow-1);
+    border-radius: 10px;
+    text-align: center;
+    justify-content: center;
+    width: 500px;
+    padding: 15px;
+    overflow: hidden;
+}
+  
+p {
+    font-family: "Satoshi";
+}

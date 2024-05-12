@@ -19,7 +19,6 @@ function Home() {
         <h1 className='welcome2'>Farm-to-Table E-commerce Website</h1>
         <button onClick={() => goToNewPage()}>EXPLORE NOW</button>
       </div>
-      
       <Login/>
     </div>
   );

@@ -23,12 +23,12 @@ const CustomerPage = () => {
   <div>
     {isUserSignedIn ? (
         <div>
-          <nav>
-            <Link to="/customer-page">Home</Link>
-            <Link to="/customer-page/product-list">Product List</Link>
-            <Link to="/customer-page/shopping-cart">Shopping Cart</Link>
-            <Link to="/customer-page/order-list">Order List</Link>
-            <button onClick={handleLogout}>Log Out</button>
+          <nav className='navCustomer'>
+            <Link to="/customer-page">HOME</Link>
+            <Link to="/customer-page/product-list">PRODUCT LIST</Link>
+            <Link to="/customer-page/shopping-cart">SHOPPING CART</Link>
+            <Link to="/customer-page/order-list">ORDER LIST</Link>
+            <button onClick={handleLogout}>LOG OUT</button>
           </nav>
           <Outlet />
         </div>
