@@ -1,6 +1,14 @@
+import React from 'react';
+import { Link, Outlet } from 'react-router-dom';
+
 export default function Explore(){
     return(
         <div className="app-container">
+            <nav className='navRoot'>
+            <Link to="/">BACK</Link> 
+            {/* Temporary */}
+          </nav>
+          <Outlet />
             <div className="about">
                 <h1>ABOUT</h1>
                 <p>"Farm-to-table" is a dynamic social movement that champions a direct and transparent connection between consumers 
