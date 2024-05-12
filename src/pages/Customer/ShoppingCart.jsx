@@ -8,7 +8,7 @@ const ShoppingCart = () => {
   return (
     <div>
       <h2>Shopping Cart</h2>
-
+      {/* Display the shopping cart of the customers here */}
     </div>
   );
 };

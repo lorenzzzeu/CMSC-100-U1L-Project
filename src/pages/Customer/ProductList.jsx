@@ -7,7 +7,7 @@ const ProductList = () => {
   return (
     <div>
       <h2>Product List</h2>
-      
+            {/* Display the product list here */}
     </div>
   );
 };
