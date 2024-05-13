@@ -4,9 +4,9 @@ import axios from 'axios';
 function ProductListings()  {
   const [prodName, setprodName] = useState('');
   const [prodType, setprodType] = useState('');
-  const [prodPrice, setprodPrice] = useState(0);
+  const [prodPrice, setprodPrice] = useState('');
   const [prodDesc, setDesc] = useState('');
-  const [prodQuant, setQuant] = useState(0);
+  const [prodQuant, setQuant] = useState('');
   const [prodImage, setImage] = useState('')
 
   const fetchProducts = () => {
