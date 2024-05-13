@@ -16,6 +16,7 @@ import ProductList from './pages/Customer/ProductList';
 import CustomerHome from './pages/Customer/CustomerHome';
 import OrderList from './pages/Customer/OrderList';
 import Explore from './pages/Explore';
+import CustomerProfile from './pages/Customer/CustomerProfile';
 
 const router = createBrowserRouter([
   { path: '/', element: <Root />, children: [
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
     { path: 'product-list', element: <ProductList /> },
     { path: 'shopping-cart', element: <ShoppingCart /> },
     { path: 'order-list', element: <OrderList/> },
+    { path: 'profile', element: <CustomerProfile />}
   ]},
   {path: '/admin-page', element: <AdminPage />, children: [
     { path: '/admin-page', element: <AdminHome />},

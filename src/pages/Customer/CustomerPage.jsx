@@ -23,6 +23,7 @@ const CustomerPage = () => {
             <Link to="/customer-page/product-list">PRODUCT LIST</Link>
             <Link to="/customer-page/shopping-cart">SHOPPING CART</Link>
             <Link to="/customer-page/order-list">ORDER LIST</Link>
+            <Link to="/customer-page/profile">PROFILE</Link>
             <button onClick={handleLogout}>LOG OUT</button>
           </nav>
           <Outlet />
