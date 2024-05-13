@@ -4,9 +4,14 @@
     justify-content: space-between; 
     align-items: center; 
     text-align: center;
-    padding: 20px 10px 10px 10px;
+    padding: 0px 70px;
     position: fixed;
     width: 100%;
+    background-image: url('/src/img/adminHeader.png');
+    background-position: center;
+    background-size: cover; 
+    height: 100px;
+    z-index: 1;
 }
 
 .navAdmin a {
@@ -34,16 +39,11 @@
     color: black;
 }
 
-/* header */
-.imgAdmin {
-    background-image: url('../img/adminHeader.png');
-    background-position: center;
-    background-size: cover;
-    height: 200px;
-    background-color: aqua;
+.headerAdmin{
+    height: 100px;
 }
 
-.titleadmin{
+.titleAdmin{
     text-align: center;
     font-size: x-large;
     padding: 10px;
@@ -96,5 +96,5 @@ hr {
 }
 
 .admin-cards:hover > .icon{
-    transform: scale(1.3);
+    transform: scale(1.1);
 }

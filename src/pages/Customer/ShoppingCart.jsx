@@ -6,10 +6,14 @@ const ShoppingCart = () => {
   const cart = [];
 
   return (
-    <div>
-      <h2>Shopping Cart</h2>
-      {/* Display the shopping cart of the customers here */}
+    <>
+    <div className='headerCustomer'></div>
+    <div className='titleCustomer'>
+      <h1>SHOPPING CART</h1>
     </div>
+    <hr/>
+    </>
+
   );
 };
 

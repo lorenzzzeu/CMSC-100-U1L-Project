@@ -1,6 +1,9 @@
 // pages/CustomerHome.jsx
 import React from 'react';
 import { Link, Navigate, Outlet, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+
 
 const CustomerPage = () => {
   // Assume cartItems and orders are fetched from the server or passed as props
@@ -23,8 +26,11 @@ const CustomerPage = () => {
             <Link to="/customer-page/product-list">PRODUCT LIST</Link>
             <Link to="/customer-page/shopping-cart">SHOPPING CART</Link>
             <Link to="/customer-page/order-list">ORDER LIST</Link>
-            <Link to="/customer-page/profile">PROFILE</Link>
-            <button onClick={handleLogout}>LOG OUT</button>
+            <div className='navUser'>
+              <Link to="/customer-page/profile"><FontAwesomeIcon icon={faUser} color='black'/></Link>
+              <button onClick={handleLogout}>LOG OUT</button>
+            </div>
+            
           </nav>
           <Outlet />
         </div>

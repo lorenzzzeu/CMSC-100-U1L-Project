@@ -2,11 +2,11 @@
 
 @import url('style/homepage.css');
 @import url('style/register.css');
-@import url('style/customerhome.css');
 @import url('style/about.css');
-@import url('style/customerproduct.css');
-@import url('style/adminhome.css');
-@import url('style/adminproduct.css');
+@import url('style/customer/customerhome.css');
+@import url('style/customer/customerproduct.css');
+@import url('style/admin/adminhome.css');
+@import url('style/admin/adminproduct.css');
 
 @font-face {
   font-family: "Circular";

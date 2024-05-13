@@ -34,11 +34,11 @@ function ProductListings()  {
 
   return (
     <>
-      <div className='imgAdmin'></div>
-      <div className='admin-product'>
-        <h1>PRODUCT LISTINGS</h1>
+      <div className='headerAdmin'></div>
+      <div className='titleAdmin'>
+        <h1>PRODUCT LISTING</h1>
       </div>
-      <div>
+      <hr/>
       <div className='input-container'>
         <div id='productInput'>
           <form id="prodForm" onSubmit={handleSubmit}>
@@ -52,7 +52,6 @@ function ProductListings()  {
           </form>
         </div>
       </div> 
-    </div>
     </>
 
   );

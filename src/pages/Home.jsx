@@ -17,7 +17,7 @@ function Home() {
       <div className='main-content'>
         <h1>WELCOME TO</h1>
         <h1 className='welcome2'>Farm-to-Table E-commerce Website</h1>
-        <button onClick={() => goToNewPage()}>EXPLORE NOW</button>
+        <button onClick={goToNewPage}>EXPLORE NOW</button>
       </div>
       <Login/>
     </div>
