@@ -6,12 +6,12 @@ const AdminPage = () => {
   return (
     <div>
       <nav className='navAdmin'>
-        <Link to="/admin-page">Home</Link>
-        <Link to="/admin-page/user-management">User Management</Link>
-        <Link to="/admin-page/product-listings">Product Listings</Link>
-        <Link to="/admin-page/order-fulfillment">Order Fulfillment</Link>
-        <Link to="/admin-page/sales-reports">Sales Reports</Link>
-        <Link to="/">Log Out</Link>
+        <Link to="/admin-page">HOME</Link>
+        <Link to="/admin-page/user-management">USER MANAGEMENT</Link>
+        <Link to="/admin-page/product-listings">PRODUCT LISTINGS</Link>
+        <Link to="/admin-page/order-fulfillment">ORDER FULFILLMENT</Link>
+        <Link to="/admin-page/sales-reports">SALES REPORT</Link>
+        <Link to="/">LOG OUT</Link>
       </nav>
       <Outlet />
     </div>

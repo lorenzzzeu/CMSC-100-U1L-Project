@@ -7,10 +7,11 @@
     padding: 0px 70px;
     position: fixed;
     width: 100%;
-    background-image: url('../img/customerHeader.png');
+    background-image: url('/src/img/customerHeader.png');
     background-position: center;
     background-size: cover; 
     height: 100px;
+    z-index: 1;
 }
 
 .navCustomer a {
@@ -122,7 +123,7 @@ hr {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    background-image: url('../img/farmers-bg.png');
+    background-image: url('/src/img/farmers-bg.png');
     background-position: center;
 }
 

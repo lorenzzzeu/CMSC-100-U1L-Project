@@ -5,10 +5,13 @@ const OrderList = () => {
   const order = [];
 
   return (
-    <div>
-      <h2>Order List</h2>
-      {/* Display order list of the customers here */}
+    <>
+    <div className='headerCustomer'></div>
+    <div className='titleCustomer'>
+      <h1>ORDER LIST</h1>
     </div>
+    <hr/>
+    </>
   );
 };
 

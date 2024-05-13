@@ -8,17 +8,12 @@ const UserManagement = () => {
 
   return (
     <>
-      <div className='imgAdmin'></div>
-      <div className='titleCustomer'>
-          <h1>WELCOME TO</h1>
-          <h1>The Farm-to-Table E-Commerce Website</h1>
-        </div>
-      <hr/>
-      <div>
-        <h2>User Management</h2>
+      <div className='headerAdmin'></div>
+      <div className='titleAdmin'>
+        <h1>USER MANAGEMENT</h1>
         <p>Total registered users: {totalUsers}</p>
-        {/* Display list of registered users */}
       </div>
+      <hr/>
     </>
 
   );

@@ -5,10 +5,13 @@ import React from 'react';
 const CustomerProfile = () => {
 
   return (
-    <div>
-      <h2>Profile</h2>
-      {/* Display the details of the customers here - Edit -> User Management (F Name, L Name, Password) */}
+    <>
+    <div className='headerCustomer'></div>
+    <div className='titleCustomer'>
+      <h1>PROFILE</h1>
     </div>
+    <hr/>
+    </>
   );
 };
 
