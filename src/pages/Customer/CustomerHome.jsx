@@ -32,25 +32,25 @@ const CustomerHome = () => {
           <FontAwesomeIcon icon={faBowlFood} size='5x' className='icon'/>
           <h1>PRODUCTS</h1>
           <p>Products from farm straight to your table</p>
-          <button onClick={() => goToProduct()}>VIEW PRODUCTS</button>
+          <button onClick={goToProduct}>VIEW PRODUCTS</button>
         </div>
         <div className='customer-cards'>
           <FontAwesomeIcon icon={faShoppingCart} size='5x' className='icon'/>
           <h1>SHOP</h1>
           <p>Check what's on stock right now</p>
-          <button onClick={() => goToShop()}>SHOPPING CART</button>
+          <button onClick={goToShop}>SHOPPING CART</button>
         </div>
         <div className='customer-cards'>
           <FontAwesomeIcon icon={faBox} size='5x' className='icon'/>
           <h1>ORDER</h1>
           <p>View your pendings and confirmations</p>
-          <button onClick={() => goToOrder()}>VIEW ORDER</button>
+          <button onClick={goToOrder}>VIEW ORDER</button>
         </div>
         <div className='customer-cards'>
           <FontAwesomeIcon icon={faTag} size='5x' className='icon'/>
           <h1>DISCOUNTS</h1>
           <p>Payday Sale at 50% and other discounts</p>
-          <button onClick={() => goToShop()}>CHECK OFFERS</button>
+          <button onClick={goToShop}>CHECK OFFERS</button>
         </div>
       </div>
       <h1 className='header'>WHAT'S NEW</h1>
