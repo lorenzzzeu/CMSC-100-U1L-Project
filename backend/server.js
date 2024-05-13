@@ -112,3 +112,11 @@ app.post('/product-listings', async (req, res) => {
     }
 });
 
+app.get('/product-listings', async (req, res) => {
+    try {
+        const products = await Products.find()
+        res.status(201).json(products)
+    } catch(error) {
+        res.status(500).json({ message: 'Unable to get products' })
+    }
+})

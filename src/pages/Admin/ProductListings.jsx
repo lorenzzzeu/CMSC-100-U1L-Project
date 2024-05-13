@@ -4,10 +4,16 @@ import axios from 'axios';
 function ProductListings()  {
   const [prodName, setprodName] = useState('');
   const [prodType, setprodType] = useState('');
-  const [prodPrice, setprodPrice] = useState('');
+  const [prodPrice, setprodPrice] = useState(0);
   const [prodDesc, setDesc] = useState('');
-  const [prodQuant, setQuant] = useState('');
+  const [prodQuant, setQuant] = useState(0);
   const [prodImage, setImage] = useState('')
+
+  const fetchProducts = () => {
+    axios.get('http://localhost:3001/admin-page/product-listings').then((res) => {
+      console.log(res.data) // Just for checking, must remove this later
+    })
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,10 +22,11 @@ function ProductListings()  {
       alert('Successful') // Just for checking
       setprodName('')
       setprodType('')
-      setprodPrice('')
+      setprodPrice(0)
       setDesc('')
-      setQuant('') // Corrected typo here
+      setQuant(0) // Corrected typo here
       setImage('')
+      fetchProducts()
     }).catch((error) => {
       console.log('Unable to add Product')
     });
