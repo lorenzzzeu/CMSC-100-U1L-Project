@@ -100,7 +100,7 @@ app.post('/product-list', async (req, res) => {
     }
 })
 
-app.post('/product-listings', async (req, res) => {
+app.post('/admin-page/product-listings', async (req, res) => {
     try {
         const { prodName, prodType, prodPrice, prodDesc, prodQuant, prodImage } = req.body;
         const newProduct = new Product({ prodName, prodType, prodPrice, prodDesc, prodQuant, prodImage });
