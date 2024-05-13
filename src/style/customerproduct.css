@@ -1,3 +1,35 @@
+.sortProduct{
+    display: flex;
+    justify-content: start;
+    align-items: center; 
+    margin-left: 50px;
+}
+
+.sortProduct > * {
+    padding: 0px 10px;
+}
+
+.sortProduct > button {
+    background-color: var(--hover);
+    font-size: smaller;
+    border-radius: 40px;
+    border-style: none;
+    height: 30px;
+    width: 90px;
+    box-shadow: 0 4px 8px var(--shadow-1);
+    margin: 0px 10px;
+}
+
+.sortProduct > button:hover {
+    background-color: black;
+    color: white;
+}
+
+.sortProduct > button:focus{
+    background-color: green;
+    color: white;
+}
+
 .searchProduct{
     display: flex;
     justify-content: center;
@@ -22,13 +54,13 @@
     background-color: rgb(238, 237, 237);
     box-shadow: 0 4px 8px var(--shadow-1);
     border-radius: 10px;
-    width: 350px;
+    width: 250px;
     height: 250px;
-    margin: 30px 20px 0px 20px;
+    margin: 0px 15px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 }
 
