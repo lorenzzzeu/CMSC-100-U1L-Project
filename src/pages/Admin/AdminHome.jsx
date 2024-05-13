@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faPerson, faShoppingCart, faList, faNewspaper } from '@fortawesome/free-solid-svg-icons';
+import { faUsers, faShoppingCart, faList, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 
 const AdminHome = () => {
   return (
@@ -13,7 +13,7 @@ const AdminHome = () => {
     <hr/>
     <div className='admin-container'>
         <div className='admin-cards'>
-          <FontAwesomeIcon icon={faPerson} size='5x' className='icon'/>
+          <FontAwesomeIcon icon={faUsers} size='5x' className='icon'/>
           <h1>USER MANAGEMENT</h1>
           <p>Manage all the users</p>
           <button>VIEW USERS</button>

@@ -1,17 +1,30 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faBowlFood, faBox, faTag } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 const CustomerHome = () => {
+
+  const navigate = useNavigate();
+
+  const goToProduct = () => {
+    navigate('/customer-page/product-list')
+  }
+
+  const goToShop = () => {
+    navigate('/customer-page/shopping-cart')
+  }
+
+  const goToOrder = () => {
+    navigate('/customer-page/order-list')
+  }
 
   return (
     <>
     {/* MAY CONTAIN NEWS AND OFFERS ABOUT THE STORE */}
-      <div className='imgCustomer'></div>
+    <div className='headerCustomer'></div>
       <div className='titleCustomer'>
-        <h1>WELCOME TO</h1>
-        <h1>The Farm-to-Table E-Commerce Website</h1>
-        {/* <button>Shop now</button> */}
+        <h1>WELCOME, user!</h1>
       </div>
       <hr/>
       <div className='customer-container'>
@@ -19,30 +32,31 @@ const CustomerHome = () => {
           <FontAwesomeIcon icon={faBowlFood} size='5x' className='icon'/>
           <h1>PRODUCTS</h1>
           <p>Products from farm straight to your table</p>
-          <button>VIEW PRODUCTS</button>
+          <button onClick={() => goToProduct()}>VIEW PRODUCTS</button>
         </div>
         <div className='customer-cards'>
           <FontAwesomeIcon icon={faShoppingCart} size='5x' className='icon'/>
           <h1>SHOP</h1>
           <p>Check what's on stock right now</p>
-          <button>SHOPPING CART</button>
+          <button onClick={() => goToShop()}>SHOPPING CART</button>
         </div>
         <div className='customer-cards'>
           <FontAwesomeIcon icon={faBox} size='5x' className='icon'/>
           <h1>ORDER</h1>
           <p>View your pendings and confirmations</p>
-          <button>VIEW ORDER</button>
+          <button onClick={() => goToOrder()}>VIEW ORDER</button>
         </div>
         <div className='customer-cards'>
           <FontAwesomeIcon icon={faTag} size='5x' className='icon'/>
           <h1>DISCOUNTS</h1>
           <p>Payday Sale at 50% and other discounts</p>
-          <button>CHECK OFFERS</button>
+          <button onClick={() => goToShop()}>CHECK OFFERS</button>
         </div>
       </div>
       <h1 className='header'>WHAT'S NEW</h1>
       <div className='news-customer'>
         <div className='news'>
+          <p className='title'>The Farm-to-Table Movement</p>
           <p>As they say in action movies: kill the middle man. That pretty much sums up 
             the concept of farm-to-table, the latest buzzword in restaurant du jour. Instead 
             of ordering from suppliers or importing overseas, restaurants and other eating 
@@ -56,6 +70,7 @@ const CustomerHome = () => {
             </p>
         </div>
         <div className='news'>
+        <p className='title'>The Wholesome Table Champions</p>
           <p>
           The idea behind the farm-to-table concept restaurant is to understand where your food comes from. 
           Here, ingredients and raw materials are directly sourced from farmers, bypassing brokers, dealers, 

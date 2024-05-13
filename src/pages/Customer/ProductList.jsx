@@ -29,10 +29,11 @@ const ProductList = () => {
 
   return (
     <>
-      <div className='imgCustomer'></div>
+      <div className='headerCustomer'></div>
       <div className='titleCustomer'>
-        <h1>VIEW ALL AVAILABLE PRODUCTS</h1>
+        <h1>AVAILABLE PRODUCTS</h1>
       </div>
+      <hr/>
       <div className='searchProduct'>
         <label htmlFor='search'>Search by Product Type </label>
         <select name='search' onChange={handleTypeChange} value={selectedType}>
