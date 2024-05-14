@@ -6,7 +6,7 @@ const AdminPage = () => {
   return (
     <div>
       <nav className='navAdmin'>
-        <Link to="/admin-page">HOME</Link>
+        <Link to="/admin-page" className='logo'><img src="src/img/100-logo.png"/></Link>
         <Link to="/admin-page/user-management">USER MANAGEMENT</Link>
         <Link to="/admin-page/product-listings">PRODUCT LISTINGS</Link>
         <Link to="/admin-page/order-fulfillment">ORDER FULFILLMENT</Link>

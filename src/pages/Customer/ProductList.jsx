@@ -3,8 +3,10 @@
   const ProductList = () => {
     const [prods, setProds] = useState([]);
     const [selectedType, setSelectedType] = useState('All'); // State to hold the selected product type
-    const [sortByPrice, setSortByPrice] = useState(false);
-    const [sortByName, setSortByName] = useState(false);
+    const [sortOrder, setSortOrder] = useState({
+      type: ''
+    });
+
 
     useEffect(() => {
       fetch('http://localhost:3001/product-list')
@@ -22,24 +24,30 @@
       setSelectedType(event.target.value);
     };
 
-    const toggleSortByPrice = () => {
-      setSortByPrice(!sortByPrice);
-    };
-
-    const toggleSortByName = () => {
-      setSortByName(!sortByName);
-    };
+    const sortBy = (type) => {
+      setSortOrder((prevOrder) => ({
+        type,
+        ascending: prevOrder.type === type ? !prevOrder.ascending : true
+      }));
+    };  
 
     // Filter products based on the selected product type
     const filteredProds = selectedType === 'All' ? prods : prods.filter(product => product.prodType === selectedType);
 
     // Sort the filtered products by price (ascending)
-    if (sortByPrice){
-      filteredProds.sort((a, b) => a.prodPrice - b.prodPrice);
-    }
-
-    if (sortByName){
-      filteredProds.sort((a, b) => a.prodName.localeCompare(b.prodName));
+    if (sortOrder.type) {
+      filteredProds.sort((a, b) => {
+        if (sortOrder.type === 'price') {
+          return a.prodPrice - b.prodPrice;
+        } else if (sortOrder.type === 'name') {
+          return a.prodName.localeCompare(b.prodName);
+        } else if (sortOrder.type === 'quantity') {
+          return a.prodQuant - b.prodQuant;
+        } else if (sortOrder.type === 'type') {
+          return a.prodType.localeCompare(b.prodType);
+        }
+        return 0;
+      });
     }
 
     return (
@@ -61,18 +69,19 @@
             </select>
           </div>
           <p>SORT BY</p>
-          <button onClick={toggleSortByName}>NAME</button>
-          <button onClick={toggleSortByPrice}>PRICE</button>
+          <button onClick={() => sortBy('name')}>NAME</button>
+          <button onClick={() => sortBy('price')}>PRICE</button>
+          <button onClick={() => sortBy('quantity')}>QUANTITY</button>
+          <button onClick={() => sortBy('type')}>TYPE</button>
         </div>
-        
-
         <div className='product-container'>
-          {/* MANAGE THE DESIGN AND SIZE OF PRODUCT CARDS HERE */}
           {filteredProds.map((product) =>
             <div className='product-cards' key={product._id}>
               <div className='card-img'><img src={product.prodImage}/></div>
               <h3>{product.prodName}</h3>
-              <h4>Php {product.prodPrice}</h4>
+              <h4>Price: Php {product.prodPrice}</h4>
+              <p>Food Type: {product.prodType}</p>
+              <p>Quantity: {product.prodQuant}</p>
             </div>
           )}
         </div>

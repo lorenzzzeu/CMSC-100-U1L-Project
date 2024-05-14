@@ -49,6 +49,10 @@
     color: black;
 }
 
+.profile:hover{
+    transform: scale(1.1);
+}
+
 .headerCustomer{
     height: 100px;
 }
