@@ -26,8 +26,10 @@
 }
 
 .sortProduct > button:focus{
-    background-color: green;
-    color: white;
+    background-color: white;
+    color: var(--hover);
+    border: 2px solid var(--hover);
+    
 }
 
 .searchProduct{
@@ -56,12 +58,19 @@
     border-radius: 10px;
     width: 250px;
     height: 250px;
-    margin: 0px 15px;
+    margin: 5px 15px;
+    padding: 5px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
+}
+
+.product-cards p {
+    font-size: smaller;
+    font-style: italic;
+    justify-content: left;
 }
 
 .card-img {

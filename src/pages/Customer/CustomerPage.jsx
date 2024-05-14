@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link, Navigate, Outlet, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 
 
 const CustomerPage = () => {
@@ -22,12 +22,12 @@ const CustomerPage = () => {
     {isUserSignedIn ? (
         <div>
           <nav className='navCustomer'>
-            <Link to="/customer-page">HOME</Link>
+            <Link to="/customer-page" className='logo'><img src="/src/img/100-logo.png"/></Link>
             <Link to="/customer-page/product-list">PRODUCT LIST</Link>
             <Link to="/customer-page/shopping-cart">SHOPPING CART</Link>
             <Link to="/customer-page/order-list">ORDER LIST</Link>
             <div className='navUser'>
-              <Link to="/customer-page/profile"><FontAwesomeIcon icon={faUser} color='black'/></Link>
+              <Link to="/customer-page/profile"><FontAwesomeIcon icon={faCircleUser} color='black' size='2x'/></Link>
               <button onClick={handleLogout}>LOG OUT</button>
             </div>
             
