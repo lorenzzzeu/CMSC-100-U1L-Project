@@ -4,8 +4,7 @@
     const [prods, setProds] = useState([]);
     const [selectedType, setSelectedType] = useState('All'); // State to hold the selected product type
     const [sortOrder, setSortOrder] = useState({
-      type: '',
-      ascending: true
+      type: ''
     });
 
 
@@ -39,13 +38,13 @@
     if (sortOrder.type) {
       filteredProds.sort((a, b) => {
         if (sortOrder.type === 'price') {
-          return sortOrder.ascending ? a.prodPrice - b.prodPrice : b.prodPrice - a.prodPrice;
+          return a.prodPrice - b.prodPrice;
         } else if (sortOrder.type === 'name') {
-          return sortOrder.ascending ? a.prodName.localeCompare(b.prodName) : b.prodName.localeCompare(a.prodName);
+          return a.prodName.localeCompare(b.prodName);
         } else if (sortOrder.type === 'quantity') {
-          return sortOrder.ascending ? a.prodQuant - b.prodQuant : b.prodQuant - a.prodQuant;
+          return a.prodQuant - b.prodQuant;
         } else if (sortOrder.type === 'type') {
-          return sortOrder.ascending ? a.prodType.localeCompare(b.prodType) : b.prodType.localeCompare(a.prodType);
+          return a.prodType.localeCompare(b.prodType);
         }
         return 0;
       });
@@ -74,10 +73,7 @@
           <button onClick={() => sortBy('price')}>PRICE</button>
           <button onClick={() => sortBy('quantity')}>QUANTITY</button>
           <button onClick={() => sortBy('type')}>TYPE</button>
-
         </div>
-        
-
         <div className='product-container'>
           {filteredProds.map((product) =>
             <div className='product-cards' key={product._id}>

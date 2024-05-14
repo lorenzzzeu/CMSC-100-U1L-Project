@@ -27,7 +27,7 @@ const CustomerPage = () => {
             <Link to="/customer-page/shopping-cart">SHOPPING CART</Link>
             <Link to="/customer-page/order-list">ORDER LIST</Link>
             <div className='navUser'>
-              <Link to="/customer-page/profile"><FontAwesomeIcon icon={faCircleUser} color='black' size='2x'/></Link>
+              <Link to="/customer-page/profile" className='profile'><FontAwesomeIcon icon={faCircleUser} color='black' size='2x'/></Link>
               <button onClick={handleLogout}>LOG OUT</button>
             </div>
             
