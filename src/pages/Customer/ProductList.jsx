@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
   const ProductList = () => {
     const [prods, setProds] = useState([]);
     const [cartItems, setCartItems] = useState([]);
-    const [total, setTotal] = useState(0);
     const [selectedType, setSelectedType] = useState('All'); // State to hold the selected product type
     const [sortOrder, setSortOrder] = useState({
       type: ''
@@ -51,25 +50,41 @@ import React, { useEffect, useState } from 'react';
       });
     }
 
-    const addToCart = (product) => {
-      const existingProductIndex = cartItems.findIndex((item) => item.prodId === product._id);
-      if (existingProductIndex !== -1) { // If existing
-        const updatedCartItems = [...cartItems];
-        if (updatedCartItems[existingProductIndex].prodQuant < product.prodQuant) {
-          updatedCartItems[existingProductIndex].prodQuant += 1;
-          setCartItems(updatedCartItems);
-          setTotal((prevTotal) => prevTotal + 1);
-        }
-      } else {
-        setCartItems([...cartItems, { 
-          prodId: product._id, 
-          prodName: product.prodName, 
-          prodPrice: product.prodPrice, 
-          prodDesc: product.prodDesc, 
-          prodImage: product.prodImage, 
-          prodQuant: 1 
-        }]);
-        setTotal((prevTotal) => prevTotal + product.prodPrice);
+    
+    useEffect(() => {
+      fetchCartItems();
+    }, []);
+  
+    const fetchCartItems = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/cart-items');
+        const data = await response.json();
+        setCartItems(data);
+      } catch (error) {
+        console.error('Error fetching cart items:', error);
+      }
+    };
+    // Add to cart functionality
+    const addToCart = async (product) => {
+      try {
+        const response = await fetch('http://localhost:3001/cart-items', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            prodId: product._id,
+            prodName: product.prodName,
+            prodPrice: product.prodPrice,
+            prodDesc: product.prodDesc,
+            prodImage: product.prodImage,
+            prodQuant: 1
+          })
+        });
+        const data = await response.json();
+        setCartItems(data);
+      } catch (error) {
+        console.error('Error adding item to cart:', error);
       }
     };
 
@@ -111,7 +126,7 @@ import React, { useEffect, useState } from 'react';
               <p>Food Type: {product.prodType}</p>
               <p>Quantity: {product.prodQuant}</p>
               {product.prodQuant > 0 ? (
-                <button onClick={() => {addToCart(product)}}>Add to Cart</button>
+                <button onClick={() => {addToCart(product)}} disabled={isDisabled(product)}>Add to Cart</button>
               ) : (
                 <div className='soldOut'>
                   <h4>Sold Out</h4>
