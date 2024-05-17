@@ -40,10 +40,32 @@ const CheckOut = () => {
           'authorization': `Bearer ${token}`
         }
       });
+      await updateProductQuantities();
       setIsClicked(true);
       setCartItems([]); // Clear cart items in the state
     } catch (error) {
       console.error('Error clearing cart items:', error.response ? error.response.data : error.message);
+    }
+  };
+
+  const updateProductQuantities = async () => {
+    try {
+      // Fetch all products
+      const response = await axios.get('http://localhost:3001/product-list');
+      const products = response.data;
+  
+      // Update product quantities based on cart items
+      for (const item of cartItems) {
+        const product = products.find(prod => prod._id === item.prodId);
+        if (product) {
+          // Calculate new quantity after placing order
+          const newQuantity = product.prodQuant - item.prodQuant;
+          // Update product quantity in the database
+          await axios.post('http://localhost:3001/update-product-quantity', { _id: item.prodId, prodQuant: newQuantity });
+        }
+      }
+    } catch (error) {
+      console.error('Error updating product quantities:', error.response ? error.response.data : error.message);
     }
   };
   
