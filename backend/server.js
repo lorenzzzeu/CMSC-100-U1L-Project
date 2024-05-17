@@ -6,14 +6,13 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const User = require('./model/userSchema')
 const Product = require('./model/productSchema')
-
-const SECRET_KEY = 'secretkey' // Must be in .env file
+require('dotenv').config()
 
 // Connect to express
 const app = express()
 
 // Connect to MongoDB
-const dbURI = 'mongodb+srv://100project:1NOQRTS4svS5WIxn@cluster100.n6lrd2x.mongodb.net/UsersDB?retryWrites=true&w=majority&appName=Cluster100'
+const dbURI = process.env.passDB
 
 mongoose.connect(dbURI, {
     useNewUrlParser: true,
@@ -68,7 +67,7 @@ app.post('/login', async (req, res) => {
         if(!isPasswordValid){
             return res.status(401).json({ error: 'Invalid password' })
         }
-        const token = jwt.sign({ userId: user._id}, SECRET_KEY, { expiresIn: '1hr' })
+        const token = jwt.sign({ userId: user._id}, process.env.ACCESS_SECRET_KEY, { expiresIn: '1hr' })
         res.json({ message: 'Login successful '})
     } catch(error) {
         res.status(500).json({ error: 'Error logging in' })
