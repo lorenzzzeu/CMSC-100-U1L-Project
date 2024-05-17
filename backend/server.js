@@ -155,7 +155,7 @@ app.get('/cart-items', authenticateJWT, (req, res) => {
     }
 });
 
-  
+// POST for shopping cart
 app.post('/cart-items', authenticateJWT, (req, res) => {
     try{
         const userId = req.user.userId;
@@ -176,3 +176,20 @@ app.post('/cart-items', authenticateJWT, (req, res) => {
         res.status(403).json({ message: 'Forbidden' })
     }
 });
+
+// DELETE for shopping cart
+app.delete('/remove-cart-item', authenticateJWT, (req, res) => {
+    try {
+      const userId = req.user.userId;
+      const { prodId } = req.body;
+      if (!userCarts[userId]) {
+        return res.status(404).json({ message: 'Cart not found' });
+      }
+      userCarts[userId] = userCarts[userId].filter(item => item.prodId !== prodId);
+      res.status(200).json(userCarts[userId]);
+    } catch (error) {
+      console.error('Error removing cart item:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  
