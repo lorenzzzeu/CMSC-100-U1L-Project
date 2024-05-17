@@ -1,6 +1,7 @@
 
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const ShoppingCart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -29,7 +30,7 @@ const ShoppingCart = () => {
     setTotal(totalPrice);
   };
 
-  const incCartQuantatity = async (product) => {
+  const incCartQuantity = async (product) => {
     try {
       const token = localStorage.getItem('token');
       const response = await fetch('http://localhost:3001/cart-items', {
@@ -57,7 +58,7 @@ const ShoppingCart = () => {
     }
   };
   
-  const decCartQuantatity = async (product) => {
+  const decCartQuantity = async (product) => {
     try {
       const token = localStorage.getItem('token');
       // Check if the quantity is already at the minimum (1) before decrementing
@@ -124,7 +125,6 @@ const ShoppingCart = () => {
     </div>
     <hr/>
     <div>
-      <h2>Cart Items</h2>
       {cartItems.length === 0 ? (
         <p>No items in the cart.</p>
       ) : (
@@ -135,16 +135,16 @@ const ShoppingCart = () => {
               <h3>{item.prodName}</h3>
               <p>Price: ${item.prodPrice}</p>
               <div>
-                <button onClick={() => decCartQuantatity(item)}>–</button>
+                <button onClick={() => decCartQuantity(item)}>–</button>
                 <div>{item.prodQuant}</div>
-                <button onClick={() => incCartQuantatity(item)}>+</button>
+                <button onClick={() => incCartQuantity(item)}>+</button>
               </div> 
               <button onClick={() => removeCartItem(item)}>Remove</button>
             </li>
           ))}
           <div>
             <h2>Total: {total}</h2>
-            <button>CHECK OUT</button>
+            <Link to='/customer-page/check-out'><button>CHECK OUT</button></Link>
           </div>
         </ul>
       )}
