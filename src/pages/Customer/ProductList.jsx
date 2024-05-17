@@ -1,12 +1,12 @@
-  import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
   const ProductList = () => {
     const [prods, setProds] = useState([]);
+    const [cartItems, setCartItems] = useState([]);
     const [selectedType, setSelectedType] = useState('All'); // State to hold the selected product type
     const [sortOrder, setSortOrder] = useState({
       type: ''
     });
-
 
     useEffect(() => {
       fetch('http://localhost:3001/product-list')
@@ -50,6 +50,49 @@
       });
     }
 
+    
+    useEffect(() => {
+      fetchCartItems();
+    }, []);
+  
+    const fetchCartItems = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/cart-items');
+        const data = await response.json();
+        setCartItems(data);
+      } catch (error) {
+        console.error('Error fetching cart items:', error);
+      }
+    };
+    // Add to cart functionality
+    const addToCart = async (product) => {
+      try {
+        const response = await fetch('http://localhost:3001/cart-items', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            prodId: product._id,
+            prodName: product.prodName,
+            prodPrice: product.prodPrice,
+            prodDesc: product.prodDesc,
+            prodImage: product.prodImage,
+            prodQuant: 1
+          })
+        });
+        const data = await response.json();
+        setCartItems(data);
+      } catch (error) {
+        console.error('Error adding item to cart:', error);
+      }
+    };
+
+    const isDisabled = (product) => {
+      const cartProduct = cartItems.find((item) => item.prodId === product._id);
+      return cartProduct ? cartProduct.prodQuant >= product.prodQuant : false;
+    };
+
     return (
       <>
         <div className='headerCustomer'></div>
@@ -82,6 +125,13 @@
               <h4>Price: Php {product.prodPrice}</h4>
               <p>Food Type: {product.prodType}</p>
               <p>Quantity: {product.prodQuant}</p>
+              {product.prodQuant > 0 ? (
+                <button onClick={() => {addToCart(product)}} disabled={isDisabled(product)}>Add to Cart</button>
+              ) : (
+                <div className='soldOut'>
+                  <h4>Sold Out</h4>
+                </div>
+              )}
             </div>
           )}
         </div>
