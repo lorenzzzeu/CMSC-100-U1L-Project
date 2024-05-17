@@ -31,7 +31,7 @@ function Register() {
       setEmail('')
       setPassword('')
       fetchUsers()
-      navigate('/login')
+      navigate('/')
     }).catch((error) => {
       console.log('Unable to register user')
     });
