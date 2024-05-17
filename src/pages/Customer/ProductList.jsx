@@ -1,5 +1,4 @@
-  import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 
   const ProductList = () => {
     const [prods, setProds] = useState([]);
@@ -111,10 +110,13 @@ import { useLocation } from 'react-router-dom';
               <h4>Price: Php {product.prodPrice}</h4>
               <p>Food Type: {product.prodType}</p>
               <p>Quantity: {product.prodQuant}</p>
-              <button onClick={() => {addToCart(product)}} disabled={isDisabled(product)}>Add to Cart</button>
-              <div className='soldOut'>
-                <h4>Sold Out</h4>
-              </div>
+              {product.prodQuant > 0 ? (
+                <button onClick={() => {addToCart(product)}}>Add to Cart</button>
+              ) : (
+                <div className='soldOut'>
+                  <h4>Sold Out</h4>
+                </div>
+              )}
             </div>
           )}
         </div>
