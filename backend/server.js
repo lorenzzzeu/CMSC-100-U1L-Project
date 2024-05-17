@@ -6,6 +6,8 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const User = require('./model/userSchema')
 const Product = require('./model/productSchema')
+const Order = require('./model/orderSchema')
+const { v4: uuidv4 } = require('uuid')
 require('dotenv').config()
 
 // Connect to express
@@ -191,5 +193,80 @@ app.delete('/remove-cart-item', authenticateJWT, (req, res) => {
       console.error('Error removing cart item:', error);
       res.status(500).json({ error: 'Internal Server Error' });
     }
-  });
-  
+});
+
+//POST for order transaction
+app.post('/order-transaction', authenticateJWT, async (req, res) => {
+    try {
+        const userId = req.user.userId;
+        const cartItems = userCarts[userId];
+
+        if (!cartItems || cartItems.length === 0) {
+            return res.status(404).json({ message: 'Cart is already empty' });
+        }
+
+        // Generate unique transaction ID and save each cart item as an order
+        const orders = cartItems.map(item => {
+            let genId = uuidv4();
+            let uniqueId = 'CMSC' + genId.slice(0, 6);
+            return {
+                ordTransId: uniqueId,
+                ordProdId: item.prodId,
+                ordQty: item.prodQuant,
+                ordStatus: 'Pending',
+                email: userId,
+                ordDate: new Date(),
+                time: new Date().toISOString()
+            };
+        });
+
+        Order.insertMany(orders);
+
+        // Clear the user's cart
+        userCarts[userId] = [];
+
+        res.status(200).json({ message: 'All cart items have been removed and orders placed' });
+    } catch (error) {
+        console.error('Error clearing cart items:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+// GET for order transaction
+app.get('/order-transaction', authenticateJWT, async (req, res) => {
+    try {
+        const userId = req.user.userId;
+        const orders = await Order.find({email: userId});
+
+        if (!orders.length) {
+            return res.status(404).json({ message: 'No order transactions found for this user' });
+        }
+
+        res.status(200).json(orders);
+    } catch (error) {
+        console.error('Error fetching order transactions:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+// DELETE for order transaction
+app.delete('/order-transaction/:orderId', authenticateJWT, async (req, res) => {
+    try {
+        const orderId = req.params.orderId;
+        const userId = req.user.userId;
+
+        // Check if the order belongs to the authenticated user
+        const order = await Order.findOne({ ordTransId: orderId, email: userId });
+        if (!order) {
+            return res.status(404).json({ message: 'Order not found or unauthorized' });
+        }
+
+        // Remove the order from the database
+        await Order.findOneAndDelete(orderId);
+
+        res.status(200).json({ message: 'Order cancelled successfully' });
+    } catch (error) {
+        console.error('Error cancelling order:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
