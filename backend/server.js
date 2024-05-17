@@ -120,3 +120,21 @@ app.get('/product-listings', async (req, res) => {
         res.status(500).json({ message: 'Unable to get products' })
     }
 })
+
+// GET for shopping cart
+let cartItems = []
+app.get('/cart-items', (req, res) => {
+  res.json(cartItems);
+});
+
+// POST for shopping cart
+app.post('/cart-items', (req, res) => {
+  const newItem = req.body;
+  const existingItemIndex = cartItems.findIndex(item => item.prodId === newItem.prodId);
+  if (existingItemIndex !== -1) {
+    cartItems[existingItemIndex].prodQuant += newItem.prodQuant;
+  } else {
+    cartItems.push(newItem);
+  }
+  res.status(201).json(cartItems);
+});
