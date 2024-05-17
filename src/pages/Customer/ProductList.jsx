@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
   const ProductList = () => {
@@ -57,20 +58,27 @@ import React, { useEffect, useState } from 'react';
   
     const fetchCartItems = async () => {
       try {
-        const response = await fetch('http://localhost:3001/cart-items');
-        const data = await response.json();
-        setCartItems(data);
+        const token = localStorage.getItem('token'); // Retrieve the token from local storage
+        const response = await axios.get('http://localhost:3001/cart-items', {
+          headers: {
+            'authorization': `Bearer ${token}`
+          }
+        });
+        setCartItems(response.data); // Set cart items from response
       } catch (error) {
-        console.error('Error fetching cart items:', error);
+        console.error('Error fetching cart items:', error.response ? error.response.data : error.message);
       }
     };
+  
     // Add to cart functionality
     const addToCart = async (product) => {
       try {
+        const token = localStorage.getItem('token');
         const response = await fetch('http://localhost:3001/cart-items', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}` // Include the token in the Authorization header
           },
           body: JSON.stringify({
             prodId: product._id,
@@ -81,13 +89,19 @@ import React, { useEffect, useState } from 'react';
             prodQuant: 1
           })
         });
+  
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message);
+        }
+  
         const data = await response.json();
         setCartItems(data);
       } catch (error) {
-        console.error('Error adding item to cart:', error);
+        console.error('Error adding item to cart:', error.message);
       }
     };
-
+  
     const isDisabled = (product) => {
       const cartProduct = cartItems.find((item) => item.prodId === product._id);
       return cartProduct ? cartProduct.prodQuant >= product.prodQuant : false;
