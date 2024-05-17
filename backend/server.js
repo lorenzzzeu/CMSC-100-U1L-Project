@@ -101,6 +101,21 @@ app.post('/product-list', async (req, res) => {
     }
 })
 
+app.post('/update-product-quantity', async (req, res) => {
+    try {
+      const { _id, prodQuant } = req.body;
+  
+      // Find the product by ID and update its quantity
+      await Product.findByIdAndUpdate(_id, { prodQuant });
+  
+      res.status(200).json({ message: 'Product quantity updated successfully' });
+    } catch (error) {
+      console.error('Error updating product quantity:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  
+
 app.post('/admin-page/product-listings', async (req, res) => {
     try {
         const { prodName, prodType, prodPrice, prodDesc, prodQuant, prodImage } = req.body;
