@@ -68,7 +68,7 @@ app.post('/login', async (req, res) => {
             return res.status(401).json({ error: 'Invalid password' })
         }
         const token = jwt.sign({ userId: user._id}, process.env.ACCESS_SECRET_KEY, { expiresIn: '1hr' })
-        res.json({ message: 'Login successful '})
+        res.json({ message: 'Login successful ', token})
     } catch(error) {
         res.status(500).json({ error: 'Error logging in' })
     }
@@ -119,21 +119,60 @@ app.get('/product-listings', async (req, res) => {
         res.status(500).json({ message: 'Unable to get products' })
     }
 })
+// Verify token
+const authenticateJWT = (req, res, next) => {
+    const authHeader = req.headers['authorization'];
+  
+    if (authHeader) {
+      const token = authHeader.split(' ')[1];
+  
+      if (token) {
+        jwt.verify(token, process.env.ACCESS_SECRET_KEY, (err, user) => {
+          if (err) {
+            return res.status(403).json({ message: 'Forbidden' });
+          }
+          req.user = user;
+          next();
+        });
+      } else {
+        return res.status(401).json({ message: 'Unauthorized' });
+      }
+    } else {
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
+  };
 
 // GET for shopping cart
-let cartItems = []
-app.get('/cart-items', (req, res) => {
-  res.json(cartItems);
+let userCarts = {};
+app.get('/cart-items', authenticateJWT, (req, res) => {
+    try {
+        const userId = req.user.userId;
+        const cartItems = userCarts[userId] || [];
+        res.json(cartItems);
+    } catch (error) {
+        console.error('Error fetching cart items:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
 
-// POST for shopping cart
-app.post('/cart-items', (req, res) => {
-  const newItem = req.body;
-  const existingItemIndex = cartItems.findIndex(item => item.prodId === newItem.prodId);
-  if (existingItemIndex !== -1) {
-    cartItems[existingItemIndex].prodQuant += newItem.prodQuant;
-  } else {
-    cartItems.push(newItem);
-  }
-  res.status(201).json(cartItems);
+  
+app.post('/cart-items', authenticateJWT, (req, res) => {
+    try{
+        const userId = req.user.userId;
+        const newItem = req.body;
+        if (!userCarts[userId]) {
+            userCarts[userId] = [];
+        }
+        
+        const existingItemIndex = userCarts[userId].findIndex(item => item.prodId === newItem.prodId);
+        if (existingItemIndex !== -1) {
+            userCarts[userId][existingItemIndex].prodQuant += newItem.prodQuant;
+        } else {
+            userCarts[userId].push(newItem);
+        }
+        
+        res.status(201).json(userCarts[userId]);
+    }catch(err){
+        res.status(403).json({ message: 'Forbidden' })
+    }
 });
