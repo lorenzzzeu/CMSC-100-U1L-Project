@@ -1,12 +1,14 @@
   import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
   const ProductList = () => {
     const [prods, setProds] = useState([]);
+    const [cartItems, setCartItems] = useState([]);
+    const [total, setTotal] = useState(0);
     const [selectedType, setSelectedType] = useState('All'); // State to hold the selected product type
     const [sortOrder, setSortOrder] = useState({
       type: ''
     });
-
 
     useEffect(() => {
       fetch('http://localhost:3001/product-list')
@@ -50,6 +52,33 @@
       });
     }
 
+    const addToCart = (product) => {
+      const existingProductIndex = cartItems.findIndex((item) => item.prodId === product._id);
+      if (existingProductIndex !== -1) { // If existing
+        const updatedCartItems = [...cartItems];
+        if (updatedCartItems[existingProductIndex].prodQuant < product.prodQuant) {
+          updatedCartItems[existingProductIndex].prodQuant += 1;
+          setCartItems(updatedCartItems);
+          setTotal((prevTotal) => prevTotal + 1);
+        }
+      } else {
+        setCartItems([...cartItems, { 
+          prodId: product._id, 
+          prodName: product.prodName, 
+          prodPrice: product.prodPrice, 
+          prodDesc: product.prodDesc, 
+          prodImage: product.prodImage, 
+          prodQuant: 1 
+        }]);
+        setTotal((prevTotal) => prevTotal + product.prodPrice);
+      }
+    };
+
+    const isDisabled = (product) => {
+      const cartProduct = cartItems.find((item) => item.prodId === product._id);
+      return cartProduct ? cartProduct.prodQuant >= product.prodQuant : false;
+    };
+
     return (
       <>
         <div className='headerCustomer'></div>
@@ -82,6 +111,10 @@
               <h4>Price: Php {product.prodPrice}</h4>
               <p>Food Type: {product.prodType}</p>
               <p>Quantity: {product.prodQuant}</p>
+              <button onClick={() => {addToCart(product)}} disabled={isDisabled(product)}>Add to Cart</button>
+              <div className='soldOut'>
+                <h4>Sold Out</h4>
+              </div>
             </div>
           )}
         </div>
