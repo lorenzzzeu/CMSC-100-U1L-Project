@@ -63,6 +63,11 @@ const CustomerProfile = () => {
         <p><strong>Email:</strong> {profile.email}</p>
         {/* You can display more details here if needed */}
       </div>
+
+      <div>
+      <h3>History of Items Purchased:</h3>
+      </div>
+
       <form onSubmit={handleSubmit}>
         <div>
           <label>First Name:</label>
