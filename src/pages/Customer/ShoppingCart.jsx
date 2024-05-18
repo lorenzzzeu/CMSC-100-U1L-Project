@@ -1,6 +1,7 @@
 
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const ShoppingCart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -29,6 +30,93 @@ const ShoppingCart = () => {
     setTotal(totalPrice);
   };
 
+  const incCartQuantity = async (product) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch('http://localhost:3001/cart-items', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          prodId: product.prodId,
+          prodQuant: 1 // Increment by 1
+        })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
+
+      const data = await response.json();
+      setCartItems(data);
+      calculateTotal(data)
+    } catch (error) {
+      console.error('Error updating quantity to cart:', error.message);
+    }
+  };
+  
+  const decCartQuantity = async (product) => {
+    try {
+      const token = localStorage.getItem('token');
+      // Check if the quantity is already at the minimum (1) before decrementing
+      if (product.prodQuant > 1) {
+        const response = await fetch('http://localhost:3001/cart-items', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            prodId: product.prodId,
+            prodQuant: -1 // Decrement by 1
+          })
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message);
+        }
+
+        const data = await response.json();
+        setCartItems(data);
+        calculateTotal(data)
+      } else {
+        console.log('Minimum quantity reached. Cannot decrement further.');
+      }
+    } catch (error) {
+      console.error('Error updating quantity to cart:', error.message);
+    }
+  };
+
+  const removeCartItem = async (product) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch('http://localhost:3001/remove-cart-item', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({prodId: product.prodId})
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
+
+      const data = await response.json();
+      setCartItems(data);
+      calculateTotal(data)
+    } catch (error) {
+      console.error('Error removing item to cart:', error.message);
+    }
+  };
+  
+
   return (
     <>
     <div className='headerCustomer'></div>
@@ -37,7 +125,6 @@ const ShoppingCart = () => {
     </div>
     <hr/>
     <div>
-      <h2>Cart Items</h2>
       {cartItems.length === 0 ? (
         <p>No items in the cart.</p>
       ) : (
@@ -47,11 +134,17 @@ const ShoppingCart = () => {
               <img src={item.prodImage} alt={item.prodName} width="50" />
               <h3>{item.prodName}</h3>
               <p>Price: ${item.prodPrice}</p>
-              <button>REMOVE</button>
+              <div>
+                <button onClick={() => decCartQuantity(item)}>–</button>
+                <div>{item.prodQuant}</div>
+                <button onClick={() => incCartQuantity(item)}>+</button>
+              </div> 
+              <button onClick={() => removeCartItem(item)}>Remove</button>
             </li>
           ))}
           <div>
             <h2>Total: {total}</h2>
+            <Link to='/customer-page/check-out'><button>CHECK OUT</button></Link>
           </div>
         </ul>
       )}
