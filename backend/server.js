@@ -76,6 +76,21 @@ app.post('/login', async (req, res) => {
     }
 })
 
+// Update user profile
+app.get('/profile', async (req, res) => {
+    try {
+        const userId = req.user.userId;
+        const user = await User.findById(userId).select('-password'); // Exclude password from the response
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ error: 'Error fetching profile' });
+    }
+});
+
+
 //Products 
 // Get
 app.get('/product-list', async (req, res) => {
