@@ -1,0 +1,18 @@
+.orderTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .orderTable th, .orderTable td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+  }
+  
+  .orderTable th {
+    text-align: left;
+    background-color: #f2f2f2;
+  }
+  
+  .orderTable tr:nth-child(even) {
+    background-color: #dddddd;
+  }
