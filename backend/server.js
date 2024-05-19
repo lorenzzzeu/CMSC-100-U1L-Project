@@ -90,7 +90,6 @@ app.get('/profile', async (req, res) => {
     }
 });
 
-
 //Products 
 // Get
 app.get('/product-list', async (req, res) => {
@@ -143,14 +142,83 @@ app.post('/admin-page/product-listings', async (req, res) => {
     }
 });
 
-app.get('/product-listings', async (req, res) => {
+app.get('/admin-page/product-listings', async (req, res) => {
     try {
-        const products = await Products.find()
-        res.status(201).json(products)
-    } catch(error) {
-        res.status(500).json({ message: 'Unable to get products' })
+        const products = await Product.find(); 
+        res.status(200).json(products); 
+    } catch (error) {
+        res.status(500).json({ message: 'Unable to get users' });
+    }
+});
+
+app.put('/admin-page/product-listings/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { prodName, prodType, prodPrice, prodDesc, prodQuant, prodImage } = req.body;
+        
+        const updatedProd = await Product.findByIdAndUpdate(
+            id, 
+            { prodName, prodType, prodPrice, prodDesc, prodQuant, prodImage },
+            { new: true }
+        );
+
+        if (!updatedProd) {
+            return res.status(404).json({ message: 'Product not found' });
+        }
+
+        res.status(200).json({ message: 'Product updated successfully', updatedProd });
+    } catch (error) {
+        console.error('Error updating product:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+app.get('/admin-page/listusers', async (req, res) => {
+    try{
+        const users = await User.find()
+        res.status(200).json(users)
+    } catch (error){
+        res.status(500).json({ message: 'Unable to get users' })
     }
 })
+
+app.delete('/admin-page/product-listings/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        await Product.findByIdAndDelete(id);
+        res.status(200).json({ message: 'Product deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting product:', error);
+        res.status(500).json({ error: 'Error deleting product' });
+    }
+});
+
+app.get('/admin/orders', async (req, res) => {
+    try {
+        const orders = await Order.find();
+        res.status(200).json(orders);
+    } catch (error) {
+        console.error('Error fetching orders:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+app.put('/admin/orders/confirm/:orderId', async (req, res) => {
+    try {
+        const orderId = req.params.orderId;
+        const order = await Order.findByIdAndUpdate(orderId, { ordStatus: 'Confirmed' });
+
+        if (!order) {
+            return res.status(404).json({ message: 'Order not found' });
+        }
+
+        res.status(200).json({ message: 'Order confirmed successfully', order });
+    } catch (error) {
+        console.error('Error confirming order:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 // Verify token
 const authenticateJWT = (req, res, next) => {
     const authHeader = req.headers['authorization'];
@@ -262,7 +330,6 @@ app.post('/order-transaction', authenticateJWT, async (req, res) => {
     }
 });
 
-// GET for order transaction
 app.get('/order-transaction', authenticateJWT, async (req, res) => {
     try {
         const userId = req.user.userId;
@@ -279,19 +346,16 @@ app.get('/order-transaction', authenticateJWT, async (req, res) => {
     }
 });
 
-// DELETE for order transaction
 app.delete('/order-transaction/:orderId', authenticateJWT, async (req, res) => {
     try {
         const orderId = req.params.orderId;
         const userId = req.user.userId;
 
-        // Check if the order belongs to the authenticated user
         const order = await Order.findOne({ ordTransId: orderId, email: userId });
         if (!order) {
             return res.status(404).json({ message: 'Order not found or unauthorized' });
         }
 
-        // Remove the order from the database
         await Order.findOneAndDelete(orderId);
 
         res.status(200).json({ message: 'Order cancelled successfully' });
