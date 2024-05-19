@@ -11,19 +11,30 @@
     box-shadow: 0 2px 8px var(--shadow-1);
     border-radius: 10px;
     width: 250px;
-    /* height: 300px; */
     margin: 10px;
     padding: 15px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: start;
+    align-items: center;
     flex-wrap: wrap;
 }
 
-.orderCard p{
+.orderCard button{
+    background-color: var(--hover);
     font-size: smaller;
-    font-style: italic;
-    justify-content: left;
+    border-radius: 40px;
+    border-style: none;
+    height: 30px;
+    width: 100px;
+    box-shadow: 0 1px 8px var(--shadow-1);
+    margin: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.orderCard button:hover {
+    background-color: black;
+    color: white;
 }

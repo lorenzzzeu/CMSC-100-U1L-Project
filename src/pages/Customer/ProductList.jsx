@@ -116,7 +116,7 @@ import React, { useEffect, useState } from 'react';
           p._id === product._id ? { ...p, prodQuant: p.prodQuant - 1 } : p
         ));
 
-        await fetch(`http://localhost:3001/update-product-quantity`, {
+        await fetch(`http://localhost:3001/update-product-quantity/${product._id}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

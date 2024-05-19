@@ -75,7 +75,7 @@ const OrderList = () => {
             <div>{order.time}</div>
             <div>{order.ordStatus}</div>
             {order.ordStatus === 'Pending' ? (
-              <button onClick={() => handleCancelOrder(order.ordTransId)}>Cancel</button>
+              <button onClick={() => handleCancelOrder(order.ordTransId)}>CANCEL</button>
             ): (
               <div></div>
             )}
