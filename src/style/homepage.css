@@ -123,3 +123,23 @@ form > button:hover{
     background-color: var(--hover);
     color: black;
 }
+
+/* Add these styles in your CSS file */
+.admin-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  }
+  
+  .admin-modal-overlay {
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+  
