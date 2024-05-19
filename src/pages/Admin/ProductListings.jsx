@@ -34,11 +34,11 @@ function ProductListings()  {
 
   return (
     <>
+    <div className='container'>
       <div className='headerAdmin'></div>
       <div className='titleAdmin'>
-        <h1>PRODUCT LISTING</h1>
+        <h1>ADD PRODUCT</h1>
       </div>
-      <hr/>
       <div className='input-container'>
         <div id='productInput'>
           <form id="prodForm" onSubmit={handleSubmit}>
@@ -52,6 +52,7 @@ function ProductListings()  {
           </form>
         </div>
       </div> 
+    </div>
     </>
 
   );

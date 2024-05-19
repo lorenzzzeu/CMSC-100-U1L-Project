@@ -9,6 +9,8 @@ const CustomerProfile = () => {
     password: ''
   });
 
+  const [edit, setEdit] = useState(false);
+
   const [message, setMessage] = useState('');
 
   useEffect(() => {
@@ -29,6 +31,10 @@ const CustomerProfile = () => {
 
     fetchProfile();
   }, []);
+
+  const handleEdit = () => {
+    setEdit(!edit)
+  }
 
   const handleChange = (e) => {
     setProfile({ ...profile, [e.target.name]: e.target.value });
@@ -52,66 +58,59 @@ const CustomerProfile = () => {
   return (
     <>
       <div className='headerCustomer'></div>
-      <div className='titleCustomer'>
-        <h1>PROFILE</h1>
+      <div className='profile-container'>
+        <div className='profile-details'>
+          <img src='\src\img\user.png'/>
+          <p><strong>First Name Last Name</strong> {profile.firstName}{profile.lastName}</p>
+          <p className='email'>Email {profile.email}</p>
+          {/* You can display more details here if needed */}
+          <button className='editBtn' onClick={handleEdit}>EDIT PROFILE</button>
+          {edit && (
+            <form className='edit-profile' onSubmit={handleSubmit}>
+              <div>
+                <input
+                  type='text'
+                  name='firstName'
+                  value={profile.firstName}
+                  onChange={handleChange}
+                  placeholder='Enter new first name'
+                />
+              </div>
+              <div>
+                <input
+                  type='text'
+                  name='lastName'
+                  value={profile.lastName}
+                  onChange={handleChange}
+                  placeholder='Enter new last name'
+                />
+              </div>
+              <div>
+                <input
+                  type='email'
+                  name='email'
+                  value={profile.email}
+                  onChange={handleChange}
+                  placeholder='Enter new email'
+                />
+              </div>
+              <div>
+                <input
+                  type='password'
+                  name='password'
+                  value={profile.password}
+                  onChange={handleChange}
+                  placeholder='Enter new password'
+                />
+              </div>
+              <button type='submit'>Update Profile</button>
+            </form>
+          )}
+        </div>
+        <div className='profile-history'>
+        <h3>History of Items Purchased</h3>
+        </div>
       </div>
-      <hr />
-      <div>
-        <h3>User Details:</h3>
-        <p><strong>First Name:</strong> {profile.firstName}</p>
-        <p><strong>Last Name:</strong> {profile.lastName}</p>
-        <p><strong>Email:</strong> {profile.email}</p>
-        {/* You can display more details here if needed */}
-      </div>
-
-      <div>
-      <h3>History of Items Purchased:</h3>
-      </div>
-
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>First Name:</label>
-          <input
-            type='text'
-            name='firstName'
-            value={profile.firstName}
-            onChange={handleChange}
-            placeholder="Enter new first name"
-          />
-        </div>
-        <div>
-          <label>Last Name:</label>
-          <input
-            type='text'
-            name='lastName'
-            value={profile.lastName}
-            onChange={handleChange}
-            placeholder="Enter new last name"
-          />
-        </div>
-        <div>
-          <label>Email:</label>
-          <input
-            type='email'
-            name='email'
-            value={profile.email}
-            onChange={handleChange}
-            placeholder="Enter new email"
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type='password'
-            name='password'
-            value={profile.password}
-            onChange={handleChange}
-            placeholder="Enter new password"
-          />
-        </div>
-        <button type='submit'>Update Profile</button>
-      </form>
-      {message && <p>{message}</p>}
     </>
   );
 };

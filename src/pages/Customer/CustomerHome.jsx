@@ -24,9 +24,8 @@ const CustomerHome = () => {
     {/* MAY CONTAIN NEWS AND OFFERS ABOUT THE STORE */}
     <div className='headerCustomer'></div>
       <div className='titleCustomer'>
-        <h1>WELCOME, user!</h1>
+        <h1>WELCOME!</h1>
       </div>
-      <hr/>
       <div className='customer-container'>
         <div className='customer-cards'>
           <FontAwesomeIcon icon={faBowlFood} size='5x' className='icon'/>
@@ -71,8 +70,7 @@ const CustomerHome = () => {
         </div>
         <div className='news'>
         <p className='title'>The Wholesome Table Champions</p>
-          <p>
-          The idea behind the farm-to-table concept restaurant is to understand where your food comes from. 
+          <p>The idea behind the farm-to-table concept restaurant is to understand where your food comes from. 
           Here, ingredients and raw materials are directly sourced from farmers, bypassing brokers, dealers, 
           stores, and markets. The farm-to-table dining concept is well-accepted because it champions sustainable 
           and ethical food production. From a macro perspective, this restaurant concept can aid the economy by 

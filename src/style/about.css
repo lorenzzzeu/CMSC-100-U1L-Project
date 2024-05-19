@@ -1,13 +1,63 @@
+.logoHeader{
+    width: 50px;
+    margin-left: 10px;
+}
+
+.navRoot{
+    background-color: transparent;
+}
+
 .about{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    padding: 40px;
-    background-color: black;
-    color: var(--primary);
+    flex-direction: row;
+    justify-content: start;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-image: url('/src/img/farmers.png');
+    background-position: center;
+    background-size: cover;
 }
   
 p {
     font-family: "Satoshi";
+}
+
+.about-main{
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--primary);
+    color: black;
+    padding: 20px;
+    padding-top: 100px;
+}
+
+.about-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+.about-section {
+    background-color: rgb(238, 237, 237);
+    box-shadow: 0 2px 8px var(--shadow-1);
+    border-radius: 10px;
+    margin: 10px;
+    padding: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+.about-section ul {
+    list-style: none;
+    font-style: italic;
 }

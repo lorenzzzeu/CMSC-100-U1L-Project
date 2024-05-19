@@ -1,0 +1,58 @@
+.profile-container{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.profile-details{
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.editBtn{
+    background-color: var(--hover);
+    font-size: smaller;
+    border-radius: 40px;
+    border-style: none;
+    height: 30px;
+    width: 150px;
+    box-shadow: 0 1px 8px var(--shadow-1);
+    margin: 5px;
+}
+
+.editBtn:hover {
+    background-color: black;
+    color: white;
+}
+
+.editBtn:vi{
+    background-color: white;
+    color: var(--hover);
+    border: 2px solid var(--hover);
+}
+
+.profile-details img {
+    width: 50%;
+}
+
+.email{
+    font-style: italic;
+    font-weight: lighter;
+    font-size: small;
+}
+
+.profile-history{
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    align-items: center;
+}
+.edit-profile {
+    flex: 1;
+    padding: 0px 10px;
+    width: 100%;
+}

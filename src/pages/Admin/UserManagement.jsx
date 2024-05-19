@@ -13,7 +13,6 @@ const UserManagement = () => {
         <h1>USER MANAGEMENT</h1>
         <p>Total registered users: {totalUsers}</p>
       </div>
-      <hr/>
     </>
 
   );

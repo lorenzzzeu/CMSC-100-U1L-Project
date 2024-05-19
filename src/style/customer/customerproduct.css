@@ -3,33 +3,12 @@
     justify-content: start;
     align-items: center; 
     margin-left: 50px;
+    flex-wrap: wrap;
+    flex-grow: 1;
 }
 
 .sortProduct > * {
     padding: 0px 10px;
-}
-
-.sortProduct > button {
-    background-color: var(--hover);
-    font-size: smaller;
-    border-radius: 40px;
-    border-style: none;
-    height: 30px;
-    width: 90px;
-    box-shadow: 0 4px 8px var(--shadow-1);
-    margin: 0px 10px;
-}
-
-.sortProduct > button:hover {
-    background-color: black;
-    color: white;
-}
-
-.sortProduct > button:focus{
-    background-color: white;
-    color: var(--hover);
-    border: 2px solid var(--hover);
-    
 }
 
 .searchProduct{
@@ -45,6 +24,35 @@
     box-sizing: border-box;
 }
 
+.sorting{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.sorting > button {
+    background-color: var(--hover);
+    font-size: smaller;
+    border-radius: 40px;
+    border-style: none;
+    height: 30px;
+    width: 90px;
+    box-shadow: 0 2px 8px var(--shadow-1);
+    margin: 5px;
+}
+
+.sorting > button:hover {
+    background-color: black;
+    color: white;
+}
+
+.sorting > button:focus{
+    background-color: white;
+    color: var(--hover);
+    border: 2px solid var(--hover);
+}
+
 .product-container{
     display: flex;
     justify-content: center;
@@ -54,17 +62,18 @@
 
 .product-cards{
     background-color: rgb(238, 237, 237);
-    box-shadow: 0 4px 8px var(--shadow-1);
+    box-shadow: 0 2px 8px var(--shadow-1);
     border-radius: 10px;
     width: 250px;
-    height: 250px;
-    margin: 5px 15px;
-    padding: 5px;
+    height: 300px;
+    margin: 10px;
+    padding: 15px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: start;
+    flex-wrap: wrap;
 }
 
 .product-cards p {
@@ -75,7 +84,7 @@
 
 .card-img {
     flex: 1;
-    margin: 10px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,7 +93,22 @@
 
 .card-img img {
     max-width: 100%;
-    height: 300px;
-    object-fit: cover;
+    object-fit: cover;  
 }
 
+.addToCart{
+    background-color: black;
+    color: white;
+    font-size: smaller;
+    border-radius: 10px;
+    border-style: none;
+    height: 30px;
+    width: 100%;
+    box-shadow: 0 2px 8px var(--shadow-1);
+    margin-top: 5px;
+}
+
+.addToCart:hover {
+    background-color: var(--hover);
+    color: black;
+}

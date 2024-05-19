@@ -66,23 +66,22 @@ const OrderList = () => {
     <div className='titleCustomer'>
       <h1>ORDER LIST</h1>
     </div>
-    <hr/>
     <div>
-    <ul>
+      <div className='order'>
         {orderList.map((order) => (
-          <li key={order.ordTransId}>
+          <div className='orderCard' key={order.ordTransId}>
             <div>{order.ordTransId}</div>
             <div>{order.ordDate}</div>
             <div>{order.time}</div>
             <div>{order.ordStatus}</div>
             {order.ordStatus === 'Pending' ? (
-              <button onClick={() => handleCancelOrder(order.ordTransId)}>Cancel</button>
+              <button onClick={() => handleCancelOrder(order.ordTransId)}>CANCEL</button>
             ): (
               <div></div>
             )}
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
     </>
   );

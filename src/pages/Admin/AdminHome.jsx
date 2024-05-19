@@ -30,7 +30,6 @@ const AdminHome = () => {
         <h1>WELCOME TO</h1>
         <h1>The Farm-to-Table E-Commerce Website</h1>
       </div>
-    <hr/>
     <div className='admin-container'>
         <div className='admin-cards'>
           <FontAwesomeIcon icon={faUsers} size='5x' className='icon'/>

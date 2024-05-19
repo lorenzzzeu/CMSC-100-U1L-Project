@@ -11,7 +11,6 @@ const SalesReports = () => {
       <div className='titleAdmin'>
         <h1>SALES REPORT</h1>
       </div>
-      <hr/>
     </>
   );
 };
