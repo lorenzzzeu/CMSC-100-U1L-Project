@@ -3,32 +3,20 @@
     background-position: center;
     background-size: cover;
     height: 100px;
+    background-color: aqua;
 }
 
-.titleAdmin h1{
+.admin-product > h1{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1px;
-    color: white;
-    text-shadow: 2px 2px 10px black;
+    padding: 15px;
 }
 
 .input-container {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: url('/src/img/farmers-bg.png');
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
 }
   
 #productInput{
@@ -40,7 +28,14 @@
     width: 500px;
     padding: 15px;
     overflow: hidden;
-    margin: 20px;
+}
+
+#prodType{
+    width: 357px;
+    height: 35px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px var(--shadow-1);
+    border-radius: 10px;
 }
 
 form input{
@@ -66,4 +61,76 @@ form input[type='submit']:hover{
   
 p {
     font-family: "Satoshi";
+}
+
+.product-container-admin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.product-cards-admin{
+    background-color: rgb(238, 237, 237);
+    box-shadow: 0 4px 8px var(--shadow-1);
+    border-radius: 10px;
+    padding: 20px;
+    width: 350px;
+    height: 475px;
+    margin: 30px 20px 0px 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-img-admin {
+    flex: 1;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.card-img-admin img {
+    
+    max-width: 80%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.editProd{
+    background-color: black;
+    font-weight: bold;
+    border-radius: 10px;
+    border-style: none;
+    padding: 15px;
+    width: 35%;
+    color: white;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px var(--shadow-1);
+}
+
+.editProd:hover{
+    background-color: var(--hover);
+    color: black;
+}
+
+.delProd{
+    background-color: black;
+    font-weight: bold;
+    border-radius: 10px;
+    border-style: none;
+    padding: 15px;
+    width: 35%;
+    color: white;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px var(--shadow-1);
+}
+
+.delProd:hover{
+    background-color: var(--hover);
+    color: black;
 }
