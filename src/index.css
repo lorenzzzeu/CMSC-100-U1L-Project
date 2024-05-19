@@ -5,12 +5,11 @@
 @import url('style/about.css');
 @import url('style/customer/customerhome.css');
 @import url('style/customer/customerproduct.css');
-@import url('style/customer/customercart.css');
-@import url('style/customer/customerorder.css');
-@import url('style/customer/customerprofle.css');
 @import url('style/admin/adminhome.css');
 @import url('style/admin/adminproduct.css');
-
+@import url('style/admin/adminusers.css');
+@import url('style/admin/adminorder.css');
+@import url('style/admin/adminsale.css');
 
 @font-face {
   font-family: "Circular";
@@ -33,8 +32,8 @@
 html {
   height: 100%;
   --primary: #DFDCDC;
-  --background-color: #ffffff;
-  --shadow-1: rgba(112, 112, 112, 0.704);
+  --background-color: #d5d5d5;
+  --shadow-1: rgba(126, 125, 125, 0.127);
   --hover: #ff4500;
 }
 
