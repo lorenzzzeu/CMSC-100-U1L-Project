@@ -145,7 +145,7 @@ import React, { useEffect, useState } from 'react';
                 <button onClick={() => {addToCart(product)}} disabled={isDisabled(product)} className='addToCart'>Add to Cart</button>
               ) : (
                 <div className='soldOut'>
-                  <h4>Sold Out</h4>
+                  <h4>SOLD OUT</h4>
                 </div>
               )}
             </div>

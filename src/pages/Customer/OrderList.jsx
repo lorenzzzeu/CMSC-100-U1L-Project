@@ -66,7 +66,6 @@ const OrderList = () => {
     <div className='titleCustomer'>
       <h1>ORDER LIST</h1>
     </div>
-    <hr/>
     <div>
     <ul>
         {orderList.map((order) => (

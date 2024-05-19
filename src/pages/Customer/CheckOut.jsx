@@ -1,16 +1,17 @@
 
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const CheckOut = () => {
     const [cartItems, setCartItems] = useState([]);
     const [total, setTotal] = useState(0);
-    const [isClicked, setIsClicked] = useState(false);
 
     useEffect(() => {
       fetchCartItems();
     }, []);
+
+    const navigate = useNavigate();
   
     const fetchCartItems = async () => {
       try {
@@ -41,12 +42,16 @@ const CheckOut = () => {
         }
       });
       await updateProductQuantities();
-      setIsClicked(true);
       setCartItems([]); // Clear cart items in the state
+      navigate('/customer-page/order-list')
     } catch (error) {
       console.error('Error clearing cart items:', error.response ? error.response.data : error.message);
     }
   };
+
+  const goToCart = () => {
+    navigate('/customer-page/shopping-cart')
+  }
 
   const updateProductQuantities = async () => {
     try {
@@ -72,36 +77,26 @@ const CheckOut = () => {
 
   return (
     <>
-    {isClicked ? (
-      <>
-        <div className='headerCustomer'></div>
-        <h1>Order Successful</h1>
-        <Link to='/customer-page/order-list'>View Purchase</Link>
-      </>
-    ) : (
-        <>
-            <div className='headerCustomer'></div>
-            <div className='titleCustomer'>
-            <h1>SUMMARY</h1>
-            </div>
-            <div className='checkOut'>
-              <h2>Order Total: {total}</h2>
-              <button onClick={() => handleClick()} className='checkOutbtn'>PLACE ORDER</button>
-            </div>
-            <div className='cart'>
-            {cartItems.map((item) => (
-                <div className='cartCard' key={item.prodId}>
-                  <div className='cart-img'><img src={item.prodImage} alt={item.prodName}/></div>
-                  <h3>{item.prodName}</h3>
-                  <div>Quantity: {item.prodQuant}</div>
-                  <p>Price: ${item.prodPrice}</p>
-                </div>
-            ))}
-            </div>
-        </>
-    )}
-    </>
-
+    <div className='headerCustomer'></div>
+    <div className='titleCustomer'>
+    <h1>SUMMARY</h1>
+    </div>
+    <div className='checkOut'>
+      <button onClick={goToCart} className='backBtn'>GO BACK</button>
+      <h2>Order Total: {total}</h2>
+      <button onClick={() => handleClick()} className='checkOutbtn'>PLACE ORDER</button>
+    </div>
+    <div className='cart'>
+    {cartItems.map((item) => (
+        <div className='cartCard' key={item.prodId}>
+          <div className='cart-img'><img src={item.prodImage} alt={item.prodName}/></div>
+          <h3>{item.prodName}</h3>
+          <div>Quantity: {item.prodQuant}</div>
+          <p>Price: ${item.prodPrice}</p>
+        </div>
+    ))}
+    </div>
+  </>
   );
 };
 
