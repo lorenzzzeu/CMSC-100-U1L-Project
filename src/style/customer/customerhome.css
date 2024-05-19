@@ -27,7 +27,6 @@
 
 .navCustomer a:hover{
     font-size: larger;
-    
 }
 
 .navUser {
@@ -58,6 +57,7 @@
 
 .profile:hover{
     transform: scale(1.1);
+    transition: transform 0.3s ease;
 }
 
 .headerCustomer{

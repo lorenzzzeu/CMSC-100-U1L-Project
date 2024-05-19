@@ -116,14 +116,12 @@ app.post('/product-list', async (req, res) => {
     }
 })
 
-app.post('/update-product-quantity/:id', async (req, res) => {
+app.post('/update-product-quantity', async (req, res) => {
     try {
-      const { id } = req.params;
-      const { prodQuant } = req.body;
-      console.log('Update Request:', req.body); // Log request body
+      const { _id, prodQuant } = req.body;
   
       // Find the product by ID and update its quantity
-      await Product.findByIdAndUpdate(id, { prodQuant });
+      await Product.findByIdAndUpdate(_id, { prodQuant });
   
       res.status(200).json({ message: 'Product quantity updated successfully' });
     } catch (error) {
@@ -268,9 +266,7 @@ app.post('/order-transaction', authenticateJWT, async (req, res) => {
 app.get('/order-transaction', authenticateJWT, async (req, res) => {
     try {
         const userId = req.user.userId;
-        const orders = await Order.find({email: userId}).populate('ordProdId').exec();
-        console.log(ordProdId.prodName)
-        console.log(ordProdId)        
+        const orders = await Order.find({email: userId});
 
         if (!orders.length) {
             return res.status(404).json({ message: 'No order transactions found for this user' });
