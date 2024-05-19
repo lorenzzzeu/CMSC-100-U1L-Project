@@ -123,30 +123,33 @@ const ShoppingCart = () => {
     <div className='titleCustomer'>
       <h1>SHOPPING CART</h1>
     </div>
-    <hr/>
     <div>
       {cartItems.length === 0 ? (
+        <div className='noItem'>
         <p>No items in the cart.</p>
+        </div>
       ) : (
-        <ul>
+        <>
+        <div className='checkOut'>
+          <h2>Total: $ {total}.00</h2>
+          <Link to='/customer-page/check-out'><button className='checkOutbtn'>CHECK OUT</button></Link>
+        </div>
+        <div className='cart'>
           {cartItems.map((item) => (
-            <li key={item.prodId}>
-              <img src={item.prodImage} alt={item.prodName} width="50" />
+            <div className='cartCard' key={item.prodId}>
+              <div className='cart-img'><img src={item.prodImage} alt={item.prodName}/></div>
               <h3>{item.prodName}</h3>
               <p>Price: ${item.prodPrice}</p>
-              <div>
-                <button onClick={() => decCartQuantity(item)}>–</button>
+              <div className='quantity'>
+                <button className='decre' onClick={() => decCartQuantity(item)}>–</button>
                 <div>{item.prodQuant}</div>
-                <button onClick={() => incCartQuantity(item)}>+</button>
+                <button className='incre' onClick={() => incCartQuantity(item)}>+</button>
+                <button className='removebtn' onClick={() => removeCartItem(item)}>Remove</button>
               </div> 
-              <button onClick={() => removeCartItem(item)}>Remove</button>
-            </li>
+            </div>
           ))}
-          <div>
-            <h2>Total: {total}</h2>
-            <Link to='/customer-page/check-out'><button>CHECK OUT</button></Link>
-          </div>
-        </ul>
+        </div>
+        </>
       )}
     </div>
     </>

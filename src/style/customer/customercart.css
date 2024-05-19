@@ -1,0 +1,103 @@
+.noItem{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.checkOut{
+    justify-content: space-evenly;
+    align-items: center;
+    display: flex;
+    
+}
+
+.checkOutbtn{
+    background-color: var(--hover);
+    font-size: smaller;
+    border-radius: 40px;
+    border-style: none;
+    height: 30px;
+    width: 150px;
+    box-shadow: 0 2px 8px var(--shadow-1);
+    margin: 5px;
+}
+
+.checkOutbtn:hover {
+    background-color: black;
+    color: white;
+}
+
+.cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.cartCard{
+    background-color: rgb(238, 237, 237);
+    box-shadow: 0 2px 8px var(--shadow-1);
+    border-radius: 10px;
+    width: 250px;
+    height: 300px;
+    margin: 10px;
+    padding: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    flex-wrap: wrap;
+}
+
+.cartCard p{
+    font-size: smaller;
+    font-style: italic;
+    justify-content: left;
+}
+
+.cart-img {
+    flex: 1;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.cart-img img{
+    max-width: 100%;
+    height: 250px;
+    object-fit: cover; 
+}
+
+.quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.incre, .decre {
+    background-color: white;
+    border-color: var(--hover);
+    border-radius: 2px;
+    margin: 0px 10px;
+    padding: 0px 5px;
+}
+
+.removebtn{
+    background-color: var(--hover);
+    font-size: smaller;
+    border-radius: 40px;
+    border-style: none;
+    height: 30px;
+    width: 100px;
+    box-shadow: 0 1px 8px var(--shadow-1);
+    margin: 5px;
+}
+
+.removebtn:hover {
+    background-color: black;
+    color: white;
+}

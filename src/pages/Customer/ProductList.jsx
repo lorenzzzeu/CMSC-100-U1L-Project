@@ -139,7 +139,7 @@ import React, { useEffect, useState } from 'react';
               <div className='card-img'><img src={product.prodImage}/></div>
               <h3>{product.prodName}</h3>
               <p>{product.prodType}</p>  
-              <h4>Php {product.prodPrice}</h4>
+              <h4>$ {product.prodPrice}</h4>
               <p>Quantity: {product.prodQuant}</p>
               {product.prodQuant > 0 ? (
                 <button onClick={() => {addToCart(product)}} disabled={isDisabled(product)} className='addToCart'>Add to Cart</button>

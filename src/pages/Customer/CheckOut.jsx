@@ -84,24 +84,19 @@ const CheckOut = () => {
             <div className='titleCustomer'>
             <h1>SUMMARY</h1>
             </div>
-            <hr/>
-            <div>
-                <ul>
-                {cartItems.map((item) => (
-                    <li key={item.prodId}>
-                    <img src={item.prodImage} alt={item.prodName} width="50" />
-                    <h3>{item.prodName}</h3>
-                    <div>Quantity: {item.prodQuant}</div>
-                    <p>Price: ${item.prodPrice}</p>
-                    </li>
-                ))}
-                <div>
-                    <h2>Order Total: {total}</h2>
+            <div className='checkOut'>
+              <h2>Order Total: {total}</h2>
+              <button onClick={() => handleClick()} className='checkOutbtn'>PLACE ORDER</button>
+            </div>
+            <div className='cart'>
+            {cartItems.map((item) => (
+                <div className='cartCard' key={item.prodId}>
+                  <div className='cart-img'><img src={item.prodImage} alt={item.prodName}/></div>
+                  <h3>{item.prodName}</h3>
+                  <div>Quantity: {item.prodQuant}</div>
+                  <p>Price: ${item.prodPrice}</p>
                 </div>
-                <div>
-                    <button onClick={() => handleClick()}>PLACE ORDER</button>
-                </div>
-                </ul>
+            ))}
             </div>
         </>
     )}
