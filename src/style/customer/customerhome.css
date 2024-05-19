@@ -7,9 +7,10 @@
     padding: 0px 70px;
     position: fixed;
     width: 100%;
-    background-image: url('/src/img/customerHeader.png');
+    /* background-image: url('/src/img/customerHeader.png');
     background-position: center;
-    background-size: cover; 
+    background-size: cover;  */
+    background-color: var(--hover);
     height: 100px;
     z-index: 1;
 }
