@@ -10,7 +10,9 @@
 @import url('style/customer/customerprofle.css');
 @import url('style/admin/adminhome.css');
 @import url('style/admin/adminproduct.css');
-
+@import url('style/admin/adminusers.css');
+@import url('style/admin/adminorder.css');
+@import url('style/admin/adminsale.css');
 
 @font-face {
   font-family: "Circular";
