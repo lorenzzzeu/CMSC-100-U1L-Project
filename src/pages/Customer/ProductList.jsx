@@ -9,15 +9,27 @@ import React, { useEffect, useState } from 'react';
       type: ''
     });
 
-    useEffect(() => {
-      fetch('http://localhost:3001/product-list')
-        .then(response => response.json())
-        .then(data => {
+    const fetchProducts = async () => {
+      // fetch('http://localhost:3001/product-list')
+      // .then(response => response.json())
+      // .then(data => {
+      //   setProds(data);
+      // })
+      // .catch(error => {
+      //   console.error('Error fetching products:', error);
+      // });
+
+      try {
+          const response = await fetch('http://localhost:3001/product-list');
+          const data = await response.json();
           setProds(data);
-        })
-        .catch(error => {
+      } catch (error) {
           console.error('Error fetching products:', error);
-        });
+      }
+    }
+
+    useEffect(() => {
+      fetchProducts()
     }, []);
 
     // Function to handle changes in the product type selection
@@ -51,20 +63,21 @@ import React, { useEffect, useState } from 'react';
       });
     }
 
-    
     useEffect(() => {
       fetchCartItems();
     }, []);
   
     const fetchCartItems = async () => {
       try {
-        const token = localStorage.getItem('token'); // Retrieve the token from local storage
+        const token = localStorage.getItem('token');
+        if (!token) throw new Error('No token found');
+        
         const response = await axios.get('http://localhost:3001/cart-items', {
           headers: {
-            'authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${token}`
           }
         });
-        setCartItems(response.data); // Set cart items from response
+        setCartItems(response.data);
       } catch (error) {
         console.error('Error fetching cart items:', error.response ? error.response.data : error.message);
       }
@@ -97,6 +110,22 @@ import React, { useEffect, useState } from 'react';
   
         const data = await response.json();
         setCartItems(data);
+
+        // Update product quantity locally
+        setProds(prevProds => prevProds.map(p => 
+          p._id === product._id ? { ...p, prodQuant: p.prodQuant - 1 } : p
+        ));
+
+        await fetch(`http://localhost:3001/update-product-quantity`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}` // Include the token in the Authorization header
+          },
+          body: JSON.stringify({ prodQuant: product.prodQuant - 1 })
+        });
+        // fetchProducts()
+        
       } catch (error) {
         console.error('Error adding item to cart:', error.message);
       }
@@ -144,9 +173,7 @@ import React, { useEffect, useState } from 'react';
               {product.prodQuant > 0 ? (
                 <button onClick={() => {addToCart(product)}} disabled={isDisabled(product)} className='addToCart'>Add to Cart</button>
               ) : (
-                <div className='soldOut'>
-                  <h4>SOLD OUT</h4>
-                </div>
+                  <h4 className='soldOut'>SOLD OUT</h4>
               )}
             </div>
           )}

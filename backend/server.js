@@ -119,6 +119,7 @@ app.post('/product-list', async (req, res) => {
 app.post('/update-product-quantity', async (req, res) => {
     try {
       const { _id, prodQuant } = req.body;
+      console.log('Update Request:', req.body); // Log request body
   
       // Find the product by ID and update its quantity
       await Product.findByIdAndUpdate(_id, { prodQuant });

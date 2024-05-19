@@ -1,0 +1,29 @@
+
+.order {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.orderCard{
+    background-color: rgb(238, 237, 237);
+    box-shadow: 0 2px 8px var(--shadow-1);
+    border-radius: 10px;
+    width: 250px;
+    /* height: 300px; */
+    margin: 10px;
+    padding: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    flex-wrap: wrap;
+}
+
+.orderCard p{
+    font-size: smaller;
+    font-style: italic;
+    justify-content: left;
+}

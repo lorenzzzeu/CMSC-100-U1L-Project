@@ -67,9 +67,9 @@ const OrderList = () => {
       <h1>ORDER LIST</h1>
     </div>
     <div>
-    <ul>
+      <div className='order'>
         {orderList.map((order) => (
-          <li key={order.ordTransId}>
+          <div className='orderCard' key={order.ordTransId}>
             <div>{order.ordTransId}</div>
             <div>{order.ordDate}</div>
             <div>{order.time}</div>
@@ -79,9 +79,9 @@ const OrderList = () => {
             ): (
               <div></div>
             )}
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
     </>
   );
