@@ -9,7 +9,7 @@ function Root() {
       <nav className='navRoot'>
         {/* <Link to="/login">Login</Link> */}
         {/* <Link to="/register">Register</Link> */}
-        <Link to="/admin-page">Admin</Link>
+        <Link to="/admin-page"><img className='logoHeader' src='/src/img/100-logo.png'/></Link>
       </nav>
       <Outlet />
     </div>

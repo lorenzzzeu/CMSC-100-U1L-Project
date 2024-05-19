@@ -38,6 +38,10 @@
     box-shadow: 0 4px 8px var(--shadow-1);
 }
 
+.navAdmin a:hover{
+    font-size: larger;
+}
+
 .navAdmin > button:hover{
     background-color: var(--hover);
     color: black;

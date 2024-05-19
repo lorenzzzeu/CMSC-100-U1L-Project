@@ -15,7 +15,6 @@ const OrderFulfillment = () => {
     <div className='titleAdmin'>
       <h1>ORDER FULFILLMENT</h1>
     </div>
-    <hr/>
     </>
   );
 };

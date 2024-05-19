@@ -30,7 +30,6 @@ const CustomerPage = () => {
               <Link to="/customer-page/profile" className='profile'><FontAwesomeIcon icon={faCircleUser} color='black' size='2x'/></Link>
               <button onClick={handleLogout}>LOG OUT</button>
             </div>
-            
           </nav>
           <Outlet />
         </div>

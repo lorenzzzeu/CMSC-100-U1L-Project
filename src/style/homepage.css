@@ -64,18 +64,17 @@
 }
 
 .main-content > button{
-    background-color: white;
+    background-color: var(--hover);
     font-weight: bold;
     border-radius: 40px;
     border-style: none;
     height: 50px;
     width: 150px;
     margin-top: 20px;
-    box-shadow: 0 4px 8px var(--shadow-1);
 }
 
 .main-content > button:hover{
-    background-color: var(--hover);
+    background-color: black;
     color: white;
 }
 
