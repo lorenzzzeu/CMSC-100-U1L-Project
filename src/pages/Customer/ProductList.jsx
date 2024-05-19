@@ -113,7 +113,6 @@ import React, { useEffect, useState } from 'react';
         <div className='titleCustomer'>
           <h1>AVAILABLE PRODUCTS</h1>
         </div>
-        <hr/>
         <div className='sortProduct'>
           <div className='searchProduct'>
             <label htmlFor='search'>SEARCH BY PRODUCT TYPES</label>
@@ -125,22 +124,25 @@ import React, { useEffect, useState } from 'react';
                 <option value="Fruits">Fruits</option>
             </select>
           </div>
-          <p>SORT BY</p>
-          <button onClick={() => sortBy('name')}>NAME</button>
-          <button onClick={() => sortBy('price')}>PRICE</button>
-          <button onClick={() => sortBy('quantity')}>QUANTITY</button>
-          <button onClick={() => sortBy('type')}>TYPE</button>
+          <div className='sorting'>
+            <p>SORT BY</p>
+            <button onClick={() => sortBy('name')}>NAME</button>
+            <button onClick={() => sortBy('price')}>PRICE</button>
+            <button onClick={() => sortBy('quantity')}>QUANTITY</button>
+            <button onClick={() => sortBy('type')}>TYPE</button>
+          </div>
+          
         </div>
         <div className='product-container'>
           {filteredProds.map((product) =>
             <div className='product-cards' key={product._id}>
               <div className='card-img'><img src={product.prodImage}/></div>
               <h3>{product.prodName}</h3>
-              <h4>Price: Php {product.prodPrice}</h4>
-              <p>Food Type: {product.prodType}</p>
+              <p>{product.prodType}</p>  
+              <h4>Php {product.prodPrice}</h4>
               <p>Quantity: {product.prodQuant}</p>
               {product.prodQuant > 0 ? (
-                <button onClick={() => {addToCart(product)}} disabled={isDisabled(product)}>Add to Cart</button>
+                <button onClick={() => {addToCart(product)}} disabled={isDisabled(product)} className='addToCart'>Add to Cart</button>
               ) : (
                 <div className='soldOut'>
                   <h4>Sold Out</h4>

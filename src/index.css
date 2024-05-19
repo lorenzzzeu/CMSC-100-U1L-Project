@@ -29,8 +29,8 @@
 html {
   height: 100%;
   --primary: #DFDCDC;
-  --background-color: #d5d5d5;
-  --shadow-1: rgba(126, 125, 125, 0.127);
+  --background-color: #ffffff;
+  --shadow-1: rgba(112, 112, 112, 0.704);
   --hover: #ff4500;
 }
 

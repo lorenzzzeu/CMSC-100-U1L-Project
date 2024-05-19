@@ -7,12 +7,12 @@
     padding: 0px 70px;
     position: fixed;
     width: 100%;
-    /* background-image: url('/src/img/customerHeader.png');
+    background-image: url('/src/img/customerHeader.png');
     background-position: center;
-    background-size: cover;  */
-    background-color: var(--hover);
+    background-size: cover; 
     height: 100px;
     z-index: 1;
+    flex-wrap: wrap;
 }
 
 .navCustomer a {
@@ -74,20 +74,22 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
   
 .customer-cards{
     background-color: rgb(238, 237, 237);
     box-shadow: 0 4px 8px var(--shadow-1);
     border-radius: 10px;
-    width: 350px;
     height: 250px;
-    margin: 30px 20px 0px 20px;
+    margin: 30px 10px 0 10px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    flex-grow: 1;
 }
 
 .customer-cards > * {
@@ -102,7 +104,7 @@ hr {
     border-style: none;
     height: 30px;
     width: 150px;
-    box-shadow: 0 4px 8px var(--shadow-1);
+    box-shadow: 0 2px 10px var(--shadow-1);
 }
 
 .customer-cards > button:hover{
@@ -125,6 +127,7 @@ hr {
 
 .news-customer{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
@@ -137,14 +140,15 @@ hr {
     box-shadow: 0 4px 8px var(--shadow-1);
     border-radius: 10px;
     width: 700px;
-    height: 350px;
     margin: 20px;
     padding: 10px 50px;
     overflow: hidden;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: start;
     align-items: center;
+    flex-wrap: wrap;
+    flex-grow: 1;
 }
 
 .news > .title{
