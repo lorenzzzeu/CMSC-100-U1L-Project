@@ -15,7 +15,7 @@ function Login() {
 
   const fetchUsers = () => {
     axios.get('http://localhost:3001/register').then((res) => {
-      console.log(res.data) // Just for checking, must remove this later
+      // console.log(res.data) // Just for checking, must remove this later
     })
   }
 

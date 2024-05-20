@@ -1,8 +1,15 @@
 // pages/AdminHome.jsx
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Navigate, Outlet, useNavigate } from 'react-router-dom';
 
 const AdminPage = () => {
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    navigate('/')
+  };
+
   return (
     <div>
       <nav className='navAdmin'>
@@ -11,7 +18,9 @@ const AdminPage = () => {
         <Link to="/admin-page/product-listings">PRODUCT LISTINGS</Link>
         <Link to="/admin-page/order-fulfillment">ORDER FULFILLMENT</Link>
         <Link to="/admin-page/sales-reports">SALES REPORT</Link>
-        <Link to="/">LOG OUT</Link>
+        <div className='navUser'>
+          <button onClick={handleLogout}>LOG OUT</button>
+        </div>
       </nav>
       <Outlet />
     </div>

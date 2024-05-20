@@ -7,6 +7,7 @@ import Root from './pages/Root';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Explore from './pages/Explore';
+import AdminHome from './pages/Admin/AdminHome';
 
 const App = () => {
   const isUserSignedIn = !!localStorage.getItem('token')
@@ -18,12 +19,13 @@ const App = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/explore" element={<Explore />} />
       {isUserSignedIn && <Route path="/customer-home" element={<CustomerHome />} />}
-      <Route path="/admin-page" element={<AdminPage />} />  
+      {isUserSignedIn && <Route path="/admin-home" element={<AdminHome />} />}
+      {/* <Route path="/admin-page" element={<AdminPage />} />  
       <Route path="/admin-home" element={<AdminHome />} />
       <Route path="/admin-page/user-management" element={<UserManagement />} />
       <Route path="/admin-page/product-listings" element={<ProductListings />} />
       <Route path="/admin-page/order-fulfillment" element={<OrderFulfillment />} />
-      <Route path="/admin-page/sales-reports" element={<SalesReports />} />
+      <Route path="/admin-page/sales-reports" element={<SalesReports />} /> */}
     </Routes>
   );
 };
