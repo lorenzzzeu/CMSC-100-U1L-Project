@@ -38,9 +38,13 @@ function Register() {
   };
 
   return (
+    <>
+    <nav className='navRoot'>
+      <Link to="/"><img className='logoHeader' src='/src/img/100-logo.png'/></Link>
+    </nav>
     <div className='register-main'>
     <div className='register-card'>
-      <div className='logo-container'><img src='src\img\100-logo.png'></img></div>
+      <img className='logo-container' src='src\img\100-logo.png'/>
       <h2>Register Account</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -82,10 +86,11 @@ function Register() {
         <button type="submit">REGISTER</button>
       </form>
       <p>
-        Already have an account? <Link to="/">Login</Link>
+        Already have an account? <Link to="/login">Login</Link>
       </p>
     </div>
     </div>
+    </>
   );
 }
 

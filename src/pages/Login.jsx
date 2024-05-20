@@ -37,34 +37,41 @@ function Login() {
   };
 
   return (
+    <>
+    <nav className='navRoot'>
+      <Link to="/"><img className='logoHeader' src='/src/img/100-logo.png'/></Link>
+    </nav>
     <div className='login'>
-      <div className='logo-container'><img src='src\img\100-logo.png'></img></div>
-      <h2>Log In To Your Account</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            placeholder='Email'
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            placeholder='Password'
-          />
-        </div>
-        <button type="submit">LOG IN</button>
-      </form>
-      <p className='clickRegister'>
-        Don't have an account? <Link to="/register">Register</Link>
-      </p>
+      <div className='login-card'>
+        <img className='logo-container' src='src\img\100-logo.png'/>
+        <h2>Log In To Your Account</h2>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder='Email'
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              placeholder='Password'
+            />
+          </div>
+          <button type="submit">LOG IN</button>
+        </form>
+        <p className='clickRegister'>
+          Don't have an account? <Link to="/register">Register</Link>
+        </p>
+      </div>
     </div>
+    </>
   );
 }
 

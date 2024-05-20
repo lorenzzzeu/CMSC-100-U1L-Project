@@ -144,37 +144,6 @@
     transform: translateY(-50%);
 }
 
-.login{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    text-align: center;
-    justify-content: center;
-    width: 40%;
-    margin: 20px;
-}
-
-form input{
-    width: 100%;
-    padding: 12px 20px;
-    display: inline-block;
-    border: 1px solid grey;
-    border-radius: 40px;
-    box-sizing: border-box;
-}
-
-form > button {
-    background-color: black;
-    font-weight: bold;
-    border-radius: 40px;
-    border-style: none;
-    padding: 15px;
-    width: 100%;
-    color: white;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 8px var(--shadow-1);
-}
-
 /* Add these styles in your CSS file */
 .admin-modal {
     position: fixed;

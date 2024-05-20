@@ -1,7 +1,7 @@
 // src/pages/Home.jsx
 import React from 'react';
 import Login from './Login';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import Explore from './Explore';
 import Footer from './Footer';
 

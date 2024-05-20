@@ -1,0 +1,45 @@
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../img/farmers-bg.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
+.login-card{
+    background-color: var(--background-color);
+    box-shadow: 0 4px 8px var(--shadow-1);
+    border-radius: 10px;
+    text-align: center;
+    justify-content: center;
+    width: 500px;
+    padding: 15px;
+    overflow: hidden;
+}
+
+.logo-container{
+    width: 25%;
+}
+
+form input{
+    width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid grey;
+    border-radius: 40px;
+    box-sizing: border-box;
+}
+
+form > button {
+    background-color: black;
+    font-weight: bold;
+    border-radius: 40px;
+    border-style: none;
+    padding: 15px;
+    width: 100%;
+    color: white;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px var(--shadow-1);
+}
