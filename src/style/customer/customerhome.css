@@ -1,33 +1,4 @@
 /* navigation bar */
-.navCustomer{
-    display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-    text-align: center;
-    padding: 0px 70px;
-    position: fixed;
-    width: 100%;
-    background-image: url('/src/img/customerHeader.png');
-    background-position: center;
-    background-size: cover; 
-    height: 100px;
-    z-index: 1;
-    flex-wrap: wrap;
-}
-
-.navCustomer a {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    text-decoration: none;
-    color: white;
-    text-shadow: 2px 2px 10px black;
-    transition: font-size 0.3s ease;
-}
-
-.navCustomer a:hover{
-    font-size: larger;
-}
 
 .navUser {
     display: flex;
@@ -40,7 +11,7 @@
 }
 
 .navUser > button {
-    background-color: black;
+    background-color: var(--button2);
     color: white;
     font-size: medium;
     border-radius: 40px;
@@ -104,7 +75,7 @@ hr {
 
 .customer-cards > button {
     margin: 0px 100px;
-    background-color: var(--hover);
+    background-color: var(--button1);
     font-size: smaller;
     border-radius: 40px;
     border-style: none;
@@ -114,7 +85,7 @@ hr {
 }
 
 .customer-cards > button:hover{
-    background-color: black;
+    background-color: var(--hover);
     color: white;
 }
 

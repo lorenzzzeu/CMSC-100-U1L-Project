@@ -3,6 +3,7 @@
 @import url('style/homepage.css');
 @import url('style/register.css');
 @import url('style/about.css');
+@import url('style/login.css');
 @import url('style/customer/customerhome.css');
 @import url('style/customer/customerproduct.css');
 @import url('style/customer/customercart.css');
@@ -13,10 +14,11 @@
 @import url('style/admin/adminusers.css');
 @import url('style/admin/adminorder.css');
 @import url('style/admin/adminsale.css');
+@import url('style/footer.css');
 
 @font-face {
   font-family: "Circular";
-  src: url("font/CircularStd-Medium.otf") format("opentype");
+  src: url("font/CircularStd-Light.otf") format("opentype");
 }
 
 @font-face {
@@ -34,10 +36,12 @@
 
 html {
   height: 100%;
-  --primary: #DFDCDC;
-  --background-color: #ffffff;
+  --button1: #89B449;
+  --button2: #DBD468;
+  --button3: #E68A8C;
+  --background-color: #E7E0C4;
   --shadow-1: rgba(112, 112, 112, 0.704);
-  --hover: #ff4500;
+  --hover: #407F3E;
 }
 
 body {

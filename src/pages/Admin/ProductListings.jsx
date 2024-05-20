@@ -124,15 +124,14 @@ function ProductListings() {
   return (
     <>
       <div className='headerAdmin'></div>
-      <div className='admin-product'>
+      <div className='titleAdmin'>
         <h1>PRODUCT LISTINGS</h1>
       </div>
-      <div className='input-container'>
-        <div id='productInput'>
+      <div className='prod-list-container'>
+        <div className='input-container'>
           <form id="prodForm" onSubmit={handleSubmit}>
             <input type="text" id="prodName" name="prodName" value={prodName} onChange={(e) => setprodName(e.target.value)} required placeholder="Product Name" />
             <div>
-              <label htmlFor="prodType"> Product Type: </label>
               <select id="prodType" name="prodType" value={prodType} onChange={(e) => setprodType(e.target.value)} required>
                 <option value="Cereals">Cereals</option>
                 <option value="Seeds">Seeds</option>
@@ -147,37 +146,43 @@ function ProductListings() {
             <input type="submit" value={isEdit ? "Update" : "Submit"} id="submitButton" />
           </form>
         </div>
-      </div>
-      <div className='sortProduct'>
-          <div className='searchProduct'>
-            <label htmlFor='search'>SEARCH BY PRODUCT TYPES</label>
-            <select name='search' onChange={handleTypeChange} value={selectedType}>
-                <option value="All">All</option>
-                <option value="Cereals">Cereals</option>
-                <option value="Seeds">Seeds</option>
-                <option value="Vegetables">Vegetables</option>
-                <option value="Fruits">Fruits</option>
-            </select>
+        <div className='prod-list-products'>
+        <div className='sortProduct'>
+            <div className='searchProduct'>
+              <label htmlFor='search'>SEARCH BY PRODUCT TYPES</label>
+              <select name='search' onChange={handleTypeChange} value={selectedType}>
+                  <option value="All">All</option>
+                  <option value="Cereals">Cereals</option>
+                  <option value="Seeds">Seeds</option>
+                  <option value="Vegetables">Vegetables</option>
+                  <option value="Fruits">Fruits</option>
+              </select>
+            </div>
+            <div className='sorting'>
+              <p>SORT BY</p>
+              <button onClick={() => sortBy('name')}>NAME</button>
+              <button onClick={() => sortBy('price')}>PRICE</button>
+              <button onClick={() => sortBy('quantity')}>QUANTITY</button>
+              <button onClick={() => sortBy('type')}>TYPE</button>
+            </div>
           </div>
-          <p>SORT BY</p>
-          <button onClick={() => sortBy('name')}>NAME</button>
-          <button onClick={() => sortBy('price')}>PRICE</button>
-          <button onClick={() => sortBy('quantity')}>QUANTITY</button>
-          <button onClick={() => sortBy('type')}>TYPE</button>
+        <div className="product-container">
+          {filteredProducts.map((product) => (
+            <div className="product-cards" key={product._id}>
+              <div className='card-img'><img src={product.prodImage} alt={product.prodName} /></div>
+              <h3>{product.prodName}</h3>
+              <p>Type: {product.prodType}</p>
+              <p>Price: ${product.prodPrice}</p>
+              <p>Description: {product.prodDesc}</p>
+              <p>Quantity: {product.prodQuant}</p>
+              <div className='btn'>
+                <button className='editProd' onClick={() => handleEdit(product)}>Edit</button>
+                <button className='delProd' onClick={() => handleDelete(product._id)}>Delete</button>
+              </div>
+            </div>
+          ))}
         </div>
-      <div className="product-container-admin">
-        {filteredProducts.map((product) => (
-          <div className="product-cards-admin" key={product._id}>
-            <div className='card-img-admin'><img src={product.prodImage} alt={product.prodName} /></div>
-            <h3>{product.prodName}</h3>
-            <p>Type: {product.prodType}</p>
-            <p>Price: ${product.prodPrice}</p>
-            <p>Description: {product.prodDesc}</p>
-            <p>Quantity: {product.prodQuant}</p>
-            <button className='editProd' onClick={() => handleEdit(product)}>Edit</button>
-            <button className='delProd' onClick={() => handleDelete(product._id)}>Delete</button>
-          </div>
-        ))}
+        </div>
       </div>
     </>
   );

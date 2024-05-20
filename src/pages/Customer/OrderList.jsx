@@ -4,6 +4,20 @@ import React, { useEffect, useState } from 'react';
 
 const OrderList = () => {
   const [orderList, setOrderList] = useState([]);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get('http://localhost:3001/product-list');
+      setProducts(response.data);
+    } catch (error) {
+      console.error('Unable to fetch products:', error);
+    }
+  };
 
   useEffect(() => {
     fetchOrders();
@@ -60,6 +74,16 @@ const OrderList = () => {
     }
   };
 
+  const findProductName = (ordProdId) => {
+    const product = products.find(product => product._id === ordProdId);
+    return product ? product.prodName : 'Product Not Found';
+  };
+
+  const findProductImg = (ordProdId) => {
+    const product = products.find(product => product._id === ordProdId);
+    return product ? product.prodImage : 'Product Not Found';
+  };
+
   return (
     <>
     <div className='headerCustomer'></div>
@@ -70,10 +94,11 @@ const OrderList = () => {
       <div className='order'>
         {orderList.map((order) => (
           <div className='orderCard' key={order.ordTransId}>
-            <div>{order.ordTransId}</div>
+            <div className='card-img'><img src={findProductImg(order.ordProdId)}/></div>
+            <div className='prodName'>{findProductName(order.ordProdId)}</div>
             <div>{order.ordDate}</div>
             <div>{order.time}</div>
-            <div>{order.ordStatus}</div>
+            <div className='status'>{order.ordStatus}</div>
             {order.ordStatus === 'Pending' ? (
               <button onClick={() => handleCancelOrder(order.ordTransId)}>CANCEL</button>
             ): (

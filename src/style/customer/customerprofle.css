@@ -14,7 +14,7 @@
 }
 
 .editBtn{
-    background-color: var(--hover);
+    background-color: var(--button2);
     font-size: smaller;
     border-radius: 40px;
     border-style: none;

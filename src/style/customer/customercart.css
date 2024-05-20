@@ -23,7 +23,8 @@
 }
 
 .backBtn:hover{
-    background-color: var(--hover);
+    background-color: var(--button2);
+    border: 2px solid var(--button2);
 }
 
 .checkOutbtn{
@@ -102,7 +103,7 @@
 }
 
 .removebtn{
-    background-color: var(--hover);
+    background-color: var(--button3);
     font-size: smaller;
     border-radius: 40px;
     border-style: none;

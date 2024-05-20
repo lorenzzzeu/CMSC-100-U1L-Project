@@ -18,10 +18,12 @@ import OrderList from './pages/Customer/OrderList';
 import Explore from './pages/Explore';
 import CustomerProfile from './pages/Customer/CustomerProfile';
 import CheckOut from './pages/Customer/CheckOut';
+import Login from './pages/Login';
 
 const router = createBrowserRouter([
   { path: '/', element: <Root />, children: [
     { path: '/', element: <Home /> },
+    { path: 'login', element: <Login /> },
     { path: 'register', element: <Register /> },
   ]},
   {

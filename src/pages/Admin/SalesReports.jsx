@@ -135,16 +135,18 @@ const SalesReports = () => {
       <div className='titleAdmin'>
         <h1>SALES REPORT</h1>
       </div>
-      <div className='filterButtons'>
-        <p>FILTER BY</p>
-        <button onClick={() => filterSalesByTimeFrame('week')}>Sales This Week</button>
-        <button onClick={() => filterSalesByTimeFrame('month')}>Sales This Month</button>
-        <button onClick={() => filterSalesByTimeFrame('year')}>Sales This Year</button>
-      </div>
-      <div className='sortButtons'>
-        <p>SORT BY</p>
-        <button onClick={() => sortBy('quantity')}>Quantity</button>
-        <button onClick={() => sortBy('orderDate')}>Order Date</button>
+      <div className='sortSales'>
+        <div className='filterAdmin'>
+          <p>FILTER BY</p>
+          <button onClick={() => filterSalesByTime('week')}>Sales This Week</button>
+          <button onClick={() => filterSalesByTime('month')}>Sales This Month</button>
+          <button onClick={() => filterSalesByTime('year')}>Sales This Year</button>
+        </div>
+        <div className='sortAdmin'>
+          <p>SORT BY</p>
+          <button onClick={() => sortBy('quantity')}>Quantity</button>
+          <button onClick={() => sortBy('orderDate')}>Order Date</button>
+        </div>
       </div>
       <table className='salesTable'>
         <thead>

@@ -1,25 +1,12 @@
-.imgAdmin {
-    background-image: url('../img/adminHeader.png');
-    background-position: center;
-    background-size: cover;
-    height: 100px;
-    background-color: aqua;
+.prod-list-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
-.admin-product > h1{
+.input-container{
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 15px;
-}
-
-.input-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-  
-#productInput{
     background-color: rgb(236, 236, 236);
     box-shadow: 0 4px 8px var(--shadow-1);
     border-radius: 10px;
@@ -28,14 +15,15 @@
     width: 500px;
     padding: 15px;
     overflow: hidden;
+    margin: 20px;
 }
 
 #prodType{
-    width: 357px;
+    width: 100%;
     height: 35px;
     overflow: hidden;
-    box-shadow: 0 4px 8px var(--shadow-1);
-    border-radius: 10px;
+    border-radius: 40px;
+    padding: 0px 10px;
 }
 
 form input{
@@ -58,79 +46,26 @@ form input[type='submit']:hover{
     background-color: var(--hover);
     color: black;
 }
-  
-p {
-    font-family: "Satoshi";
-}
 
-.product-container-admin{
+.btn {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 }
 
-.product-cards-admin{
-    background-color: rgb(238, 237, 237);
-    box-shadow: 0 4px 8px var(--shadow-1);
-    border-radius: 10px;
-    padding: 20px;
-    width: 350px;
-    height: 475px;
-    margin: 30px 20px 0px 20px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.card-img-admin {
-    flex: 1;
-    margin: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.card-img-admin img {
-    
-    max-width: 80%;
-    height: 300px;
-    object-fit: cover;
-}
-
-.editProd{
-    background-color: black;
-    font-weight: bold;
-    border-radius: 10px;
+.editProd, .delProd{
+    background-color: var(--button3);
+    font-size: smaller;
+    border-radius: 40px;
     border-style: none;
-    padding: 15px;
-    width: 35%;
-    color: white;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 8px var(--shadow-1);
+    height: 30px;
+    width: 75px;
+    box-shadow: 0 1px 8px var(--shadow-1);
+    margin: 5px;
 }
 
 .editProd:hover{
-    background-color: var(--hover);
-    color: black;
-}
-
-.delProd{
-    background-color: black;
-    font-weight: bold;
-    border-radius: 10px;
-    border-style: none;
-    padding: 15px;
-    width: 35%;
-    color: white;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 8px var(--shadow-1);
-}
-
-.delProd:hover{
     background-color: var(--hover);
     color: black;
 }
