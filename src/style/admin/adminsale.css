@@ -1,18 +1,67 @@
 .salesTable {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .salesTable th, .salesTable td {
-    border: 1px solid #dddddd;
-    padding: 8px;
-  }
-  
-  .salesTable th {
-    text-align: left;
-    background-color: #f2f2f2;
-  }
-  
-  .salesTable tr:nth-child(even) {
-    background-color: #dddddd;
-  }
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.salesTable th, .salesTable td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+}
+
+.salesTable th {
+  text-align: left;
+  background-color: #f2f2f2;
+}
+
+.salesTable tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.sortSales{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  margin-left: 50px;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
+.filterAdmin, .sortAdmin{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
+.filterAdmin > button, .sortAdmin > button {
+  background-color: var(--button1);
+  font-size: smaller;
+  border-radius: 40px;
+  border-style: none;
+  height: 30px;
+  width: 120px;
+  box-shadow: 0 2px 8px var(--shadow-1);
+  margin: 5px;
+}
+
+.filterAdmin > button {
+  background-color: var(--button3);
+}
+
+.filterAdmin > button:hover, .sortAdmin > button:hover{
+  background-color: black;
+  color: white;
+}
+
+.sortAdmin > button:focus{
+  background-color: white;
+  color: var(--hover);
+  border: 2px solid var(--hover);
+}
+
+.filterAdmin > button:focus{
+  background-color: white;
+  color: var(--button3);
+  border: 2px solid var(--button3);
+}

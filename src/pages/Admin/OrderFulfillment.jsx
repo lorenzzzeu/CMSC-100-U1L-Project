@@ -63,7 +63,7 @@ const OrderFulfillment = () => {
               <td>{order.ordQty}</td>
               <td>{order.ordStatus}</td>
               <td>
-                <button onClick={() => handleConfirmOrder(order._id)}>Confirm</button>
+                <button className='confirmBtn' onClick={() => handleConfirmOrder(order._id)}>Confirm</button>
               </td>
             </tr>
           ))}
