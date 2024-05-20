@@ -115,6 +115,8 @@ const ShoppingCart = () => {
       console.error('Error removing item to cart:', error.message);
     }
   };
+
+
   
 
   return (
@@ -131,6 +133,7 @@ const ShoppingCart = () => {
       ) : (
         <>
         <div className='checkOut'>
+          <Link to='/customer-page/product-list'><button className='backBtn'>BACK</button></Link>
           <h2>Total: $ {total}.00</h2>
           <Link to='/customer-page/check-out'><button className='checkOutbtn'>CHECK OUT</button></Link>
         </div>

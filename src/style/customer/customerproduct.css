@@ -32,7 +32,7 @@
 }
 
 .sorting > button {
-    background-color: var(--hover);
+    background-color: var(--button1);
     font-size: smaller;
     border-radius: 40px;
     border-style: none;
@@ -109,6 +109,6 @@
 }
 
 .addToCart:hover {
-    background-color: var(--hover);
+    background-color: var(--button2);
     color: black;
 }
