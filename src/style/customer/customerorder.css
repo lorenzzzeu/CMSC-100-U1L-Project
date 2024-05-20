@@ -22,7 +22,7 @@
 }
 
 .orderCard button{
-    background-color: var(--hover);
+    background-color: var(--button3);
     font-size: smaller;
     border-radius: 40px;
     border-style: none;
@@ -37,4 +37,13 @@
 .orderCard button:hover {
     background-color: black;
     color: white;
+}
+
+.prodName{
+    font-size: large;
+    font-weight: bold;
+}
+
+.status{
+    font-style: italic;
 }
