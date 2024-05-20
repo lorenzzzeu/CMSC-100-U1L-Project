@@ -23,9 +23,9 @@ const CustomerPage = () => {
         <div>
           <nav className='navRoot'>
             <Link to="/customer-page"><img className='logoHeader' src="/src/img/100-logo.png"/></Link>
-            <Link to="/customer-page/product-list" className='nav-item'>PRODUCT LIST</Link>
-            <Link to="/customer-page/shopping-cart" className='nav-item'>SHOPPING CART</Link>
-            <Link to="/customer-page/order-list" className='nav-item'>ORDER LIST</Link>
+            <Link to="/customer-page/product-list" className='nav-item'>Product List</Link>
+            <Link to="/customer-page/shopping-cart" className='nav-item'>Shopping Cart</Link>
+            <Link to="/customer-page/order-list" className='nav-item'>Order List</Link>
             <div className='navUser'>
               <Link to="/customer-page/profile" className='profile'><FontAwesomeIcon icon={faCircleUser} color='black' size='2x'/></Link>
               <button onClick={handleLogout}>LOG OUT</button>

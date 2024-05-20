@@ -1,18 +1,18 @@
 .userTable {
-    width: 100%;
-    border-collapse: collapse;
-  }
+  width: 100%;
+  border-collapse: collapse;
+}
   
-  .userTable th, .userTable td {
-    border: 1px solid #dddddd;
-    padding: 8px;
-  }
+.userTable th, .userTable td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+}
   
-  .userTable th {
-    text-align: left;
-    background-color: #f2f2f2;
-  }
+.userTable th {
+  text-align: left;
+  background-color: var(--button1);
+}
   
-  .userTable tr:nth-child(even) {
-    background-color: #dddddd;
-  }
+.userTable tr:nth-child(even) {
+  background-color: #dddddd;
+}

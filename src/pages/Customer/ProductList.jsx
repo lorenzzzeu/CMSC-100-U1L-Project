@@ -131,7 +131,6 @@ import React, { useEffect, useState } from 'react';
             <button onClick={() => sortBy('quantity')}>QUANTITY</button>
             <button onClick={() => sortBy('type')}>TYPE</button>
           </div>
-          
         </div>
         <div className='product-container'>
           {filteredProds.map((product) =>
