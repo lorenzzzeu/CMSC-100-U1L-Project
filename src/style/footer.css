@@ -1,0 +1,15 @@
+footer{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--hover);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100px;
+}
+
+footer p{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

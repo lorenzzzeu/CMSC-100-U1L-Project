@@ -4,12 +4,10 @@ import { Link, Outlet } from 'react-router-dom';
 const Explore = () => {
     return (
         <>
-        <nav className='navRoot'>
-            <Link to="/"><img className='logoHeader' src='/src/img/100-logo.png'/></Link>
-        </nav>
         <Outlet />
         <div className="about">
             <div className='about-main'>
+            {/* <img src='\src\img\farmer.png'/> */}
             <h1>ABOUT</h1>
             <p>The "farm-to-table" movement advocates for a direct connection between consumers and agricultural producers, promoting sustainability, transparency, and community engagement. Here's what you need to know:</p>
             </div>

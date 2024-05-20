@@ -77,6 +77,8 @@
     position: fixed;
     left: 15px;
     top: 15px;
+    width: 50px;
+    margin-left: 10px;
 }
 
 .appContainer {
@@ -114,8 +116,8 @@
     margin-right: 300px;
 }
 
-#main-content button{
-    background-color: var(--hover);
+.loginBtn{
+    background-color: var(--button1);
     font-weight: bold;
     border-radius: 40px;
     border-style: none;
@@ -124,8 +126,8 @@
     margin-top: 20px;
 }
 
-.main-content > button:hover{
-    background-color: black;
+.loginBtn:hover{
+    background-color: var(--hover);
     color: white;
 }
 
@@ -171,11 +173,6 @@ form > button {
     color: white;
     margin-bottom: 10px;
     box-shadow: 0 4px 8px var(--shadow-1);
-}
-
-form > button:hover{
-    background-color: var(--hover);
-    color: black;
 }
 
 /* Add these styles in your CSS file */

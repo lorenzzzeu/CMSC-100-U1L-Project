@@ -3,6 +3,7 @@ import React from 'react';
 import Login from './Login';
 import { Link, useNavigate } from 'react-router-dom';
 import Explore from './Explore';
+import Footer from './Footer';
 
 function Home() {
 
@@ -27,7 +28,7 @@ function Home() {
           <h2>E-Commerce Website</h2>
           <p>The "farm-to-table" movement advocates for a direct connection between consumers and 
             agricultural producers, promoting sustainability, transparency, and community engagement</p>
-          <button onClick={goToLogin}>Get Started</button>
+          <button className='loginBtn' onClick={goToLogin}>Get Started</button>
         </div>
         <img className='homeImg' src='/src/img/meal.png'/>
       </section>
@@ -35,7 +36,7 @@ function Home() {
         <Explore/>
       </section>
       <section id='contact'>
-
+        <Footer/>
       </section>
     </div>
     </>

@@ -1,13 +1,5 @@
-.logoHeader{
-    width: 50px;
-    margin-left: 10px;
-}
-
-/* .navRoot{
-    background-color: transparent;
-} */
-
 .about{
+    margin-top: 70px;
     display: flex;
     flex-direction: row;
     justify-content: start;
@@ -28,10 +20,14 @@ p {
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
-    background-color: var(--primary);
+    /* background-color: black; */
     color: black;
     padding: 20px;
     padding-top: 100px;
+}
+
+.about-main img{
+    width: 50%;
 }
 
 .about-content{
