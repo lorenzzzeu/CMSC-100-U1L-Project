@@ -79,6 +79,11 @@ const OrderList = () => {
     return product ? product.prodName : 'Product Not Found';
   };
 
+  const findProductImg = (ordProdId) => {
+    const product = products.find(product => product._id === ordProdId);
+    return product ? product.prodImage : 'Product Not Found';
+  };
+
   return (
     <>
     <div className='headerCustomer'></div>
@@ -89,6 +94,7 @@ const OrderList = () => {
       <div className='order'>
         {orderList.map((order) => (
           <div className='orderCard' key={order.ordTransId}>
+            <div className='card-img'><img src={findProductImg(order.ordProdId)}/></div>
             <div className='prodName'>{findProductName(order.ordProdId)}</div>
             <div>{order.ordDate}</div>
             <div>{order.time}</div>
