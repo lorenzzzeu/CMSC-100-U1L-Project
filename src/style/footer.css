@@ -1,7 +1,7 @@
 footer{
     display: flex;
     flex-direction: column;
-    background-color: var(--hover);
+    background-color: var(--button1);
     justify-content: center;
     align-items: center;
     text-align: center;
