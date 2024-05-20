@@ -27,8 +27,8 @@
     text-shadow: 2px 2px 10px black;
 }
 
-.navAdmin > button {
-    background-color: black;
+.navUser > button {
+    background-color: var(--button3);
     color: white;
     font-size: medium;
     border-radius: 40px;
@@ -42,8 +42,8 @@
     font-size: larger;
 }
 
-.navAdmin > button:hover{
-    background-color: var(--hover);
+.navUser > button:hover{
+    background-color: var(--button2);
     color: black;
 }
 
@@ -89,7 +89,7 @@ hr {
 
 .admin-cards > button {
     margin: 0px 100px;
-    background-color: var(--hover);
+    background-color: var(--button1);
     font-size: smaller;
     border-radius: 40px;
     border-style: none;
@@ -99,10 +99,10 @@ hr {
 }
 
 .admin-cards > button:hover{
-    background-color: black;
+    background-color: var(--hover);
     color: white;
 }
 
-.admin-cards:hover > .icon{
+.admin-cards:button1 > .icon{
     transform: scale(1.1);
 }

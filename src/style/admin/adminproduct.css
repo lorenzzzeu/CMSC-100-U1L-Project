@@ -130,7 +130,7 @@ p {
     box-shadow: 0 4px 8px var(--shadow-1);
 }
 
-.delProd:hover{
-    background-color: var(--hover);
+.delProd:button1{
+    background-color: var(--button1);
     color: black;
 }

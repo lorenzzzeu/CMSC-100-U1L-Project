@@ -21,11 +21,11 @@ const CustomerPage = () => {
   <div>
     {isUserSignedIn ? (
         <div>
-          <nav className='navCustomer'>
-            <Link to="/customer-page" className='logo'><img src="/src/img/100-logo.png"/></Link>
-            <Link to="/customer-page/product-list">PRODUCT LIST</Link>
-            <Link to="/customer-page/shopping-cart">SHOPPING CART</Link>
-            <Link to="/customer-page/order-list">ORDER LIST</Link>
+          <nav className='navRoot'>
+            <Link to="/customer-page"><img className='logoHeader' src="/src/img/100-logo.png"/></Link>
+            <Link to="/customer-page/product-list" className='nav-item'>PRODUCT LIST</Link>
+            <Link to="/customer-page/shopping-cart" className='nav-item'>SHOPPING CART</Link>
+            <Link to="/customer-page/order-list" className='nav-item'>ORDER LIST</Link>
             <div className='navUser'>
               <Link to="/customer-page/profile" className='profile'><FontAwesomeIcon icon={faCircleUser} color='black' size='2x'/></Link>
               <button onClick={handleLogout}>LOG OUT</button>

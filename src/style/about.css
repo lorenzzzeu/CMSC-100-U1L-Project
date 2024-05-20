@@ -32,7 +32,8 @@ p {
 
 .about-content{
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     flex-grow: 1;
