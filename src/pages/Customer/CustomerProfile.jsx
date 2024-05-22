@@ -13,6 +13,8 @@ const CustomerProfile = () => {
 
   const [message, setMessage] = useState('');
 
+  const [orderList, setOrderList] = useState([]);
+
   useEffect(() => {
     // Fetch user profile on component mount
     const fetchProfile = async () => {
@@ -52,6 +54,24 @@ const CustomerProfile = () => {
       setMessage('Profile updated successfully');
     } catch (error) {
       setMessage('Error updating profile');
+    }
+  };
+
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
+  const fetchOrders = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.get('http://localhost:3001/order-transaction', {
+        headers: {
+          'authorization': `Bearer ${token}`
+        }
+      });
+      setOrderList(response.data);
+    } catch (error) {
+      console.error('Error fetching orders:', error.response ? error.response.data : error.message);
     }
   };
 
@@ -109,6 +129,22 @@ const CustomerProfile = () => {
         </div>
         <div className='profile-history'>
         <h3>History of Items Purchased</h3>
+        <div>
+          {orderList.map((order) => 
+          <div key={order._id}>
+            {order.ordStatus === 'Confirmed' ? (
+              <>
+                <h1>{order.ordTransId}</h1>
+                <div>{order.ordDate.substring(0, 10)}</div>
+                <div>{order.time.substring(11, 19)}</div>
+                <div>Completed</div>
+              </>
+            ): (
+              <div></div>
+            )}
+          </div>
+          )}
+        </div>
         </div>
       </div>
     </>
