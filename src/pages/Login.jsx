@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -25,14 +26,17 @@ function Login() {
     try {
       const response = await axios.post('http://localhost:3001/login', { email, password })
       const token = response.data.token
-      setEmail('')
-      setPassword('')
-      fetchUsers()
-      navigate('/customer-page')
+      const decodedToken = jwtDecode(token); // Decode the JWT to get the user type
+      console.log(decodedToken)
+      if (decodedToken.type === 'customer') {
+        navigate('/customer-page'); // Redirect to admin page
+      } else {
+        navigate('/admin-page'); // Redirect to customer page
+      }
       window.location.reload()
       localStorage.setItem('token', token)
     } catch(error) {
-      console.log('Unable to log in')
+      console.log('Unable to log in', error)
     }
   };
 

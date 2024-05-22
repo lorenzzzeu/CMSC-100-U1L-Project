@@ -41,10 +41,12 @@ const OrderList = () => {
     try {
       const token = localStorage.getItem('token');
       await retrieveProductQuantities();
-      await axios.delete(`http://localhost:3001/order-transaction/${orderId}`, {
+      await axios.delete(`http://localhost:3001/order-transaction`, {
         headers: {
-          'authorization': `Bearer ${token}`
-        }
+          'authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        data: { orderId }
       });
       // Remove the cancelled order from the orderList state
       setOrderList(orderList.filter(order => order.ordTransId !== orderId));
@@ -93,11 +95,11 @@ const OrderList = () => {
     <div>
       <div className='order'>
         {orderList.map((order) => (
-          <div className='orderCard' key={order.ordTransId}>
+          <div className='orderCard' key={order._id}>
             <div className='card-img'><img src={findProductImg(order.ordProdId)}/></div>
             <div className='prodName'>{findProductName(order.ordProdId)}</div>
-            <div>{order.ordDate}</div>
-            <div>{order.time}</div>
+            <div>{order.ordDate.substring(0, 10)}</div>
+            <div>{order.time.substring(11, 19)}</div>
             <div className='status'>{order.ordStatus}</div>
             {order.ordStatus === 'Pending' ? (
               <button onClick={() => handleCancelOrder(order.ordTransId)}>CANCEL</button>

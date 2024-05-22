@@ -69,8 +69,8 @@ app.post('/login', async (req, res) => {
         if(!isPasswordValid){
             return res.status(401).json({ error: 'Invalid password' })
         }
-        const token = jwt.sign({ userId: user._id}, process.env.ACCESS_SECRET_KEY, { expiresIn: '1hr' })
-        res.json({ message: 'Login successful ', token})
+        const token = jwt.sign({ userId: user._id, type: user.userType}, process.env.ACCESS_SECRET_KEY, { expiresIn: '1hr' })
+        res.json({ message: 'Login successful ', token })
     } catch(error) {
         res.status(500).json({ error: 'Error logging in' })
     }
@@ -306,7 +306,7 @@ app.post('/order-transaction', authenticateJWT, async (req, res) => {
         // Generate unique transaction ID and save each cart item as an order
         const orders = cartItems.map(item => {
             let genId = uuidv4();
-            let uniqueId = 'CMSC' + genId.slice(0, 6);
+            let uniqueId = 'FTT' + genId.slice(0, 6).toUpperCase();
             return {
                 ordTransId: uniqueId,
                 ordProdId: item.prodId,
@@ -346,21 +346,22 @@ app.get('/order-transaction', authenticateJWT, async (req, res) => {
     }
 });
 
-app.delete('/order-transaction/:orderId', authenticateJWT, async (req, res) => {
+app.delete('/order-transaction', authenticateJWT, async (req, res) => {
     try {
-        const orderId = req.params.orderId;
-        const userId = req.user.userId;
-
-        const order = await Order.findOne({ ordTransId: orderId, email: userId });
-        if (!order) {
-            return res.status(404).json({ message: 'Order not found or unauthorized' });
-        }
-
-        await Order.findOneAndDelete(orderId);
-
-        res.status(200).json({ message: 'Order cancelled successfully' });
+      const { orderId } = req.body;
+      const userId = req.user.userId;
+  
+      const order = await Order.findOne({ ordTransId: orderId, email: userId });
+      if (!order) {
+        return res.status(404).json({ message: 'Order not found or unauthorized' });
+      }
+  
+      await Order.findOneAndDelete({ ordTransId: orderId });
+  
+      res.status(200).json({ message: 'Order cancelled successfully' });
     } catch (error) {
-        console.error('Error cancelling order:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+      console.error('Error cancelling order:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
     }
-});
+  });
+  
