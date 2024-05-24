@@ -76,8 +76,31 @@ app.post('/login', async (req, res) => {
     }
 })
 
+// Verify token
+const authenticateJWT = (req, res, next) => {
+    const authHeader = req.headers['authorization'];
+  
+    if (authHeader) {
+      const token = authHeader.split(' ')[1];
+  
+      if (token) {
+        jwt.verify(token, process.env.ACCESS_SECRET_KEY, (err, user) => {
+          if (err) {
+            return res.status(403).json({ message: 'Forbidden' });
+          }
+          req.user = user;
+          next();
+        });
+      } else {
+        return res.status(401).json({ message: 'Unauthorized' });
+      }
+    } else {
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
+  };
+
 // Update user profile
-app.get('/profile', async (req, res) => {
+app.get('/profile', authenticateJWT, async (req, res) => {
     try {
         const userId = req.user.userId;
         const user = await User.findById(userId).select('-password'); // Exclude password from the response
@@ -89,6 +112,25 @@ app.get('/profile', async (req, res) => {
         res.status(500).json({ error: 'Error fetching profile' });
     }
 });
+
+app.put('/profile', authenticateJWT, async (req, res) => {
+    try {
+        const userId = req.user.userId;
+        const updateData = req.body;
+
+        const updatedUser = await User.findByIdAndUpdate(userId, updateData, { new: true }).select('-password'); // Exclude password from the response
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        res.status(200).json({ message: 'Profile updated successfully', user: updatedUser });
+    } catch (error) {
+        console.error('Error updating profile:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 
 //Products 
 // Get
@@ -203,44 +245,54 @@ app.get('/admin/orders', async (req, res) => {
     }
 });
 
-app.put('/admin/orders/confirm/:orderId', async (req, res) => {
+app.put('/admin/orders/confirm', async (req, res) => {
     try {
-        const orderId = req.params.orderId;
-        const order = await Order.findByIdAndUpdate(orderId, { ordStatus: 'Confirmed' });
-
-        if (!order) {
-            return res.status(404).json({ message: 'Order not found' });
-        }
-
-        res.status(200).json({ message: 'Order confirmed successfully', order });
-    } catch (error) {
-        console.error('Error confirming order:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
-
-// Verify token
-const authenticateJWT = (req, res, next) => {
-    const authHeader = req.headers['authorization'];
+      const { orderId } = req.body;
+      const order = await Order.findByIdAndUpdate(orderId, { ordStatus: 'Confirmed' });
   
-    if (authHeader) {
-      const token = authHeader.split(' ')[1];
-  
-      if (token) {
-        jwt.verify(token, process.env.ACCESS_SECRET_KEY, (err, user) => {
-          if (err) {
-            return res.status(403).json({ message: 'Forbidden' });
-          }
-          req.user = user;
-          next();
-        });
-      } else {
-        return res.status(401).json({ message: 'Unauthorized' });
+      if (!order) {
+        return res.status(404).json({ message: 'Order not found' });
       }
-    } else {
-      return res.status(401).json({ message: 'Unauthorized' });
+  
+      res.status(200).json({ message: 'Order confirmed successfully', order });
+    } catch (error) {
+      console.error('Error confirming order:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
     }
-  };
+  });
+
+  app.put('/admin/orders/complete', async (req, res) => {
+    try {
+      const { orderId } = req.body;
+      const order = await Order.findByIdAndUpdate(orderId, { ordStatus: 'Completed' });
+  
+      if (!order) {
+        return res.status(404).json({ message: 'Order not found' });
+      }
+  
+      res.status(200).json({ message: 'Order completed successfully', order });
+    } catch (error) {
+      console.error('Error completing order:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
+  app.put('/admin/orders/reject', async (req, res) => {
+    try {
+      const { orderId } = req.body;
+      const order = await Order.findByIdAndUpdate(orderId, { ordStatus: 'Rejected' });
+  
+      if (!order) {
+        return res.status(404).json({ message: 'Order not found' });
+      }
+  
+      res.status(200).json({ message: 'Order rejected successfully', order });
+    } catch (error) {
+      console.error('Error rejecting order:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
 
 // GET for shopping cart
 let userCarts = {};
@@ -311,7 +363,6 @@ app.post('/order-transaction', authenticateJWT, async (req, res) => {
                 ordTransId: uniqueId,
                 ordProdId: item.prodId,
                 ordQty: item.prodQuant,
-                ordStatus: 'Pending',
                 email: userId,
                 ordDate: new Date(),
                 time: new Date().toISOString()
