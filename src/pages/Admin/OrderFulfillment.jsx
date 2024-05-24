@@ -19,7 +19,22 @@ const OrderFulfillment = () => {
 
   const handleConfirmOrder = async (orderId) => {
     try {
-      await axios.post(`http://localhost:3001/admin/orders/confirm/${orderId}`);
+      await axios.put('http://localhost:3001/admin/orders/confirm', {
+        orderId: orderId
+      });
+  
+      const response = await axios.get('http://localhost:3001/admin/orders');
+      setOrders(response.data);
+    } catch (error) {
+      console.error('Error confirming order:', error);
+    }
+  };
+  
+  const handleCompleteOrder = async (orderId) => {
+    try {
+      await axios.put('http://localhost:3001/admin/orders/complete', {
+        orderId: orderId
+      });
   
       const response = await axios.get('http://localhost:3001/admin/orders');
       setOrders(response.data);
@@ -30,12 +45,14 @@ const OrderFulfillment = () => {
   
   const handleRejectOrder = async (orderId) => {
     try {
-      await axios.post(`http://localhost:3001/admin/orders/reject/${orderId}`);
+      await axios.put('http://localhost:3001/admin/orders/reject', {
+        orderId: orderId
+      });
   
       const response = await axios.get('http://localhost:3001/admin/orders');
       setOrders(response.data);
     } catch (error) {
-      console.error('Error rejecting order:', error);
+      console.error('Error confirming order:', error);
     }
   };
 
@@ -62,9 +79,20 @@ const OrderFulfillment = () => {
               <td>{order.ordProdId}</td>
               <td>{order.ordQty}</td>
               <td>{order.ordStatus}</td>
-              <td>
-                <button className='confirmBtn' onClick={() => handleConfirmOrder(order._id)}>Confirm</button>
-              </td>
+              {
+                order.ordStatus === 'Pending' ? (
+                  <td>
+                    <button className='confirmBtn' onClick={() => handleConfirmOrder(order._id)}>Confirm</button>
+                    <button className='confirmBtn' onClick={() => handleRejectOrder(order._id)}>Reject</button>
+                  </td>
+                ) : (
+                  order.ordStatus === 'Completed' || order.ordStatus === 'Rejected' ? (<div></div>) : (
+                    <td>
+                      <button className='confirmBtn' onClick={() => handleCompleteOrder(order._id)}>Delivered</button>
+                    </td>
+                  )
+                )
+              }
             </tr>
           ))}
         </tbody>

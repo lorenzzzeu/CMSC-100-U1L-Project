@@ -4,7 +4,7 @@ const orderSchema = new mongoose.Schema({
     ordTransId: { type: String, required: true },
     ordProdId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
     ordQty: { type: Number, required: true },
-    ordStatus: { type: String, required: true}, 
+    ordStatus: { type: String, required: true, enum: ['Pending', 'Rejected', 'Confirmed', 'Completed'], default: 'Pending'}, 
     email: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     ordDate: { type: Date, required: true },
     time: { type: Date, required: true}
