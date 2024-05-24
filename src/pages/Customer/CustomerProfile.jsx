@@ -5,8 +5,7 @@ const CustomerProfile = () => {
   const [profile, setProfile] = useState({
     firstName: '',
     lastName: '',
-    email: '',
-    password: ''
+    email: ''
   });
 
   const [edit, setEdit] = useState(false);
@@ -16,18 +15,21 @@ const CustomerProfile = () => {
   const [orderList, setOrderList] = useState([]);
 
   useEffect(() => {
-    // Fetch user profile on component mount
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('/profile', {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
-        setProfile(response.data);
+        if (token) {
+          const response = await axios.get('http://localhost:3001/profile', {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+          setProfile(response.data);
+        } else {
+          console.error('No token found');
+        }
       } catch (error) {
-        console.error('Error fetching profile:', error);
+        console.error('Error fetching profile:', error.response ? error.response.data : error.message);
       }
     };
 
@@ -46,14 +48,17 @@ const CustomerProfile = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.put('/profile', profile, {
+      const response = await axios.put('http://localhost:3001/profile', profile, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
       setMessage('Profile updated successfully');
+      setProfile(response.data.user);
+      handleEdit();
     } catch (error) {
       setMessage('Error updating profile');
+      console.error('Error updating profile:', error.response ? error.response.data : error.message);
     }
   };
 
@@ -81,9 +86,8 @@ const CustomerProfile = () => {
       <div className='profile-container'>
         <div className='profile-details'>
           <img src='\src\img\user.png'/>
-          <p><strong>First Name Last Name</strong> {profile.firstName}{profile.lastName}</p>
-          <p className='email'>Email {profile.email}</p>
-          {/* You can display more details here if needed */}
+          <p>{profile.firstName} {profile.lastName}</p>
+          <p className='email'>Email: {profile.email}</p>
           <button className='editBtn' onClick={handleEdit}>EDIT PROFILE</button>
           {edit && (
             <form className='edit-profile' onSubmit={handleSubmit}>
@@ -114,15 +118,6 @@ const CustomerProfile = () => {
                   placeholder='Enter new email'
                 />
               </div>
-              <div>
-                <input
-                  type='password'
-                  name='password'
-                  value={profile.password}
-                  onChange={handleChange}
-                  placeholder='Enter new password'
-                />
-              </div>
               <button type='submit'>Update Profile</button>
             </form>
           )}
@@ -132,12 +127,12 @@ const CustomerProfile = () => {
         <div>
           {orderList.map((order) => 
           <div key={order._id}>
-            {order.ordStatus === 'Confirmed' ? (
+            {order.ordStatus === 'Completed' ? (
               <>
                 <h1>{order.ordTransId}</h1>
                 <div>{order.ordDate.substring(0, 10)}</div>
                 <div>{order.time.substring(11, 19)}</div>
-                <div>Completed</div>
+                <div>{order.ordStatus}</div>
               </>
             ): (
               <div></div>
