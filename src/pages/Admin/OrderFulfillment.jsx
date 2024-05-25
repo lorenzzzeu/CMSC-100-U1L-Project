@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const OrderFulfillment = () => {
   const [orders, setOrders] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -15,6 +16,19 @@ const OrderFulfillment = () => {
     };
 
     fetchOrders();
+  }, []);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/product-list');
+        setProducts(response.data);
+      } catch (error) {
+        console.error('Unable to fetch products:', error);
+      }
+    };
+
+    fetchProducts();
   }, []);
 
   const handleConfirmOrder = async (orderId) => {
@@ -56,6 +70,16 @@ const OrderFulfillment = () => {
     }
   };
 
+  const getProductName = (ordProdId) => {
+    const product = products.find(p => p._id === ordProdId);
+    return product ? product.prodName : 'Unknown';
+  };
+
+  const getProductType = (ordProdId) => {
+    const product = products.find(p => p._id === ordProdId);
+    return product ? product.prodType : 'Unknown';
+  };
+
   return (
     <>
       <div className='headerAdmin'></div>
@@ -67,6 +91,8 @@ const OrderFulfillment = () => {
           <tr>
             <th>Transaction ID</th>
             <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Product Type</th>
             <th>Quantity</th>
             <th>Status</th>
             <th>Action</th>
@@ -77,6 +103,8 @@ const OrderFulfillment = () => {
             <tr key={order._id}>
               <td>{order.ordTransId}</td>
               <td>{order.ordProdId}</td>
+              <td>{getProductName(order.ordProdId)}</td>
+              <td>{getProductType(order.ordProdId)}</td>
               <td>{order.ordQty}</td>
               <td>{order.ordStatus}</td>
               {
