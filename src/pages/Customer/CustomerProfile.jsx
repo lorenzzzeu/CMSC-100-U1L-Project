@@ -9,10 +9,9 @@ const CustomerProfile = () => {
   });
 
   const [edit, setEdit] = useState(false);
-
   const [message, setMessage] = useState('');
-
   const [orderList, setOrderList] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -34,6 +33,19 @@ const CustomerProfile = () => {
     };
 
     fetchProfile();
+  }, []);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/product-list');
+        setProducts(response.data);
+      } catch (error) {
+        console.error('Unable to fetch products:', error);
+      }
+    };
+
+    fetchProducts();
   }, []);
 
   const handleEdit = () => {
@@ -80,6 +92,25 @@ const CustomerProfile = () => {
     }
   };
 
+  const getProductDetails = (ordProdId) => {
+    const product = products.find(p => p._id === ordProdId);
+    if (product) {
+      return {
+        name: product.prodName,
+        type: product.prodType,
+        price: product.prodPrice,
+        image: product.prodImage
+      };
+    } else {
+      return {
+        name: 'Unknown',
+        type: 'Unknown',
+        price: 'Unknown',
+        image: 'Unknown'
+      };
+    }
+  };
+
   return (
     <>
       <div className='headerCustomer'></div>
@@ -123,23 +154,38 @@ const CustomerProfile = () => {
           )}
         </div>
         <div className='profile-history'>
-        <h3>History of Items Purchased</h3>
-        <div>
+          <h3>History of Items Purchased</h3>
+          <br/>
+          <div className='orderList'>
           {orderList.map((order) => 
-          <div key={order._id}>
-            {order.ordStatus === 'Completed' ? (
-              <>
-                <h1>{order.ordTransId}</h1>
-                <div>{order.ordDate.substring(0, 10)}</div>
-                <div>{order.time.substring(11, 19)}</div>
-                <div>{order.ordStatus}</div>
-              </>
-            ): (
-              <div></div>
-            )}
-          </div>
+            <div className="order-cards" key={order._id}>
+              {order.ordStatus === 'Completed' && (
+                <>
+                  <div>
+                    <img src={getProductDetails(order.ordProdId).image} alt={getProductDetails(order.ordProdId).name} />
+                  </div>
+                  <div className="prod-details">
+                    <h3>{getProductDetails(order.ordProdId).name}</h3>
+                    <p>{getProductDetails(order.ordProdId).type}</p>
+                  </div>
+                  <div className="prod-details">
+                    <p>{order.ordDate.substring(0, 10)}</p>
+                    <p>{order.time.substring(11, 19)}</p>
+                  </div>
+                  <div className="prod-details">
+                    <p>Price: ${getProductDetails(order.ordProdId).price}</p>
+                  </div>
+                  <div className="prod-details">
+                    <p>{order.ordTransId}</p>
+                  </div>
+                  <div className="prod-details">
+                    <p>{order.ordQty}</p>
+                  </div>
+                </>
+              )}
+            </div>
           )}
-        </div>
+          </div>
         </div>
       </div>
     </>
