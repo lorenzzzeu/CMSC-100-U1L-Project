@@ -26,6 +26,11 @@
   src: url("font/Satoshi-Medium.otf") format("opentype");
 }
 
+@font-face {
+  font-family: "Circular Bold";
+  src: url("font/CircularStd-Black.otf") format("opentype");
+}
+
 *{
   margin: 0px;
   padding: 0px;

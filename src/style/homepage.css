@@ -114,11 +114,13 @@
 #main-content h1{
     font-size: 75px;
     animation: 2s anim-lineUp ease-out;
+    font-family: Circular Bold;
 }
 
 #main-content h2{
     font-size: 50px;
     animation: 2s anim-lineUp ease-out;
+    font-family: Circular Bold;
 }
 
 #main-content p{
