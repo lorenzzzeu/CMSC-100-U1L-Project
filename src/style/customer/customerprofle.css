@@ -6,6 +6,7 @@
 }
 
 .profile-details{
+    padding-top: 50px;
     flex: 1;
     display: flex;
     flex-wrap: wrap;
@@ -37,6 +38,7 @@
 
 .profile-details img {
     width: 50%;
+    
 }
 
 .email{
@@ -48,11 +50,21 @@
 .profile-history{
     display: flex;
     flex-direction: column;
-    flex: 2;
+    flex: 3;
     align-items: center;
+    padding-top: 50px
 }
 .edit-profile {
     flex: 1;
     padding: 0px 10px;
     width: 100%;
+}
+
+.order-cards{
+    height: 200px;
+    width: 850px;
+}
+
+.prod-details{
+    margin-left: 50px;
 }
