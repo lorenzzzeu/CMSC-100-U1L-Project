@@ -69,15 +69,13 @@ p {
 .about-content{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    flex-grow: 1;
 }
 
 .about-section {
-    background-color: rgb(238, 237, 237);
-    box-shadow: 0 2px 8px var(--shadow-1);
+    box-shadow: 0px -5px 5px -2px rgba(1, 1, 1, 0.2);
     border-radius: 10px;
     margin: 10px;
     padding: 15px;
@@ -85,12 +83,26 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: start;
-    align-items: start;
     flex-wrap: wrap;
+    width: 350px;
+    height: 400px;
     flex-grow: 1;
+}
+
+.about-section h2 {
+    justify-content: center;
+    text-align: center;
+}
+
+.about-section > .icon {
+    padding-bottom: 10px;
 }
 
 .about-section ul {
     list-style: none;
     font-style: italic;
+}
+
+.about-section:hover > .icon{
+    transform: scale(1.1);
 }

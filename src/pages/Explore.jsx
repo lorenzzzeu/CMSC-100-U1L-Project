@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleCheck, faFileLines, faMap, faSeedling } from '@fortawesome/free-solid-svg-icons';
 
 const Explore = () => {
     return (
@@ -16,11 +18,13 @@ const Explore = () => {
                 </div>
             </div>
             <div className='about-content'>
-                <div className="about-section origin">
+                <div className="about-section">
+                    <FontAwesomeIcon icon={faSeedling} size='3x' className='icon'/>
                     <h2>ORIGINS</h2>
                     <p>The farm-to-table concept emerged as a response to concerns about the conventional industrial food system, where food travels long distances, passing through multiple intermediaries, before reaching consumers.</p>
                 </div>
                 <div className="about-section">
+                    <FontAwesomeIcon icon={faFileLines} size='3x' className='icon'/>
                     <h2>PRINCIPLES</h2>
                     <p>At its core, farm-to-table emphasizes:</p>
                     <ul>
@@ -31,6 +35,7 @@ const Explore = () => {
                     </ul>
                 </div>
                 <div className="about-section">
+                    <FontAwesomeIcon icon={faCircleCheck} size='3x' className='icon'/>
                     <h2>BENEFITS</h2>
                     <p>The farm-to-table movement offers various benefits:</p>
                     <ul>
@@ -41,6 +46,7 @@ const Explore = () => {
                     </ul>
                 </div>
                 <div className="about-section">
+                    <FontAwesomeIcon icon={faMap} size='3x' className='icon'/>
                     <h2>HOW TO PARTICIPATE</h2>
                     <p>You can engage with the farm-to-table movement by:</p>
                     <ul>
