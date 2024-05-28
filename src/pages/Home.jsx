@@ -16,7 +16,7 @@ function Home() {
   return (
     <>
     <div className='appContainer'>
-      <nav className='navRoot'>
+      <nav className='navRootHome'>
         <Link to="/admin-page"><img className='logoHeader' src='/src/img/100-logo.png'/></Link>
         <a className='nav-item' href='#main-content'>Home</a>
         <a className='nav-item' href='#about'>About</a>

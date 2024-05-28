@@ -16,7 +16,7 @@ const AdminPage = () => {
     {isUserSignedIn ? (
       <div>
         <nav className='navRoot'>
-          <div className='navLinks'>
+          <div className='navLinksAdmin'>
               <Link to="/admin-page">
                 <img className='logoHeader' src="src/img/100-logo.png"/>
               </Link>
