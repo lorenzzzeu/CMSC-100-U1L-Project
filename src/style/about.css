@@ -17,6 +17,7 @@ p {
     margin-top: 70px;
     display: flex;
     flex-direction: row;
+    flex-direction: column;
 }
 
 .about-main{
@@ -67,7 +68,6 @@ p {
 }
 .about-content{
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
