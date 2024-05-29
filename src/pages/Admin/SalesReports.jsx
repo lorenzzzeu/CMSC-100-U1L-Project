@@ -14,7 +14,7 @@ const SalesReports = () => {
     const fetchSalesData = async () => {
       try {
         const response = await axios.get('http://localhost:3001/admin/orders');
-        setSalesData(response.data.filter(order => order.ordStatus === 'Confirmed'));
+        setSalesData(response.data.filter(order => order.ordStatus === 'Completed'));
       } catch (error) {
         console.error('Unable to fetch sales data:', error);
       }
@@ -111,11 +111,11 @@ const SalesReports = () => {
     let startDate;
 
     if (time === 'week') {
-      start = new Date(today.setDate(today.getDate() - today.getDay()));
+      startDate = new Date(today.setDate(today.getDate() - today.getDay()));
     } else if (time === 'month') {
-      start = new Date(today.getFullYear(), today.getMonth(), 1);
+      startDate = new Date(today.getFullYear(), today.getMonth(), 1);
     } else if (time === 'year') {
-      start = new Date(today.getFullYear(), 0, 1);
+      startDate = new Date(today.getFullYear(), 0, 1);
     } else {
       console.error('Invalid time frame provided');
       return;
