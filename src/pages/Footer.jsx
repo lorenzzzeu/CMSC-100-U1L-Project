@@ -14,7 +14,7 @@ const Footer = () => {
             <Outlet /> {/* The Outlet component renders the matched child route elements */}
             <hr/>
             <footer> {/* Define the footer element which contains the footer content */}
-                <div className='logo-container'>
+                <div className='logoFooter'>
                     <img className='logo' src='\src\img\100-logo.png'/>
                     <p>© 2024 Farm-To-Table. All rights reserved.</p> {/* A paragraph element displaying the copyright notice */}
                 </div>
