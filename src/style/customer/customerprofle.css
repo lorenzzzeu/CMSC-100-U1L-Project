@@ -6,7 +6,6 @@
 }
 
 .profile-details{
-    padding-top: 50px;
     flex: 1;
     display: flex;
     flex-wrap: wrap;
@@ -14,8 +13,17 @@
     align-items: center;
 }
 
+.profile-details > p {
+    padding-top: 5px;
+}
+
+.profile-details > .name {
+    font-family: Circular Bold;
+}
+
 .editBtn{
-    background-color: var(--button2);
+    background-color: black;
+    color: white;
     font-size: smaller;
     border-radius: 40px;
     border-style: none;
@@ -23,22 +31,16 @@
     width: 150px;
     box-shadow: 0 1px 8px var(--shadow-1);
     margin: 5px;
+    cursor: pointer;
 }
 
 .editBtn:hover {
-    background-color: black;
-    color: white;
-}
-
-.editBtn:vi{
-    background-color: white;
-    color: var(--hover);
-    border: 2px solid var(--hover);
+    background-color: var(--button2);
+    color: black;
 }
 
 .profile-details img {
     width: 50%;
-    
 }
 
 .email{
@@ -50,21 +52,22 @@
 .profile-history{
     display: flex;
     flex-direction: column;
-    flex: 3;
+    flex: 2;
     align-items: center;
-    padding-top: 50px
 }
+
+.profile-history > h3 {
+    font-family: Circular Bold;
+    font-size: 2em;
+}
+
 .edit-profile {
     flex: 1;
     padding: 0px 10px;
     width: 100%;
 }
 
-.order-cards{
-    height: 200px;
-    width: 850px;
-}
-
-.prod-details{
-    margin-left: 50px;
+.updateBtn:hover {
+    background-color: var(--hover);
+    color: white;
 }

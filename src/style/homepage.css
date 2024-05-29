@@ -27,14 +27,20 @@
 
 /* navigation bar */
 .navRoot {
-    padding: 10px;
     z-index: 1;
-    position: fixed;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    padding-left: 115px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.navRootHome {
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -47,7 +53,8 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    font-weight: bolder;
+    padding-top: 10px;
+    cursor: pointer;
 }
 
 .nav-item::after{
@@ -108,11 +115,13 @@
 #main-content h1{
     font-size: 75px;
     animation: 2s anim-lineUp ease-out;
+    font-family: Circular Bold;
 }
 
 #main-content h2{
     font-size: 50px;
     animation: 2s anim-lineUp ease-out;
+    font-family: Circular Bold;
 }
 
 #main-content p{
@@ -128,6 +137,7 @@
     height: 50px;
     width: 150px;
     margin-top: 20px;
+    cursor: pointer;
 }
 
 .loginBtn:hover{
@@ -141,13 +151,12 @@
 
 .homeImg{
     display: block;
-    animation: spin 20s linear infinite;
+    animation: spin 10s linear infinite;
     width: 45%;
     position: absolute;
-    right: -225px;
+    right: -150px;
     transform: translateY(-50%);
     overflow: hidden;
-    
 }
 
 /* Add these styles in your CSS file */
@@ -168,4 +177,3 @@
   .admin-modal-overlay {
     background-color: rgba(0, 0, 0, 0.75);
   }
-  
