@@ -22,6 +22,7 @@
     padding: 5px;
     border-radius: 4px;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .sorting{
@@ -40,6 +41,7 @@
     width: 90px;
     box-shadow: 0 2px 8px var(--shadow-1);
     margin: 5px;
+    cursor: pointer;
 }
 
 .sorting > button:hover {
@@ -105,6 +107,7 @@
     width: 100%;
     box-shadow: 0 2px 8px var(--shadow-1);
     margin-top: 5px;
+    cursor: pointer;
 }
 
 .addToCart:hover {

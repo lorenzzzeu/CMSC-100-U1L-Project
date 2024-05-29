@@ -42,4 +42,5 @@ form > button {
     color: white;
     margin-bottom: 10px;
     box-shadow: 0 4px 8px var(--shadow-1);
+    cursor: pointer;
 }

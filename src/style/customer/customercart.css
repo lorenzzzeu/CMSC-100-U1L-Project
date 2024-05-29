@@ -8,7 +8,7 @@
     justify-content: space-evenly;
     align-items: center;
     display: flex;
-    
+    cursor: pointer;
 }
 
 .backBtn {
@@ -20,6 +20,7 @@
     width: 150px;
     box-shadow: 0 2px 8px var(--shadow-1);
     margin: 5px;  
+    cursor: pointer;
 }
 
 .backBtn:hover{
@@ -36,6 +37,7 @@
     width: 150px;
     box-shadow: 0 2px 8px var(--shadow-1);
     margin: 5px;
+    cursor: pointer;
 }
 
 .checkOutbtn:hover {
@@ -111,6 +113,7 @@
     width: 100px;
     box-shadow: 0 1px 8px var(--shadow-1);
     margin: 5px;
+    cursor: pointer;
 }
 
 .removebtn:hover {

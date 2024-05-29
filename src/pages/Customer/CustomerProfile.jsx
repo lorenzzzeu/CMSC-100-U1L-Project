@@ -157,21 +157,33 @@ const CustomerProfile = () => {
           <h3>History of Items Purchased</h3>
           <br/>
           <div className='product-container'>
-          {orderList.map((order) => 
-            <div className="product-cards" key={order._id}>
-              {order.ordStatus === 'Completed' && (
-                <>
-                  <div className='card-img'><img src={getProductDetails(order.ordProdId).image} alt={getProductDetails(order.ordProdId).name} /></div> 
-                  <h3>{getProductDetails(order.ordProdId).name}</h3>
-                  <p>{getProductDetails(order.ordProdId).type}</p>
-                  <p>Quantity: {order.ordQty}</p>
-                  <p>Price: ${getProductDetails(order.ordProdId).price}</p>
-                  <p>{order.ordDate.substring(0, 10)} | {order.time.substring(11, 19)}</p>
-                  <p>Transaction ID: {order.ordTransId}</p>
-                </>
-              )}
+          {orderList.length === 0 ? (
+            <div className='noItem'>
+            <p>No Purchased Yet.</p>
             </div>
-          )}
+          ) : (
+            <>
+            {orderList.map((order) => 
+              <div key={order._id}>
+                {order.ordStatus === 'Completed' && (
+                  <>
+                  <div className="product-cards" key={order._id}>
+                    <div className='card-img'><img src={getProductDetails(order.ordProdId).image} alt={getProductDetails(order.ordProdId).name} /></div> 
+                    <h3>{getProductDetails(order.ordProdId).name}</h3>
+                    <p>{getProductDetails(order.ordProdId).type}</p>
+                    <p>Quantity: {order.ordQty}</p>
+                    <p>Price: ${getProductDetails(order.ordProdId).price}</p>
+                    <p>{order.ordDate.substring(0, 10)} | {order.time.substring(11, 19)}</p>
+                    <p>Transaction ID: {order.ordTransId}</p>
+                  </div>
+                  </>
+                )}
+              </div>
+            )}
+            </>
+          )
+          
+          }
           </div>
         </div>
       </div>

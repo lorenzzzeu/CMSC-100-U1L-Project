@@ -3,7 +3,6 @@
 import React from 'react'; // Import the React library which is necessary to create React components
 import { Outlet } from 'react-router-dom'; // Import the Outlet component from react-router-dom which is used to render child routes
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMap } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faGithub, faInstagram, faLinkedin, faPinterest, faTiktok, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 // Define a functional component named Footer

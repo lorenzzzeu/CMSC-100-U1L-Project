@@ -22,6 +22,7 @@
     width: 150px;
     box-shadow: 0 1px 8px var(--shadow-1);
     margin: 5px;
+    cursor: pointer;
 }
 
 .editBtn:hover {

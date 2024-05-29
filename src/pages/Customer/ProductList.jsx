@@ -1,5 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+
 
   const ProductList = () => {
     const [prods, setProds] = useState([]);
@@ -115,7 +118,7 @@ import React, { useEffect, useState } from 'react';
         </div>
         <div className='sortProduct'>
           <div className='searchProduct'>
-            <label htmlFor='search'>SEARCH BY PRODUCT TYPES</label>
+            <FontAwesomeIcon icon={faMagnifyingGlass} size='1x' className='icon'/>
             <select name='search' onChange={handleTypeChange} value={selectedType}>
                 <option value="All">All</option>
                 <option value="Cereals">Cereals</option>

@@ -54,6 +54,7 @@
     align-items: center;
     flex-wrap: wrap;
     padding-top: 10px;
+    cursor: pointer;
 }
 
 .nav-item::after{
@@ -136,6 +137,7 @@
     height: 50px;
     width: 150px;
     margin-top: 20px;
+    cursor: pointer;
 }
 
 .loginBtn:hover{
