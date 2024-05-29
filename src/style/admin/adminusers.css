@@ -1,4 +1,4 @@
-.userTable {
+/* .userTable {
   width: 100%;
   border-collapse: collapse;
 }
@@ -15,4 +15,47 @@
   
 .userTable tr:nth-child(even) {
   background-color: #dddddd;
+} */
+
+
+.user-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.user-cards{
+  background-color: rgb(238, 237, 237);
+  box-shadow: 0 2px 8px var(--shadow-1);
+  border-radius: 10px;
+  width: 250px;
+  height: 300px;
+  margin: 10px;
+  padding: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.user-cards p {
+  font-size: smaller;
+  font-style: italic;
+  justify-content: left;
+}
+
+.user-img {
+  flex: 1;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.user-img img {
+  width: 150%;
+  object-fit: cover;  
 }

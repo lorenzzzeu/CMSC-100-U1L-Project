@@ -25,7 +25,7 @@ const UserManagement = () => {
         <h1>USER MANAGEMENT</h1>
         <p>Total registered users: {totalUsers}</p>
       </div>
-      <table className="userTable">
+      {/* <table className="userTable">
         <thead>
           <tr>
             <th>Email</th>
@@ -44,7 +44,18 @@ const UserManagement = () => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table> */}
+      <div className='user-container'>
+        {users.map((user) => (
+          <div className='user-cards' key={user._id}>
+            <div className='user-img'><img src='\src\img\user.png'/></div>
+            <h3>{user.firstName} {user.lastName}</h3>
+            <p>{user.email}</p>
+            <p>{user.userType}</p>
+          </div>
+        ))}
+
+      </div>
     </>
   );
 };
