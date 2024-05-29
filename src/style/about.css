@@ -4,9 +4,6 @@
     justify-content: start;
     align-items: flex-start;
     min-height: 100vh;
-    /* background-image: url('/src/img/farmers.png'); */
-    background-position: center;
-    background-size: cover;
 }
   
 p {

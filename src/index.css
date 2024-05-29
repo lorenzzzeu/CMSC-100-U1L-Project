@@ -31,13 +31,13 @@
   src: url("font/CircularStd-Black.otf") format("opentype");
 }
 
-*{
+* { 
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
   transition: all .3s ease-in-out;
-  font-family: "Circular";
-}
+  font-family: "Circular"; 
+} 
 
 html {
   height: 100%;

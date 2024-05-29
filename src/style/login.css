@@ -44,3 +44,7 @@ form > button {
     box-shadow: 0 4px 8px var(--shadow-1);
     cursor: pointer;
 }
+
+form input{
+    margin: 5px 0px;
+}

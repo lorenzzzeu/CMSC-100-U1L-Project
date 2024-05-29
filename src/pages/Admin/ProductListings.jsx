@@ -144,7 +144,7 @@ function ProductListings() {
             <input type="text" id="prodDesc" name="prodDesc" value={prodDesc} onChange={(e) => setDesc(e.target.value)} required placeholder="Product Description" />
             <input type="number" id="prodQuant" name="prodQuant" value={prodQuant} onChange={(e) => setQuant(e.target.value)} required placeholder="Product Quantity" />
             <input type="text" id="prodImage" name="prodImage" value={prodImage} onChange={(e) => setImage(e.target.value)} required placeholder="Product Image" />
-            <input type="submit" value={isEdit ? "UPDATE" : "SUBMIT"} id="submitButton" />
+            <button value={isEdit ? "UPDATE" : "SUBMIT"} className='logBtn' id="submitButton">SUBMIT</button>
           </form>
         </div>
         <div className='prod-list-products'>
