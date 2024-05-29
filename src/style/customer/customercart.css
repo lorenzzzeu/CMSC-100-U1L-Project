@@ -68,6 +68,11 @@
     flex-wrap: wrap;
 }
 
+.cartCard h3{
+    color: var(--hover);
+    font-family: Circular Bold;
+}
+
 .cartCard p{
     font-size: smaller;
     font-style: italic;
@@ -105,7 +110,7 @@
 }
 
 .removebtn{
-    background-color: var(--button3);
+    background-color: black;
     font-size: smaller;
     border-radius: 40px;
     border-style: none;
@@ -114,9 +119,10 @@
     box-shadow: 0 1px 8px var(--shadow-1);
     margin: 5px;
     cursor: pointer;
+    color: white;
 }
 
 .removebtn:hover {
-    background-color: black;
-    color: white;
+    background-color: var(--button3);
+    color: black;
 }

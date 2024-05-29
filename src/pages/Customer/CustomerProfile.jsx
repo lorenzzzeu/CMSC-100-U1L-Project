@@ -117,7 +117,7 @@ const CustomerProfile = () => {
       <div className='profile-container'>
         <div className='profile-details'>
           <img src='\src\img\user.png'/>
-          <p>{profile.firstName} {profile.lastName}</p>
+          <p className='name'>{profile.firstName} {profile.lastName}</p>
           <p className='email'>Email: {profile.email}</p>
           <button className='editBtn' onClick={handleEdit}>EDIT PROFILE</button>
           {edit && (
@@ -149,7 +149,7 @@ const CustomerProfile = () => {
                   placeholder='Enter new email'
                 />
               </div>
-              <button type='submit'>Update Profile</button>
+              <button className='updateBtn' type='submit'>UPDATE PROFILE</button>
             </form>
           )}
         </div>
@@ -181,9 +181,7 @@ const CustomerProfile = () => {
               </div>
             )}
             </>
-          )
-          
-          }
+          )}
           </div>
         </div>
       </div>

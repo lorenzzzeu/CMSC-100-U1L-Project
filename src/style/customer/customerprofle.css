@@ -13,8 +13,17 @@
     align-items: center;
 }
 
+.profile-details > p {
+    padding-top: 5px;
+}
+
+.profile-details > .name {
+    font-family: Circular Bold;
+}
+
 .editBtn{
-    background-color: var(--button2);
+    background-color: black;
+    color: white;
     font-size: smaller;
     border-radius: 40px;
     border-style: none;
@@ -26,14 +35,8 @@
 }
 
 .editBtn:hover {
-    background-color: black;
-    color: white;
-}
-
-.editBtn:vi{
-    background-color: white;
-    color: var(--hover);
-    border: 2px solid var(--hover);
+    background-color: var(--button2);
+    color: black;
 }
 
 .profile-details img {
@@ -53,8 +56,18 @@
     align-items: center;
 }
 
+.profile-history > h3 {
+    font-family: Circular Bold;
+    font-size: 2em;
+}
+
 .edit-profile {
     flex: 1;
     padding: 0px 10px;
     width: 100%;
+}
+
+.updateBtn:hover {
+    background-color: var(--hover);
+    color: white;
 }

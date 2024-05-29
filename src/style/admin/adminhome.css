@@ -38,7 +38,6 @@
     justify-content: space-between;
     flex-grow: 1;
     padding-left: 50px;
-    font-weight: bold;
 }
 
 .logo{
@@ -54,31 +53,19 @@
     text-shadow: 2px 2px 10px black;
 }
 
-.navUser > button {
-    background-color: black;
-    color: white;
-    font-size: medium;
-    font-weight: bold;
-    border-radius: 40px;
-    border-style: none;
-    height: 30px;
-    width: 100px;
-    box-shadow: 0 4px 8px var(--shadow-1);
-}
-
 .navAdmin a:hover{
     font-size: larger;
-}
-
-.navUser > button:hover{
-    background-color: var(--button2);
-    color: black;
 }
 
 .titleAdmin{
     text-align: center;
     font-size: x-large;
     padding: 10px;
+}
+
+.titleAdmin > h1 {
+    font-family: Circular Bold;
+    color: var(--hover);
 }
 
 hr {

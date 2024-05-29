@@ -12,7 +12,7 @@
 }
 
 .navUser > button {
-    background-color: var(--button2);
+    background-color: black;
     color: white;
     font-size: medium;
     border-radius: 40px;
@@ -24,7 +24,7 @@
 }
 
 .navUser > button:hover{
-    background-color: var(--hover);
+    background-color: var(--button3);
     color: black;
 }
 
@@ -37,6 +37,11 @@
     text-align: center;
     font-size: x-large;
     padding: 10px;
+}
+
+.titleCustomer > h1 {
+    font-family: Circular Bold;
+    color: var(--hover);
 }
 
 /* for cards */
