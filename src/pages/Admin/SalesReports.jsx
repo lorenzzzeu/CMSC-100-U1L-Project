@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { faFilter, faSort } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SalesReports = () => {
   const [salesData, setSalesData] = useState([]);
@@ -131,53 +133,35 @@ const SalesReports = () => {
 
   return (
     <>
-      <div className='titleAdmin'>
-        <h1>SALES REPORT</h1>
+      <div className='titleAdmin order'>
+        <h1>You made ${calculateOverallTotal()} of profit!</h1>
       </div>
       <div className='sortSales'>
         <div className='filterAdmin'>
-          <p>FILTER BY</p>
+          <FontAwesomeIcon icon={faSort} size='1x' className='icon'/>
           <button onClick={() => filterSalesByTime('week')}>Sales This Week</button>
           <button onClick={() => filterSalesByTime('month')}>Sales This Month</button>
           <button onClick={() => filterSalesByTime('year')}>Sales This Year</button>
         </div>
         <div className='sortAdmin'>
-          <p>SORT BY</p>
+          <FontAwesomeIcon icon={faFilter} size='1x' className='icon'/>
           <button onClick={() => sortBy('quantity')}>Quantity</button>
           <button onClick={() => sortBy('orderDate')}>Order Date</button>
         </div>
       </div>
-      <table className='salesTable'>
-        <thead>
-          <tr>
-            <th>Order ID</th>
-            <th>Product ID</th>
-            <th>Product Name</th>
-            <th>Quantity</th>
-            <th>Order Date</th>
-            <th>Time</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div className='report-container'>
           {filteredSalesData.map(order => (
-            <tr key={order._id}>
-              <td>{order._id}</td>
-              <td>{order.ordProdId}</td>
-              <td>{findProductName(order.ordProdId)}</td>
-              <td>{order.ordQty}</td>
-              <td>{order.ordDate.substring(0, 10)}</td>
-              <td>{order.time.substring(11, 19)}</td>
-              <td>{calculateOrderTotal(order._id)}</td>
-              
-            </tr>
+            <div className='report-cards' key={order._id}>
+              <div className='prodName'>{findProductName(order.ordProdId)}</div>
+              <div className='id'>Trans. ID: {order._id}</div>
+              <div className='id'>Prod. ID: {order.ordProdId}</div>
+              <div>{order.ordDate.substring(0, 10)}</div>
+              <div>{order.time.substring(11, 19)}</div>
+              <div className='prodName'>{order.ordQty} qty</div>
+              <div>${calculateOrderTotal(order._id)}</div>
+            </div>
           ))}
-          <tr>
-            <td colSpan="6" className="overallTotal">Overall Total</td>
-            <td>{calculateOverallTotal()}</td>
-          </tr>
-        </tbody>
-      </table>
+      </div>
     </>
   );
 };

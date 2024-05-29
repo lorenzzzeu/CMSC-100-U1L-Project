@@ -24,8 +24,8 @@
 }
 
 .navUser > button:hover{
-    background-color: var(--button3);
-    color: black;
+    background-color: var(--hover);
+    color: white;
 }
 
 .profile:hover{

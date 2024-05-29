@@ -87,10 +87,9 @@ const OrderFulfillment = () => {
       </div>
       <div className='order-container'>
         {orders.map(order => (
-          <>
           <div className='order-cards' key={order._id}>
             <div className='prodName'>{getProductName(order.ordProdId)} | {getProductType(order.ordProdId)}</div>
-            <div>{order.ordQty}</div>
+            <div className='prodName'>{order.ordQty} qty</div>
             <div>Trans. ID: {order.ordTransId}</div>
             <div>Prod. ID: {order.ordProdId}</div>
             <div>{order.ordStatus}</div>
@@ -108,7 +107,6 @@ const OrderFulfillment = () => {
               )
             }
           </div>
-          </>
         ))}
       </div>
     </>

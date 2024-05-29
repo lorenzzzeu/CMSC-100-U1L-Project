@@ -1,22 +1,36 @@
-.salesTable {
-  width: 100%;
-  border-collapse: collapse;
+.report-cards{
+  background-color: rgb(238, 237, 237);
+  box-shadow: 0 2px 8px var(--shadow-1);
+  border-radius: 10px;
+  height: auto;
+  margin: 5px 10px;
+  padding: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
-.salesTable th, .salesTable td {
-  border: 1px solid #dddddd;
-  padding: 8px;
+.report-cards > .prodName {
+  font-style: normal;
+  font-family: Circular Bold;
 }
 
-.salesTable th {
-  text-align: left;
-  background-color: #f2f2f2;
+.report-cards > div {
+  font-size: smaller;
+  font-style: italic;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  flex: 1;
 }
 
-.salesTable tr:nth-child(even) {
-  background-color: #dddddd;
+.report-cards > .id {
+  flex: 2;
 }
-
 .sortSales{
   display: flex;
   justify-content: center;
@@ -43,6 +57,7 @@
   width: 120px;
   box-shadow: 0 2px 8px var(--shadow-1);
   margin: 5px;
+  cursor: pointer;
 }
 
 .filterAdmin > button {
