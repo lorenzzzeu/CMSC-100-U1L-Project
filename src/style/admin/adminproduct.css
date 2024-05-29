@@ -26,27 +26,6 @@
     padding: 0px 10px;
 }
 
-form input{
-    margin: 10px 0px;
-}
-
-form input[type='submit'] {
-    background-color: black;
-    font-weight: bold;
-    border-radius: 40px;
-    border-style: none;
-    padding: 15px;
-    width: 100%;
-    color: white;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 8px var(--shadow-1);
-}
-
-form input[type='submit']:hover{
-    background-color: var(--hover);
-    color: black;
-}
-
 .btn {
     display: flex;
     justify-content: center;
@@ -55,7 +34,6 @@ form input[type='submit']:hover{
 }
 
 .editProd, .delProd{
-    background-color: var(--button3);
     font-size: smaller;
     border-radius: 40px;
     border-style: none;
@@ -63,9 +41,22 @@ form input[type='submit']:hover{
     width: 75px;
     box-shadow: 0 1px 8px var(--shadow-1);
     margin: 5px;
+    cursor: pointer;
+}
+
+.editProd {
+    background-color: var(--button1);
+}
+
+.delProd {
+    background-color: rgb(199, 198, 198);
+}
+
+.delProd:hover {
+    background-color: rgb(184, 184, 184);
 }
 
 .editProd:hover{
     background-color: var(--hover);
-    color: black;
+    color: white;
 }

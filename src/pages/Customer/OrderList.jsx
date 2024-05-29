@@ -93,25 +93,33 @@ const OrderList = () => {
       <h1>ORDER LIST</h1>
     </div>
     <div>
-      <div className='order'>
-        {orderList.map((order) => (
-          order.ordStatus === 'Completed' ? (<div></div>):
-            (
-              <div className='orderCard' key={order._id}>
-                <div className='card-img'><img src={findProductImg(order.ordProdId)}/></div>
-                <div className='prodName'>{findProductName(order.ordProdId)}</div>
-                <div>{order.ordDate.substring(0, 10)}</div>
-                <div>{order.time.substring(11, 19)}</div>
-                <div className='status'>{order.ordStatus}</div>
-                {order.ordStatus === 'Pending' ? (
-                  <button onClick={() => handleCancelOrder(order.ordTransId)}>CANCEL</button>
-                ): (
-                  <div></div>
-                )}
-              </div>
-            )
-        ))}
-      </div>
+      {orderList.length === 0 ? (
+        <div className='noItem'>
+        <p>No Orders Yet.</p>
+        </div>
+      ) : (
+        <>
+        <div className='order'>
+          {orderList.map((order) => (
+            order.ordStatus === 'Completed' ? (<div></div>):
+              (
+                <div className='orderCard' key={order._id}>
+                  <div className='card-img'><img src={findProductImg(order.ordProdId)}/></div>
+                  <h3>{findProductName(order.ordProdId)}</h3>
+                  <p>{order.ordDate.substring(0, 10)}</p>
+                  <p>{order.time.substring(11, 19)}</p>
+                  <p className='status'>{order.ordStatus}</p>
+                  {order.ordStatus === 'Pending' ? (
+                    <button onClick={() => handleCancelOrder(order.ordTransId)}>CANCEL</button>
+                  ): (
+                    <div></div>
+                  )}
+                </div>
+              )
+          ))}
+        </div>
+        </>
+      )}
     </div>
     </>
   );

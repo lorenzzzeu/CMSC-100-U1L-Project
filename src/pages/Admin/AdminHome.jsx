@@ -25,10 +25,8 @@ const AdminHome = () => {
 
   return (
     <>
-    <div className='headerAdmin'></div>
     <div className='titleCustomer'>
-        <h1>WELCOME TO</h1>
-        <h1>The Farm-to-Table E-Commerce Website</h1>
+        <h1>Manage Your Website</h1>
       </div>
     <div className='admin-container'>
         <div className='admin-cards'>

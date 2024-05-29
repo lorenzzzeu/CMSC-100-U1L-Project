@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFilter, faSort } from '@fortawesome/free-solid-svg-icons';
 
 function ProductListings() {
   const [prodName, setprodName] = useState('');
@@ -123,7 +125,6 @@ function ProductListings() {
 
   return (
     <>
-      <div className='headerAdmin'></div>
       <div className='titleAdmin'>
         <h1>PRODUCT LISTINGS</h1>
       </div>
@@ -143,13 +144,13 @@ function ProductListings() {
             <input type="text" id="prodDesc" name="prodDesc" value={prodDesc} onChange={(e) => setDesc(e.target.value)} required placeholder="Product Description" />
             <input type="number" id="prodQuant" name="prodQuant" value={prodQuant} onChange={(e) => setQuant(e.target.value)} required placeholder="Product Quantity" />
             <input type="text" id="prodImage" name="prodImage" value={prodImage} onChange={(e) => setImage(e.target.value)} required placeholder="Product Image" />
-            <input type="submit" value={isEdit ? "Update" : "Submit"} id="submitButton" />
+            <button value={isEdit ? "UPDATE" : "SUBMIT"} className='logBtn' id="submitButton">SUBMIT</button>
           </form>
         </div>
         <div className='prod-list-products'>
         <div className='sortProduct'>
             <div className='searchProduct'>
-              <label htmlFor='search'>SEARCH BY PRODUCT TYPES</label>
+              <FontAwesomeIcon icon={faFilter} size='1x' className='icon'/>
               <select name='search' onChange={handleTypeChange} value={selectedType}>
                   <option value="All">All</option>
                   <option value="Cereals">Cereals</option>
@@ -159,7 +160,7 @@ function ProductListings() {
               </select>
             </div>
             <div className='sorting'>
-              <p>SORT BY</p>
+              <FontAwesomeIcon icon={faSort} size='1x' className='icon'/>  
               <button onClick={() => sortBy('name')}>NAME</button>
               <button onClick={() => sortBy('price')}>PRICE</button>
               <button onClick={() => sortBy('quantity')}>QUANTITY</button>

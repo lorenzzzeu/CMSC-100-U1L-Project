@@ -26,13 +26,18 @@
   src: url("font/Satoshi-Medium.otf") format("opentype");
 }
 
-*{
+@font-face {
+  font-family: "Circular Bold";
+  src: url("font/CircularStd-Black.otf") format("opentype");
+}
+
+* { 
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
   transition: all .3s ease-in-out;
-  font-family: "Circular";
-}
+  font-family: "Circular"; 
+} 
 
 html {
   height: 100%;
@@ -40,7 +45,7 @@ html {
   --button2: #DBD468;
   --button3: #E68A8C;
   --background-color: #E7E0C4;
-  --shadow-1: rgba(112, 112, 112, 0.704);
+  --shadow-1: rgba(152, 152, 152, 0.704);
   --hover: #407F3E;
 }
 

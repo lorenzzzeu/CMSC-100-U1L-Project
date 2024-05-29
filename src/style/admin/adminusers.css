@@ -1,18 +1,125 @@
-.userTable {
-  width: 100%;
-  border-collapse: collapse;
+.user-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
-  
-.userTable th, .userTable td {
-  border: 1px solid #dddddd;
-  padding: 8px;
+
+#blur.active{
+  filter: blur(5px);
+  transform: 0.5s;
 }
-  
-.userTable th {
-  text-align: left;
-  background-color: var(--button1);
+
+.user-cards{
+  background-color: rgb(238, 237, 237);
+  box-shadow: 0 2px 8px var(--shadow-1);
+  border-radius: 10px;
+  width: 250px;
+  height: 80px;
+  margin: 10px;
+  padding: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
 }
-  
-.userTable tr:nth-child(even) {
-  background-color: #dddddd;
+
+.user-cards:hover{
+  cursor: pointer;
+}
+
+.user-cards p {
+  font-size: smaller;
+  font-style: italic;
+  justify-content: center;
+}
+
+.user-cards h3 {
+  font-family: Circular Bold;
+  color: var(--hover);
+}
+
+.user-img {
+  flex: 1;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.user-img img {
+  width: 150%;
+  object-fit: cover;  
+}
+
+.popup-cards{
+  background-color: rgb(238, 237, 237);
+  box-shadow: 0 2px 8px var(--shadow-1);
+  border-radius: 10px;
+  width: 250px;
+  height: 300px;
+  margin: 10px;
+  padding: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.popup-cards h3 {
+  color: var(--hover);
+  font-family: Circular Bold;
+}
+
+.popup-cards p {
+  font-size: smaller;
+  font-style: italic;
+  justify-content: left;
+}
+
+#popup {
+  position:fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 450px;
+  padding: 15px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, .30);
+  background-color: white;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+
+.popup-container {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+}
+
+#popup.active{
+  visibility: visible;
+  opacity: 1;
+  transition: 0.5s;
+}
+
+#popup > h3 {
+  font-family: Circular Bold;
+  color: var(--hover);
+  text-align: center;
+  font-size: 2em;
+}
+
+#popup > button {
+  background-color: white;
+  color: rgb(54, 54, 54);
+  font-size: medium;
+  padding: 0px 6px;
+  border: none;
 }

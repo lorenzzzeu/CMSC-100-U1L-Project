@@ -1,5 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFilter, faSort } from '@fortawesome/free-solid-svg-icons';
+
 
   const ProductList = () => {
     const [prods, setProds] = useState([]);
@@ -115,7 +118,7 @@ import React, { useEffect, useState } from 'react';
         </div>
         <div className='sortProduct'>
           <div className='searchProduct'>
-            <label htmlFor='search'>SEARCH BY PRODUCT TYPES</label>
+            <FontAwesomeIcon icon={faFilter} size='1x' className='icon'/>
             <select name='search' onChange={handleTypeChange} value={selectedType}>
                 <option value="All">All</option>
                 <option value="Cereals">Cereals</option>
@@ -125,7 +128,7 @@ import React, { useEffect, useState } from 'react';
             </select>
           </div>
           <div className='sorting'>
-            <p>SORT BY</p>
+            <FontAwesomeIcon icon={faSort} size='1x' className='icon'/>
             <button onClick={() => sortBy('name')}>NAME</button>
             <button onClick={() => sortBy('price')}>PRICE</button>
             <button onClick={() => sortBy('quantity')}>QUANTITY</button>

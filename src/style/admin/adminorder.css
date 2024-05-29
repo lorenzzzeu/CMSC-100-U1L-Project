@@ -1,20 +1,31 @@
-.orderTable {
-  width: 100%;
-  border-collapse: collapse;
+.order-cards{
+  background-color: rgb(238, 237, 237);
+  box-shadow: 0 2px 8px var(--shadow-1);
+  border-radius: 10px;
+  height: auto;
+  margin: 5px 10px;
+  padding: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
-.orderTable th, .orderTable td {
-  border: 1px solid #dddddd;
-  padding: 8px;
+.order-cards > .prodName {
+  font-style: normal;
+  font-family: Circular Bold;
 }
 
-.orderTable th {
-  text-align: left;
-  background-color: var(--button1);
-}
-
-.orderTable tr:nth-child(even) {
-  background-color: #dddddd;
+.order-cards > div {
+  font-size: smaller;
+  font-style: italic;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  flex: 1;
 }
 
 .confirmBtn{
@@ -23,10 +34,10 @@
   font-size: smaller;
   border-radius: 40px;
   border-style: none;
-  height: 30px;
   width: 100px;
+  height: 30px;
   box-shadow: 0 1px 8px var(--shadow-1);
-  margin: 5px;
+  cursor: pointer;
 }
 
 .confirmBtn:hover {

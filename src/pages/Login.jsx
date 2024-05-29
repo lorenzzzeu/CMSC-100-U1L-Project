@@ -79,7 +79,7 @@ function Login() {
                 placeholder='Password'
               />
             </div>
-            <button type="submit">LOG IN</button>
+            <button className='logBtn' type="submit">LOG IN</button>
           </form>
           <p className='clickRegister'>
             {/* Link to registration page */}

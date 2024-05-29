@@ -117,7 +117,7 @@ const CustomerProfile = () => {
       <div className='profile-container'>
         <div className='profile-details'>
           <img src='\src\img\user.png'/>
-          <p>{profile.firstName} {profile.lastName}</p>
+          <p className='name'>{profile.firstName} {profile.lastName}</p>
           <p className='email'>Email: {profile.email}</p>
           <button className='editBtn' onClick={handleEdit}>EDIT PROFILE</button>
           {edit && (
@@ -149,41 +149,38 @@ const CustomerProfile = () => {
                   placeholder='Enter new email'
                 />
               </div>
-              <button type='submit'>Update Profile</button>
+              <button className='updateBtn' type='submit'>UPDATE PROFILE</button>
             </form>
           )}
         </div>
         <div className='profile-history'>
           <h3>History of Items Purchased</h3>
           <br/>
-          <div className='orderList'>
-          {orderList.map((order) => 
-            <div className="order-cards" key={order._id}>
-              {order.ordStatus === 'Completed' && (
-                <>
-                  <div>
-                    <img src={getProductDetails(order.ordProdId).image} alt={getProductDetails(order.ordProdId).name} />
-                  </div>
-                  <div className="prod-details">
+          <div className='product-container'>
+          {orderList.length === 0 ? (
+            <div className='noItem'>
+            <p>No Purchased Yet.</p>
+            </div>
+          ) : (
+            <>
+            {orderList.map((order) => 
+              <div key={order._id}>
+                {order.ordStatus === 'Completed' && (
+                  <>
+                  <div className="product-cards" key={order._id}>
+                    <div className='card-img'><img src={getProductDetails(order.ordProdId).image} alt={getProductDetails(order.ordProdId).name} /></div> 
                     <h3>{getProductDetails(order.ordProdId).name}</h3>
                     <p>{getProductDetails(order.ordProdId).type}</p>
-                  </div>
-                  <div className="prod-details">
-                    <p>{order.ordDate.substring(0, 10)}</p>
-                    <p>{order.time.substring(11, 19)}</p>
-                  </div>
-                  <div className="prod-details">
+                    <p>Quantity: {order.ordQty}</p>
                     <p>Price: ${getProductDetails(order.ordProdId).price}</p>
+                    <p>{order.ordDate.substring(0, 10)} | {order.time.substring(11, 19)}</p>
+                    <p>Transaction ID: {order.ordTransId}</p>
                   </div>
-                  <div className="prod-details">
-                    <p>{order.ordTransId}</p>
-                  </div>
-                  <div className="prod-details">
-                    <p>{order.ordQty}</p>
-                  </div>
-                </>
-              )}
-            </div>
+                  </>
+                )}
+              </div>
+            )}
+            </>
           )}
           </div>
         </div>

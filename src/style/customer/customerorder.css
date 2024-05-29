@@ -33,6 +33,7 @@
     margin: 5px;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .orderCard button:hover {
@@ -40,9 +41,15 @@
     color: white;
 }
 
-.prodName{
-    font-size: large;
-    font-weight: bold;
+.orderCard h3{
+    color: var(--hover);
+    font-family: Circular Bold;
+}
+
+.orderCard p {
+    font-size: smaller;
+    font-style: italic;
+    justify-content: left;
 }
 
 .status{

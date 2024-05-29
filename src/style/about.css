@@ -100,7 +100,3 @@ p {
     list-style: none;
     font-style: italic;
 }
-
-.about-section:hover > .icon{
-    transform: scale(1.1);
-}

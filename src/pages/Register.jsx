@@ -35,7 +35,7 @@ function Register() {
     // Sending a POST request to the backend to register a new user
     axios.post('http://localhost:3001/register', { firstName, lastName, email, password })
       .then(() => {
-        alert('Successful'); // Notify the user of successful registration (for debugging)
+        // alert('Successful'); // Notify the user of successful registration (for debugging)
         // Clear the form input fields
         setFirstName('');
         setLastName('');
@@ -103,7 +103,7 @@ function Register() {
               />
             </div>
             {/* Submit button for the form */}
-            <button type="submit">REGISTER</button>
+            <button className='logBtn' type="submit">REGISTER</button>
           </form>
           <p>
             {/* Link to navigate to the login page if the user already has an account */}

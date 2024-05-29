@@ -1,7 +1,6 @@
 footer{
     display: flex;
-    flex-direction: column;
-    background-color: var(--button1);
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -12,4 +11,29 @@ footer p{
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+hr {
+    border: 0.1px solid var(--shadow-1);
+}
+
+.logoFooter {
+    display: flex;
+    flex-direction: row;
+    flex: 2;
+    justify-content: start;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.logoFooter > p {
+    padding-left: 30px;
+}
+
+.socials {
+    flex: 1;
+}
+
+.socials > .icon {
+    padding: 0px 10px;
 }
