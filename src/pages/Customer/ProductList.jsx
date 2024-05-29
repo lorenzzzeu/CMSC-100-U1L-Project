@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 
   const ProductList = () => {
@@ -128,7 +128,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
             </select>
           </div>
           <div className='sorting'>
-            <p>SORT BY</p>
+            <FontAwesomeIcon icon={faFilter} size='1x' className='icon'/>
             <button onClick={() => sortBy('name')}>NAME</button>
             <button onClick={() => sortBy('price')}>PRICE</button>
             <button onClick={() => sortBy('quantity')}>QUANTITY</button>

@@ -131,7 +131,6 @@ const SalesReports = () => {
 
   return (
     <>
-      <div className='headerAdmin'></div>
       <div className='titleAdmin'>
         <h1>SALES REPORT</h1>
       </div>

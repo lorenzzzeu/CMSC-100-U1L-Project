@@ -123,7 +123,6 @@ function ProductListings() {
 
   return (
     <>
-      <div className='headerAdmin'></div>
       <div className='titleAdmin'>
         <h1>PRODUCT LISTINGS</h1>
       </div>

@@ -82,7 +82,6 @@ const OrderFulfillment = () => {
 
   return (
     <>
-      <div className='headerAdmin'></div>
       <div className='titleAdmin'>
         <h1>ORDER FULFILLMENT</h1>
       </div>
