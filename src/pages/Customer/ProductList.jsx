@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilter, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faSort } from '@fortawesome/free-solid-svg-icons';
 
 
   const ProductList = () => {
@@ -118,7 +118,7 @@ import { faFilter, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
         </div>
         <div className='sortProduct'>
           <div className='searchProduct'>
-            <FontAwesomeIcon icon={faMagnifyingGlass} size='1x' className='icon'/>
+            <FontAwesomeIcon icon={faFilter} size='1x' className='icon'/>
             <select name='search' onChange={handleTypeChange} value={selectedType}>
                 <option value="All">All</option>
                 <option value="Cereals">Cereals</option>
@@ -128,7 +128,7 @@ import { faFilter, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
             </select>
           </div>
           <div className='sorting'>
-            <FontAwesomeIcon icon={faFilter} size='1x' className='icon'/>
+            <FontAwesomeIcon icon={faSort} size='1x' className='icon'/>
             <button onClick={() => sortBy('name')}>NAME</button>
             <button onClick={() => sortBy('price')}>PRICE</button>
             <button onClick={() => sortBy('quantity')}>QUANTITY</button>

@@ -106,7 +106,7 @@ const SalesReports = () => {
   };
 
 
-  const filterSalesByTime = (timeFrame) => {
+  const filterSalesByTime = (time) => {
     const today = new Date();
     let startDate;
 
@@ -167,7 +167,7 @@ const SalesReports = () => {
               <td>{findProductName(order.ordProdId)}</td>
               <td>{order.ordQty}</td>
               <td>{order.ordDate.substring(0, 10)}</td>
-              <td>{order.time.substring(10)}</td>
+              <td>{order.time.substring(11, 19)}</td>
               <td>{calculateOrderTotal(order._id)}</td>
               
             </tr>
