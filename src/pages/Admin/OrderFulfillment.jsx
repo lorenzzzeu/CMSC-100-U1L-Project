@@ -85,45 +85,32 @@ const OrderFulfillment = () => {
       <div className='titleAdmin'>
         <h1>ORDER FULFILLMENT</h1>
       </div>
-      <table className='orderTable'>
-        <thead>
-          <tr>
-            <th>Transaction ID</th>
-            <th>Product ID</th>
-            <th>Product Name</th>
-            <th>Product Type</th>
-            <th>Quantity</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {orders.map(order => (
-            <tr key={order._id}>
-              <td>{order.ordTransId}</td>
-              <td>{order.ordProdId}</td>
-              <td>{getProductName(order.ordProdId)}</td>
-              <td>{getProductType(order.ordProdId)}</td>
-              <td>{order.ordQty}</td>
-              <td>{order.ordStatus}</td>
-              {
-                order.ordStatus === 'Pending' ? (
-                  <td>
-                    <button className='confirmBtn' onClick={() => handleConfirmOrder(order._id)}>Confirm</button>
-                    <button className='confirmBtn' onClick={() => handleRejectOrder(order._id)}>Reject</button>
-                  </td>
-                ) : (
-                  order.ordStatus === 'Completed' || order.ordStatus === 'Rejected' ? (<div></div>) : (
-                    <td>
-                      <button className='confirmBtn' onClick={() => handleCompleteOrder(order._id)}>Delivered</button>
-                    </td>
-                  )
+      <div className='order-container'>
+        {orders.map(order => (
+          <>
+          <div className='order-cards' key={order._id}>
+            <div className='prodName'>{getProductName(order.ordProdId)} | {getProductType(order.ordProdId)}</div>
+            <div>{order.ordQty}</div>
+            <div>Trans. ID: {order.ordTransId}</div>
+            <div>Prod. ID: {order.ordProdId}</div>
+            <div>{order.ordStatus}</div>
+            {order.ordStatus === 'Pending' ? (
+                <div>
+                  <button className='confirmBtn' onClick={() => handleConfirmOrder(order._id)}>Confirm</button>
+                  <button className='confirmBtn' onClick={() => handleRejectOrder(order._id)}>Reject</button>
+                </div>
+              ) : (
+                order.ordStatus === 'Completed' || order.ordStatus === 'Rejected' ? (<div></div>) : (
+                  <div>
+                    <button className='confirmBtn' onClick={() => handleCompleteOrder(order._id)}>Delivered</button>
+                  </div>
                 )
-              }
-            </tr>
-          ))}
-        </tbody>
-      </table>
+              )
+            }
+          </div>
+          </>
+        ))}
+      </div>
     </>
   );
 };
