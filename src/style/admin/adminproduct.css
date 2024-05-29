@@ -40,6 +40,7 @@ form input[type='submit'] {
     color: white;
     margin-bottom: 10px;
     box-shadow: 0 4px 8px var(--shadow-1);
+    cursor: pointer;
 }
 
 form input[type='submit']:hover{
@@ -62,6 +63,7 @@ form input[type='submit']:hover{
     width: 75px;
     box-shadow: 0 1px 8px var(--shadow-1);
     margin: 5px;
+    cursor: pointer;
 }
 
 .editProd {

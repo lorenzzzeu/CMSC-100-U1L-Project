@@ -58,7 +58,7 @@
   background-color: rgb(238, 237, 237);
   box-shadow: 0 2px 8px var(--shadow-1);
   border-radius: 10px;
-  /* width: 250px; */
+  width: 250px;
   height: 300px;
   margin: 10px;
   padding: 15px;
@@ -86,15 +86,21 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 600px;
-  height: 500px;
+  height: 450px;
   padding: 15px;
   box-shadow: 0 5px 30px rgba(0, 0, 0, .30);
-  overflow-y: scroll;
+  
   background-color: white;
   visibility: hidden;
   opacity: 0;
   transition: 0.5s;
   border-radius: 10px;
+}
+
+.popup-container {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
 }
 
 #popup.active{

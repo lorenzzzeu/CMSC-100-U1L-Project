@@ -104,7 +104,8 @@ const UserManagement = () => {
       <div id='popup'>
         <button onClick={toggle}>x</button>
         <h3>Transaction History </h3>
-        {orders.map(order => (
+        <div className='popup-container'>
+         {orders.map(order => (
           <div key={order._id}>
             {order.email === selectedUser && (
               <div className="popup-cards">
@@ -119,7 +120,8 @@ const UserManagement = () => {
               </div>
             )}
           </div>
-        ))}
+        ))} 
+        </div>
       </div>
     </>
   );
