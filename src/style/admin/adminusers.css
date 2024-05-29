@@ -87,7 +87,7 @@
   transform: translate(-50%, -50%);
   width: 600px;
   height: 500px;
-  padding: 50px;
+  padding: 15px;
   box-shadow: 0 5px 30px rgba(0, 0, 0, .30);
   overflow-y: scroll;
   background-color: white;
@@ -108,4 +108,12 @@
   color: var(--hover);
   text-align: center;
   font-size: 2em;
+}
+
+#popup > button {
+  background-color: white;
+  color: rgb(54, 54, 54);
+  font-size: medium;
+  padding: 0px 6px;
+  border: none;
 }

@@ -69,10 +69,14 @@ const UserManagement = () => {
 
   const handleUserClick = (userId) => {
     setSelectedUser(userId);
-    var blur = document.getElementById('blur');
-    blur.classList.toggle('active');
-    var popup = document.getElementById('popup');
-    popup.classList.toggle('active');
+    document.getElementById('blur').classList.toggle('active');
+    document.getElementById('popup').classList.toggle('active');
+  }
+
+  const toggle = () => {
+    document.getElementById('popup').classList.toggle('active');
+    document.getElementById('blur').classList.toggle('active');
+
   }
 
   return (
@@ -98,6 +102,7 @@ const UserManagement = () => {
       </div>
     </div>
       <div id='popup'>
+        <button onClick={toggle}>x</button>
         <h3>Transaction History </h3>
         {orders.map(order => (
           <div key={order._id}>
