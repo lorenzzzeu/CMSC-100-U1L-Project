@@ -11,6 +11,7 @@ function Login() {
   // Declare state variables for email and password, and a navigation hook
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
   // useEffect hook to fetch users when the component mounts
@@ -46,7 +47,11 @@ function Login() {
       window.location.reload();
       localStorage.setItem('token', token);
     } catch (error) {
-      console.log('Unable to log in', error);
+      if (error.response && error.response.data && error.response.data.error) {
+        setErrorMessage(error.response.data.error);
+      } else {
+        setErrorMessage('Unable to log in user'); // Fallback error message
+      }
     }
   };
 
@@ -61,6 +66,8 @@ function Login() {
           <img className='logo-container' src='src/img/100-logo.png' />
           <h2>Log In To Your Account</h2>
           <form onSubmit={handleSubmit}>
+            {/* Conditionally render error message */}
+            {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
             <div>
               <input
                 type="email"

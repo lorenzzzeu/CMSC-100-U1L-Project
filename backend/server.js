@@ -8,6 +8,7 @@ const User = require('./model/userSchema')
 const Product = require('./model/productSchema')
 const Order = require('./model/orderSchema')
 const { v4: uuidv4 } = require('uuid')
+const validator = require('validator');
 require('dotenv').config()
 
 // Connect to express
@@ -36,15 +37,25 @@ app.use(cors())
 // Post
 app.post('/register', async (req, res) => {
     try {
-        const { firstName, lastName, email, password } = req.body
-        const hashedPassword = await bcrypt.hash(password, 10)
-        const newUser = new User({ firstName, lastName, email, password:hashedPassword })
-        await newUser.save()
-        res.status(201).json({ message: 'User created successfully'})
-    } catch(error) {
-        res.status(500).json({ server: 'Error signing up' })
+        const { firstName, lastName, email, password } = req.body;
+        if (!validator.isEmail(email)) {
+            return res.status(400).json({ error: 'Invalid email format' });
+        }
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(401).json({ error: 'Email already exists' });
+        }
+        if(password.length < 8){
+            return res.status(401).json({ error: 'Password must be at least 8 characters'})
+        }
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const newUser = new User({ firstName, lastName, email, password: hashedPassword });
+        await newUser.save();
+        res.status(201).json({ message: 'User created successfully' });
+    } catch (error) {
+        res.status(500).json({ error: 'Error signing up' });
     }
-})
+});
 
 // Get
 app.get('/register', async (req, res) => {

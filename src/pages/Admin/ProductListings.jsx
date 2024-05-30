@@ -78,7 +78,7 @@ function ProductListings() {
         });
     } else {
       // Add a new product
-      axios.post('http://localhost:3001/product-list', product)
+      axios.post('http://localhost:3001/admin-page/product-listings', product)
         .then(() => {
           alert('Product added successfully');
           clearForm();

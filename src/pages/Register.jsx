@@ -12,6 +12,7 @@ function Register() {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   // useNavigate hook for programmatic navigation
   const navigate = useNavigate();
@@ -42,10 +43,14 @@ function Register() {
         setEmail('');
         setPassword('');
         fetchUsers(); // Fetch the updated list of users
-        navigate('/'); // Navigate to the home page
+        navigate('/login'); // Navigate to the home page
       })
       .catch((error) => {
-        console.log('Unable to register user'); // Log an error message if registration fails
+        if (error.response && error.response.data && error.response.data.error) {
+          setErrorMessage(error.response.data.error);
+        } else {
+          setErrorMessage('Unable to register user'); // Fallback error message
+        }
       });
   };
 
@@ -62,6 +67,8 @@ function Register() {
           <h2>Register Account</h2>
           {/* Form to handle user registration */}
           <form onSubmit={handleSubmit}>
+            {/* Conditionally render error message */}
+            {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
             <div>
               {/* Input field for first name */}
               <input
