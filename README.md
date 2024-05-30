@@ -1,9 +1,9 @@
 # Farm-to-table
 **Group Members:**
-Abelarde, Dominic
-Anareta, Nadine
-Gabriel, Lorenz
-Gonzales, Paula Victoria
+Abelarde, Dominic <br/>
+Anareta, Nadine <br/>
+Gabriel, Lorenz <br/>
+Gonzales, Paula Victoria <br/>
 
 **Section:**
 U-1L
@@ -69,10 +69,10 @@ This project is a web application developed using the MERN stack (MongoDB, Expre
 - Backend: Node.js with Express.js
 - Database: MongoDB (using MongoDB Compass (Atlas) for local development)
 
-## USAGE GUIDELINES
+## Usage Guidelines
 1. **Home**
    - You may explore the Homepage and learn more about the website.
-   
+
 2. **Authentication and Authorization**
    - For new customers, they have to sign up by inputting their details required in the screen (email, first name, last name, and password).
    - After signing up or for existing customers, the user will need to log in using the details they inputted.
@@ -114,7 +114,7 @@ This project is a web application developed using the MERN stack (MongoDB, Expre
 5. **Log Out**
   - The users/admins can log out anytime and will still see their previous interactions and transactions.
 
-## HOW TO RUN
+## How To Run
 
 1. Clone the https://github.com/lorenzzzeu/CMSC-100-U1L-Project repository
 2. Open MongoDB Cloud Atlas and connect to the URI (Exclusive to developers. You may ask one of the developers to make you have access.)
