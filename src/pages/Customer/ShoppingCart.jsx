@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 const ShoppingCart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(0);
+
+  // fetches cart items
     useEffect(() => {
       fetchCartItems();
     }, []);
@@ -115,9 +117,6 @@ const ShoppingCart = () => {
       console.error('Error removing item to cart:', error.message);
     }
   };
-
-
-  
 
   return (
     <>

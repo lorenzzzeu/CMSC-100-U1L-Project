@@ -5,6 +5,7 @@ const OrderFulfillment = () => {
   const [orders, setOrders] = useState([]);
   const [products, setProducts] = useState([]);
 
+  // fetches orders
   useEffect(() => {
     const fetchOrders = async () => {
       try {
@@ -18,6 +19,7 @@ const OrderFulfillment = () => {
     fetchOrders();
   }, []);
 
+  //fetches products
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -31,6 +33,7 @@ const OrderFulfillment = () => {
     fetchProducts();
   }, []);
 
+  // used in confirming orders
   const handleConfirmOrder = async (orderId) => {
     try {
       await axios.put('http://localhost:3001/admin/orders/confirm', {
@@ -44,6 +47,7 @@ const OrderFulfillment = () => {
     }
   };
   
+  // used in completing orders
   const handleCompleteOrder = async (orderId) => {
     try {
       await axios.put('http://localhost:3001/admin/orders/complete', {
@@ -57,6 +61,7 @@ const OrderFulfillment = () => {
     }
   };
   
+  // used in rejecting orders
   const handleRejectOrder = async (orderId) => {
     try {
       await axios.put('http://localhost:3001/admin/orders/reject', {
@@ -70,11 +75,13 @@ const OrderFulfillment = () => {
     }
   };
 
+  // gets products name using a foreign key order product id
   const getProductName = (ordProdId) => {
     const product = products.find(p => p._id === ordProdId);
     return product ? product.prodName : 'Unknown';
   };
 
+  // gets products type using a foreign key order product id
   const getProductType = (ordProdId) => {
     const product = products.find(p => p._id === ordProdId);
     return product ? product.prodType : 'Unknown';

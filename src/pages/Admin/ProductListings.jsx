@@ -18,6 +18,7 @@ function ProductListings() {
     type: ''
   });
 
+  // used in fetching products
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -32,10 +33,12 @@ function ProductListings() {
       });
   };
 
+  // changes filter type
   const handleTypeChange = (event) => {
     setSelectedType(event.target.value);
   };
 
+  // handles sorting products
   const sortBy = (type) => {
     setSortOrder((prevOrder) => ({
       type,
@@ -43,8 +46,10 @@ function ProductListings() {
     }));
   };
 
+  // filters products using dropdown
   const filteredProducts = selectedType === 'All' ? products : products.filter(product => product.prodType === selectedType);
 
+  // sorts products according based on type
   if (sortOrder.type) {
     filteredProducts.sort((a, b) => {
       if (sortOrder.type === 'price') {
@@ -60,6 +65,7 @@ function ProductListings() {
     });
   }
 
+  // handles submit of products
   const handleSubmit = (e) => {
     e.preventDefault();
     const product = { prodName, prodType, prodPrice, prodDesc, prodQuant, prodImage };
@@ -91,6 +97,7 @@ function ProductListings() {
     }
   };
 
+  // clears form
   const clearForm = () => {
     setprodName('');
     setprodType('');
@@ -100,6 +107,7 @@ function ProductListings() {
     setImage('');
   };
 
+  // handles editing of form/prodcuts
   const handleEdit = (product) => {
     setprodName(product.prodName);
     setprodType(product.prodType);
@@ -111,6 +119,7 @@ function ProductListings() {
     setProdID(product._id);
   };
 
+  // handles deletion of products
   const handleDelete = (id) => {
     axios.delete(`http://localhost:3001/admin-page/product-listings/${id}`)
       .then(() => {

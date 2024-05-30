@@ -1,3 +1,4 @@
+/* cards for user profiles */
 .user-container{
   display: flex;
   justify-content: center;
@@ -5,11 +6,13 @@
   flex-wrap: wrap;
 }
 
+/* when a card is clicked, it blurs the container */
 #blur.active{
   filter: blur(5px);
   transform: 0.5s;
 }
 
+/* cards for each user */
 .user-cards{
   background-color: rgb(238, 237, 237);
   box-shadow: 0 2px 8px var(--shadow-1);
@@ -55,6 +58,7 @@
   object-fit: cover;  
 }
 
+/* style for the pop up cards */
 .popup-cards{
   background-color: rgb(238, 237, 237);
   box-shadow: 0 2px 8px var(--shadow-1);

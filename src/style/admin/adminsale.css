@@ -1,3 +1,4 @@
+/* cards for sales report */
 .report-cards{
   background-color: rgb(238, 237, 237);
   box-shadow: 0 2px 8px var(--shadow-1);
@@ -31,6 +32,8 @@
 .report-cards > .id {
   flex: 2;
 }
+
+/* style for sorting and filtering */
 .sortSales{
   display: flex;
   justify-content: center;

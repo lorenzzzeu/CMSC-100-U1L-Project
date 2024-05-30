@@ -8,6 +8,7 @@ const UserManagement = () => {
   const [products, setProducts] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
 
+  // fetches users
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -20,6 +21,7 @@ const UserManagement = () => {
     fetchUsers();
   }, []);
 
+  // fetches orders
   useEffect(() => {
     const fetchOrders = async () => {
       try {
@@ -33,6 +35,7 @@ const UserManagement = () => {
     fetchOrders();
   }, []);
 
+  // fetches products
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -46,6 +49,7 @@ const UserManagement = () => {
     fetchProducts();
   }, []);
 
+  // gets products details using foregin order product id
   const getProductDetails = (ordProdId) => {
     const product = products.find(p => p._id === ordProdId);
     if (product) {
@@ -65,19 +69,23 @@ const UserManagement = () => {
     }
   };
 
+  // gets total number of users
   const totalUsers = users.length;
 
+  // style change on div when clicked 
   const handleUserClick = (userId) => {
     setSelectedUser(userId);
     document.getElementById('blur').classList.toggle('active');
     document.getElementById('popup').classList.toggle('active');
   }
 
+  // pop-up
   const toggle = () => {
     document.getElementById('popup').classList.toggle('active');
     document.getElementById('blur').classList.toggle('active');
-
   }
+
+  // feature: pop-up about transaction history of user when clicked
 
   return (
     <>

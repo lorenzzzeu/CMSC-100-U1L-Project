@@ -6,6 +6,7 @@ import axios from 'axios';
 
 const CustomerHome = () => {
 
+  // used in navigating
   const navigate = useNavigate();
 
   const goToProduct = () => {
@@ -24,6 +25,7 @@ const CustomerHome = () => {
     firstName: ''
   });
 
+  // fetches user details
   useEffect(() => {
     const fetchProfile = async () => {
       try {

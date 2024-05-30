@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const AdminHome = () => {
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // use to navigate different pages
 
   const goToUsers = () => {
     navigate('/admin-page/user-management')

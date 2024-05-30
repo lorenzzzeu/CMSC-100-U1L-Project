@@ -12,6 +12,7 @@ import { faFilter, faSort } from '@fortawesome/free-solid-svg-icons';
       type: ''
     });
 
+    // fetches products
     useEffect(() => {
       fetch('http://localhost:3001/product-list')
         .then(response => response.json())
@@ -28,6 +29,7 @@ import { faFilter, faSort } from '@fortawesome/free-solid-svg-icons';
       setSelectedType(event.target.value);
     };
 
+    // used in sorting products
     const sortBy = (type) => {
       setSortOrder((prevOrder) => ({
         type,
@@ -54,7 +56,7 @@ import { faFilter, faSort } from '@fortawesome/free-solid-svg-icons';
       });
     }
 
-    
+    // fetches cart items
     useEffect(() => {
       fetchCartItems();
     }, []);

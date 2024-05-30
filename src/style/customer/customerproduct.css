@@ -1,3 +1,4 @@
+/* style for filtering and sorting of products */
 .sortProduct{
     display: flex;
     justify-content: start;
@@ -59,6 +60,7 @@
     padding-right: 10px;
 }
 
+/* style for each product cards */
 .product-container{
     display: flex;
     justify-content: center;

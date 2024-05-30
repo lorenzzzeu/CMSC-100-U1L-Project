@@ -1,3 +1,4 @@
+/* cards for order list */
 .order-cards{
   background-color: rgb(238, 237, 237);
   box-shadow: 0 2px 8px var(--shadow-1);
@@ -28,6 +29,7 @@
   flex: 1;
 }
 
+/* style for button */
 .confirmBtn{
   background-color: black;
   color: white;

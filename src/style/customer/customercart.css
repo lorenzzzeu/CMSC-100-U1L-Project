@@ -1,9 +1,11 @@
+/* style when there are no items */
 .noItem{
     justify-content: center;
     align-items: center;
     display: flex;
 }
 
+/* buttons in shopping cart */
 .checkOut{
     justify-content: space-evenly;
     align-items: center;
@@ -45,6 +47,7 @@
     color: white;
 }
 
+/* cart */
 .cart {
     display: flex;
     justify-content: center;
@@ -52,6 +55,7 @@
     flex-wrap: wrap;
 }
 
+/* style for the cards of cart */
 .cartCard{
     background-color: rgb(238, 237, 237);
     box-shadow: 0 2px 8px var(--shadow-1);

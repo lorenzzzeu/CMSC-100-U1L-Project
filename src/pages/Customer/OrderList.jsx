@@ -6,6 +6,7 @@ const OrderList = () => {
   const [orderList, setOrderList] = useState([]);
   const [products, setProducts] = useState([]);
 
+  // fetching products
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -19,6 +20,7 @@ const OrderList = () => {
     }
   };
 
+  // fetching orders
   useEffect(() => {
     fetchOrders();
   }, []);
@@ -37,6 +39,7 @@ const OrderList = () => {
     }
   };
 
+  // used in cancelling orders
   const handleCancelOrder = async (orderId) => {
     try {
       const token = localStorage.getItem('token');
@@ -76,15 +79,19 @@ const OrderList = () => {
     }
   };
 
+  // finds product name using order product id
   const findProductName = (ordProdId) => {
     const product = products.find(product => product._id === ordProdId);
     return product ? product.prodName : 'Product Not Found';
   };
 
+  // finds product image using order product id
   const findProductImg = (ordProdId) => {
     const product = products.find(product => product._id === ordProdId);
     return product ? product.prodImage : 'Product Not Found';
   };
+
+  // feature: displays all purchased products (except for completed) : confirmed, rejected, cancelled
 
   return (
     <>

@@ -1,3 +1,4 @@
+/* animation */
 @keyframes anim-lineUp {
     0% {
         opacity: 0;
@@ -44,6 +45,7 @@
     flex-wrap: wrap;
 }
 
+/* style for navigation items */
 .nav-item{
     position: relative;
     display: flex;
