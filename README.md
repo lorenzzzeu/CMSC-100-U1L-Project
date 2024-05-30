@@ -1,5 +1,5 @@
 # Farm-to-table
-**Group Members:**
+**Group Members:** <br/>
 Abelarde, Dominic <br/>
 Anareta, Nadine <br/>
 Gabriel, Lorenz <br/>
@@ -124,5 +124,5 @@ This project is a web application developed using the MERN stack (MongoDB, Expre
 6. In Visual Studio Code (Our default workspace), open another terminal for backend and navigate to the .\backend\server.js directory
 7. Type "npm install" in the terminal to download the needed modules
 8. Type "node server.js" in the terminal to run the backend server
-9. For merchant/admin, sign in using the "admin@admin.com" email to be authorized
+9. For merchant/admin, sign in using the exclusive email to be authorized
 10. For user, you may sign up using your email and sign in to be authorized as customer
