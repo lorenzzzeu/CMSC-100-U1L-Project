@@ -1,5 +1,5 @@
 import React from 'react'; // Import the React library to use JSX and create React components.
-import { Link, Outlet } from 'react-router-dom'; // Import Link and Outlet components from react-router-dom to handle navigation and nested routing.
+import { Outlet } from 'react-router-dom'; // Import Link and Outlet components from react-router-dom to handle navigation and nested routing.
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import FontAwesomeIcon component to use font-awesome icons in the application.
 import { faCircleCheck, faFileLines, faMap, faSeedling } from '@fortawesome/free-solid-svg-icons'; // Import specific icons from font-awesome free solid icons library.
 
