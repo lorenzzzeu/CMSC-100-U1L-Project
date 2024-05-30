@@ -19,7 +19,7 @@
   border-radius: 10px;
   width: 250px;
   height: 80px;
-  margin: 10px;
+  margin: 5px;
   padding: 15px;
   overflow: hidden;
   display: flex;
@@ -27,6 +27,7 @@
   justify-content: center;
   flex-wrap: wrap;
   text-align: center;
+  flex-grow: 1;
 }
 
 .user-cards:hover{
