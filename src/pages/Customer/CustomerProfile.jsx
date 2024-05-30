@@ -1,29 +1,34 @@
+// Importing required modules from React and Axios
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+// Define the CustomerProfile functional component
 const CustomerProfile = () => {
+  // State for storing the user's profile information
   const [profile, setProfile] = useState({
     firstName: '',
     lastName: '',
     email: ''
   });
 
-  const [edit, setEdit] = useState(false);
-  const [orderList, setOrderList] = useState([]);
-  const [products, setProducts] = useState([]);
+  const [edit, setEdit] = useState(false);   // State for tracking if the profile is in edit mode
+  const [orderList, setOrderList] = useState([]);   // State for storing the list of orders made by the user
+  const [products, setProducts] = useState([]);   // State for storing the list of products
 
-  // fetches profile details
+  // useEffect to fetch profile details when the component mounts
   useEffect(() => {
     const fetchProfile = async () => {
       try {
+        // Get the token from local storage
         const token = localStorage.getItem('token');
         if (token) {
+          // Make an API call to fetch the profile data
           const response = await axios.get('http://localhost:3001/profile', {
             headers: {
               Authorization: `Bearer ${token}`
             }
           });
-          setProfile(response.data);
+          setProfile(response.data); // Update the profile state with the fetched data
         } else {
           console.error('No token found');
         }
@@ -32,44 +37,52 @@ const CustomerProfile = () => {
       }
     };
 
-    fetchProfile();
+    fetchProfile(); // Call the fetchProfile function
   }, []);
 
-  // fetches products details
+  // useEffect to fetch products details when the component mounts
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        // Make an API call to fetch the product list
         const response = await axios.get('http://localhost:3001/product-list');
+        // Update the products state with the fetched data
         setProducts(response.data);
       } catch (error) {
         console.error('Unable to fetch products:', error);
       }
     };
 
+    // Call the fetchProducts function
     fetchProducts();
   }, []);
 
-  // used in editing profile
+  // Function to toggle the edit state
   const handleEdit = () => {
-    setEdit(!edit)
+    setEdit(!edit);
   }
 
+  // Function to handle input changes in the profile form
   const handleChange = (e) => {
     setProfile({ ...profile, [e.target.name]: e.target.value });
   };
 
-  // used in submitting form (editing)
+  // Function to handle the submission of the profile edit form
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Get the token from local storage
       const token = localStorage.getItem('token');
+      // Make an API call to update the profile
       const response = await axios.put('http://localhost:3001/profile', profile, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
       setMessage('Profile updated successfully');
+      // Update the profile state with the response data
       setProfile(response.data.user);
+      // Toggle the edit state
       handleEdit();
     } catch (error) {
       setMessage('Error updating profile');
@@ -77,26 +90,30 @@ const CustomerProfile = () => {
     }
   };
 
-  // fetches orders
+  // useEffect to fetch orders when the component mounts
   useEffect(() => {
     fetchOrders();
   }, []);
 
+  // Function to fetch orders from the server
   const fetchOrders = async () => {
     try {
+      // Get the token from local storage
       const token = localStorage.getItem('token');
+      // Make an API call to fetch the order transactions
       const response = await axios.get('http://localhost:3001/order-transaction', {
         headers: {
           'authorization': `Bearer ${token}`
         }
       });
+      // Update the orderList state with the fetched data
       setOrderList(response.data);
     } catch (error) {
       console.error('Error fetching orders:', error.response ? error.response.data : error.message);
     }
   };
 
-  // gets product details using foreign order product id
+  // Function to get product details using the product ID
   const getProductDetails = (ordProdId) => {
     const product = products.find(p => p._id === ordProdId);
     if (product) {
@@ -116,8 +133,7 @@ const CustomerProfile = () => {
     }
   };
 
-  // feature: displays the history of purchased items (completed products only)
-
+  // Render the component
   return (
     <>
       <div className='headerCustomer'></div>
@@ -196,4 +212,4 @@ const CustomerProfile = () => {
   );
 };
 
-export default CustomerProfile;
+export default CustomerProfile; // Export the CustomerProfile component as the default export
