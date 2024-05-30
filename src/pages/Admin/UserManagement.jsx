@@ -84,7 +84,7 @@ const UserManagement = () => {
     <div id='blur'>
       <div className="titleAdmin">
         <h1>USER MANAGEMENT</h1>
-        <p>Total registered users: {totalUsers}</p>
+        <p>Total registered users: {totalUsers - 1}</p>
       </div>
       <div className='user-container'>
         {users.map((user) => 
