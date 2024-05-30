@@ -7,32 +7,36 @@ const CheckOut = () => {
     const [cartItems, setCartItems] = useState([]);
     const [total, setTotal] = useState(0);
 
-    useEffect(() => {
-      fetchCartItems();
-    }, []);
+  // fetches cart items
+  useEffect(() => {
+    fetchCartItems();
+  }, []);
 
-    const navigate = useNavigate();
+  // used in navigating
+  const navigate = useNavigate();
+
+  const fetchCartItems = async () => {
+    try {
+      const token = localStorage.getItem('token'); // Retrieve the token from local storage
+      const response = await axios.get('http://localhost:3001/cart-items', {
+        headers: {
+          'authorization': `Bearer ${token}`
+        }
+      });
+      setCartItems(response.data);
+      calculateTotal(response.data)
+    } catch (error) {
+      console.error('Error fetching cart items:', error.response ? error.response.data : error.message);
+    }
+  };
   
-    const fetchCartItems = async () => {
-      try {
-        const token = localStorage.getItem('token'); // Retrieve the token from local storage
-        const response = await axios.get('http://localhost:3001/cart-items', {
-          headers: {
-            'authorization': `Bearer ${token}`
-          }
-        });
-        setCartItems(response.data);
-        calculateTotal(response.data)
-      } catch (error) {
-        console.error('Error fetching cart items:', error.response ? error.response.data : error.message);
-      }
-    };
-  
+  // calculates order total
   const calculateTotal = (items) => {
     const totalPrice = items.reduce((acc, item) => acc + (item.prodPrice * item.prodQuant), 0);
     setTotal(totalPrice);
   };
 
+  // clears cart after checks out
   const handleClick = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -49,6 +53,7 @@ const CheckOut = () => {
     }
   };
 
+  // navigates to cart
   const goToCart = () => {
     navigate('/customer-page/shopping-cart')
   }

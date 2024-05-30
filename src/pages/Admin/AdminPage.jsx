@@ -3,7 +3,7 @@ import React from 'react';
 import { Link, Navigate, Outlet, useNavigate } from 'react-router-dom';
 
 const AdminPage = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate() // use to navigate to different pages
   const isUserSignedIn = !!localStorage.getItem('token')
   
   const handleLogout = () => {

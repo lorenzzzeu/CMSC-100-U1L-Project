@@ -1,5 +1,6 @@
 /* index.css */
 
+/* imports for all styles */
 @import url('style/homepage.css');
 @import url('style/register.css');
 @import url('style/about.css');
@@ -16,6 +17,7 @@
 @import url('style/admin/adminsale.css');
 @import url('style/footer.css');
 
+/* custom fonts */
 @font-face {
   font-family: "Circular";
   src: url("font/CircularStd-Light.otf") format("opentype");
@@ -31,6 +33,7 @@
   src: url("font/CircularStd-Black.otf") format("opentype");
 }
 
+/* style for the whole page */
 * { 
   margin: 0px;
   padding: 0px;

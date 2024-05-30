@@ -9,10 +9,10 @@ const CustomerProfile = () => {
   });
 
   const [edit, setEdit] = useState(false);
-  const [message, setMessage] = useState('');
   const [orderList, setOrderList] = useState([]);
   const [products, setProducts] = useState([]);
 
+  // fetches profile details
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -35,6 +35,7 @@ const CustomerProfile = () => {
     fetchProfile();
   }, []);
 
+  // fetches products details
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -48,6 +49,7 @@ const CustomerProfile = () => {
     fetchProducts();
   }, []);
 
+  // used in editing profile
   const handleEdit = () => {
     setEdit(!edit)
   }
@@ -56,6 +58,7 @@ const CustomerProfile = () => {
     setProfile({ ...profile, [e.target.name]: e.target.value });
   };
 
+  // used in submitting form (editing)
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -74,6 +77,7 @@ const CustomerProfile = () => {
     }
   };
 
+  // fetches orders
   useEffect(() => {
     fetchOrders();
   }, []);
@@ -92,6 +96,7 @@ const CustomerProfile = () => {
     }
   };
 
+  // gets product details using foreign order product id
   const getProductDetails = (ordProdId) => {
     const product = products.find(p => p._id === ordProdId);
     if (product) {
@@ -110,6 +115,8 @@ const CustomerProfile = () => {
       };
     }
   };
+
+  // feature: displays the history of purchased items (completed products only)
 
   return (
     <>

@@ -1,3 +1,4 @@
+/* style for the profile page */
 .profile-container{
     margin-top: 20px;
     display: flex;
@@ -49,6 +50,7 @@
     font-size: small;
 }
 
+/* style for the history transaction */
 .profile-history{
     display: flex;
     flex-direction: column;

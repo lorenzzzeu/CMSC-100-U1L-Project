@@ -1,3 +1,4 @@
+/* style for about page */
 .about{
     display: flex;
     flex-direction: column;
@@ -10,6 +11,7 @@ p {
     font-family: "Satoshi";
 }
 
+/* animation of image slides */
 @keyframes animate {
     0%, 100%{
         background-image: url('/src/img/img1.jpg');

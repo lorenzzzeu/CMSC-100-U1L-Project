@@ -1,3 +1,4 @@
+/* style for the login page */
 .login{
     display: flex;
     justify-content: center;
@@ -23,6 +24,7 @@
     width: 25%;
 }
 
+/* style for the forms */
 form input{
     width: 100%;
     padding: 12px 20px;

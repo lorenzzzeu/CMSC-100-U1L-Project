@@ -12,6 +12,7 @@ const SalesReports = () => {
     type: ''
   });
 
+  // fetches sales data and products
   useEffect(() => {
     const fetchSalesData = async () => {
       try {
@@ -47,10 +48,7 @@ const SalesReports = () => {
     }
   }, [salesData, selectedType, products]);
 
-  const handleTypeChange = (event) => {
-    setSelectedType(event.target.value);
-  };
-
+  // sorts orders
   const sortBy = (type) => {
     setSortOrder((prevOrder) => ({
       type,
@@ -58,6 +56,7 @@ const SalesReports = () => {
     }));
   };
 
+  // sorts orders/sales
   useEffect(() => {
     if (sortOrder.type) {
       const sortedSalesData = [...filteredSalesData].sort((a, b) => {
@@ -81,12 +80,13 @@ const SalesReports = () => {
     }
   }, [sortOrder, filteredSalesData]);
   
-
+  // find products name using foreign order product id
   const findProductName = (ordProdId) => {
     const product = products.find(product => product._id === ordProdId);
     return product ? product.prodName : 'Product Not Found';
   };
 
+  // calculates the order total based on filtered data
   const calculateOrderTotal = (orderId) => {
     let total = 0;
     const orderProducts = filteredSalesData.filter(order => order._id === orderId);
@@ -99,6 +99,7 @@ const SalesReports = () => {
     return total;
   };
 
+  // calculates overall total
   const calculateOverallTotal = () => {
     let total = 0;
     filteredSalesData.forEach(order => {
@@ -107,7 +108,7 @@ const SalesReports = () => {
     return total;
   };
 
-
+  // filters sales by time (week, month, year)
   const filterSalesByTime = (time) => {
     const today = new Date();
     let startDate;
@@ -138,13 +139,13 @@ const SalesReports = () => {
       </div>
       <div className='sortSales'>
         <div className='filterAdmin'>
-          <FontAwesomeIcon icon={faSort} size='1x' className='icon'/>
+          <FontAwesomeIcon icon={faFilter} size='1x' className='icon'/>
           <button onClick={() => filterSalesByTime('week')}>Sales This Week</button>
           <button onClick={() => filterSalesByTime('month')}>Sales This Month</button>
           <button onClick={() => filterSalesByTime('year')}>Sales This Year</button>
         </div>
         <div className='sortAdmin'>
-          <FontAwesomeIcon icon={faFilter} size='1x' className='icon'/>
+          <FontAwesomeIcon icon={faSort} size='1x' className='icon'/>
           <button onClick={() => sortBy('quantity')}>Quantity</button>
           <button onClick={() => sortBy('orderDate')}>Order Date</button>
         </div>

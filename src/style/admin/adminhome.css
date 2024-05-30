@@ -40,10 +40,12 @@
     padding-left: 50px;
 }
 
+/* logo */
 .logo{
     width: 5%;
 }
 
+/* contents of navigation bar of admin */
 .navAdmin a {
     display: flex;
     flex-direction: column;
@@ -57,6 +59,7 @@
     font-size: larger;
 }
 
+/* title */
 .titleAdmin{
     text-align: center;
     font-size: x-large;
@@ -73,7 +76,7 @@ hr {
     border-radius: 5px;
 }
 
-/* cards */
+/* cards displayed in admin home page */
 .admin-container {
     display: flex;
     justify-content: center;
@@ -114,6 +117,6 @@ hr {
     color: white;
 }
 
-.admin-cards:button1 > .icon{
+.admin-cards:hover > .icon{
     transform: scale(1.1);
 }
