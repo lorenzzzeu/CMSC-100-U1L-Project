@@ -55,7 +55,7 @@ This project is a web application developed using the MERN stack (MongoDB, Expre
     - Admin Page <br/>
       ![Admin Page](src/img/README/AdminPage.png) <br/>
     - User Management <br/>
-      ![User Management](src/img/README/UserManagement.png) <br/>
+      ![User Management](src/img/README/UserManagementFinal.png) <br/>
     - Product Listings <br/>
       ![Product Listings](src/img/README/ProductListings.png) <br/>
     - Order Fulfillment <br/>
