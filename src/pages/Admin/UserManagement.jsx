@@ -90,19 +90,19 @@ const UserManagement = () => { // Declaring a functional component called UserMa
   // Returning JSX for the UserManagement component
   return (
     <>
-    <div id='blur'> // Main container for the component
-      <div className="titleAdmin"> // Container for title and total users count
-        <h1>USER MANAGEMENT</h1> // Title of the page
-        <p>Total registered users: {totalUsers - 1}</p> // Displaying the total number of registered users
+    <div id='blur'> 
+      <div className="titleAdmin">
+        <h1>USER MANAGEMENT</h1>
+        <p>Total registered users: {totalUsers - 1}</p>
       </div>
-      <div className='user-container'> // Container for displaying users
+      <div className='user-container'>
         {users.map((user) =>  // Mapping through the users array
-          <div key={user._id}> // Unique key for each user
+          <div key={user._id}> 
             {user.userType == 'customer' && ( // Checking if the user is of type 'customer'
-              <> // React fragment to wrap multiple elements
-              <div className='user-cards' key={user._id} onClick={() => handleUserClick(user._id)}> // Div representing each user card
-                <h3>{user.firstName} {user.lastName}</h3> // Displaying user's first and last name
-                <p>{user.email}</p> // Displaying user's email
+              <> 
+              <div className='user-cards' key={user._id} onClick={() => handleUserClick(user._id)}>
+                <h3>{user.firstName} {user.lastName}</h3>
+                <p>{user.email}</p>
               </div>
               </>
             )}
@@ -110,22 +110,22 @@ const UserManagement = () => { // Declaring a functional component called UserMa
         )}
       </div>
     </div>
-      <div id='popup'> // Popup container
-        <button onClick={toggle}>x</button> // Button to close the popup
-        <h3>Transaction History </h3> // Heading for transaction history
-        <div className='popup-container'> // Container for displaying transaction history
+      <div id='popup'>
+        <button onClick={toggle}>x</button>
+        <h3>Transaction History </h3>
+        <div className='popup-container'>
          {orders.map(order => ( // Mapping through the orders array
-          <div key={order._id}> // Unique key for each order
+          <div key={order._id}>
             {order.email === selectedUser && ( // Checking if the order belongs to the selected user
-              <div className="popup-cards"> // Div representing each order card
-                <div className='card-img'><img src={getProductDetails(order.ordProdId).image} alt={getProductDetails(order.ordProdId).name} /></div> // Displaying product image
-                <h3>{getProductDetails(order.ordProdId).name}</h3> // Displaying product name
-                <p>{getProductDetails(order.ordProdId).type}</p> // Displaying product type
-                <p>Quantity: {order.ordQty}</p> // Displaying order quantity
-                <p>Price: ${getProductDetails(order.ordProdId).price}</p> // Displaying product price
-                <p>{order.ordDate.substring(0, 10)} | {order.time.substring(11, 19)}</p> // Displaying order date and time
-                <p>Transaction ID: {order.ordTransId}</p> // Displaying transaction ID
-                <p>{order.ordStatus}</p> // Displaying order status
+              <div className="popup-cards">
+                <div className='card-img'><img src={getProductDetails(order.ordProdId).image} alt={getProductDetails(order.ordProdId).name} /></div>
+                <h3>{getProductDetails(order.ordProdId).name}</h3>
+                <p>{getProductDetails(order.ordProdId).type}</p>
+                <p>Quantity: {order.ordQty}</p>
+                <p>Price: ${getProductDetails(order.ordProdId).price}</p>
+                <p>{order.ordDate.substring(0, 10)} | {order.time.substring(11, 19)}</p>
+                <p>Transaction ID: {order.ordTransId}</p>
+                <p>{order.ordStatus}</p>
               </div>
             )}
           </div>
