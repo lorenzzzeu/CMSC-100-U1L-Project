@@ -1,4 +1,4 @@
-// pages/CustomerHome.jsx
+// pages/CustomerPage.jsx
 
 // Importing necessary dependencies from React and React Router
 import React from 'react';
