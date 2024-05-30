@@ -1,9 +1,13 @@
+// Import necessary modules and components from React, axios, and FontAwesomeIcon
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter, faSort } from '@fortawesome/free-solid-svg-icons';
 
+// Define a functional component named ProductListings
 function ProductListings() {
+
+  // Define state variables using useState hook for various product attributes and states
   const [prodName, setprodName] = useState('');
   const [prodType, setprodType] = useState('');
   const [prodPrice, setprodPrice] = useState(0);
@@ -18,11 +22,12 @@ function ProductListings() {
     type: ''
   });
 
-  // used in fetching products
+  // useEffect hook to fetch products when component mounts
   useEffect(() => {
     fetchProducts();
   }, []);
 
+  // Function to fetch products from the server using axios
   const fetchProducts = () => {
     axios.get('http://localhost:3001/admin-page/product-listings')
       .then((res) => {
@@ -33,12 +38,12 @@ function ProductListings() {
       });
   };
 
-  // changes filter type
+  // Event handler to handle changes in product type filter
   const handleTypeChange = (event) => {
     setSelectedType(event.target.value);
   };
 
-  // handles sorting products
+  // Function to set sorting order based on type
   const sortBy = (type) => {
     setSortOrder((prevOrder) => ({
       type,
@@ -46,10 +51,10 @@ function ProductListings() {
     }));
   };
 
-  // filters products using dropdown
+  // Filtering products based on selected product type
   const filteredProducts = selectedType === 'All' ? products : products.filter(product => product.prodType === selectedType);
 
-  // sorts products according based on type
+  // Sorting products based on selected sorting type
   if (sortOrder.type) {
     filteredProducts.sort((a, b) => {
       if (sortOrder.type === 'price') {
@@ -65,7 +70,7 @@ function ProductListings() {
     });
   }
 
-  // handles submit of products
+  // Event handler to handle submission of products
   const handleSubmit = (e) => {
     e.preventDefault();
     const product = { prodName, prodType, prodPrice, prodDesc, prodQuant, prodImage };
@@ -97,7 +102,7 @@ function ProductListings() {
     }
   };
 
-  // clears form
+  // Function to clear form fields
   const clearForm = () => {
     setprodName('');
     setprodType('');
@@ -107,7 +112,7 @@ function ProductListings() {
     setImage('');
   };
 
-  // handles editing of form/prodcuts
+  // Event handler to handle editing of products
   const handleEdit = (product) => {
     setprodName(product.prodName);
     setprodType(product.prodType);
@@ -119,7 +124,7 @@ function ProductListings() {
     setProdID(product._id);
   };
 
-  // handles deletion of products
+  // Event handler to handle deletion of products
   const handleDelete = (id) => {
     axios.delete(`http://localhost:3001/admin-page/product-listings/${id}`)
       .then(() => {
@@ -132,6 +137,7 @@ function ProductListings() {
       });
   };
 
+  // Return JSX for rendering the component
   return (
     <>
       <div className='titleAdmin'>
@@ -139,9 +145,12 @@ function ProductListings() {
       </div>
       <div className='prod-list-container'>
         <div className='input-container'>
+          {/* Form for adding/editing products */}
           <form id="prodForm" onSubmit={handleSubmit}>
+            {/* Input fields for product details */}
             <input type="text" id="prodName" name="prodName" value={prodName} onChange={(e) => setprodName(e.target.value)} required placeholder="Product Name" />
             <div>
+              {/* Dropdown for selecting product type */}
               <select id="prodType" name="prodType" value={prodType} onChange={(e) => setprodType(e.target.value)} required>
                 <option value="Cereals">Cereals</option>
                 <option value="Seeds">Seeds</option>
@@ -153,11 +162,14 @@ function ProductListings() {
             <input type="text" id="prodDesc" name="prodDesc" value={prodDesc} onChange={(e) => setDesc(e.target.value)} required placeholder="Product Description" />
             <input type="number" id="prodQuant" name="prodQuant" value={prodQuant} onChange={(e) => setQuant(e.target.value)} required placeholder="Product Quantity" />
             <input type="text" id="prodImage" name="prodImage" value={prodImage} onChange={(e) => setImage(e.target.value)} required placeholder="Product Image" />
+            {/* Submit button */}
             <button value={isEdit ? "UPDATE" : "SUBMIT"} className='logBtn' id="submitButton">SUBMIT</button>
           </form>
         </div>
         <div className='prod-list-products'>
-        <div className='sortProduct'>
+          {/* Container for product list */}
+          <div className='sortProduct'>
+            {/* Dropdown for filtering by product type */}
             <div className='searchProduct'>
               <FontAwesomeIcon icon={faFilter} size='1x' className='icon'/>
               <select name='search' onChange={handleTypeChange} value={selectedType}>
@@ -198,4 +210,4 @@ function ProductListings() {
   );
 }
 
-export default ProductListings;
+export default ProductListings; // Exporting the ProductListings component
