@@ -153,7 +153,7 @@ const SalesReports = () => {
           {filteredSalesData.map(order => (
             <div className='report-cards' key={order._id}>
               <div className='prodName'>{findProductName(order.ordProdId)}</div>
-              <div className='id'>Trans. ID: {order._id}</div>
+              <div className='id'>Trans. ID: {order.ordTransId}</div>
               <div className='id'>Prod. ID: {order.ordProdId}</div>
               <div>{order.ordDate.substring(0, 10)}</div>
               <div>{order.time.substring(11, 19)}</div>
