@@ -22,7 +22,7 @@ function ProductListings() {
     type: ''
   });
 
-  // useEffect hook to fetch products when component mounts
+  // used in fetching products; useEffect hook to fetch products when component mounts
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -38,12 +38,12 @@ function ProductListings() {
       });
   };
 
-  // Event handler to handle changes in product type filter
+  // changes filter type; Event handler to handle changes in product type filter
   const handleTypeChange = (event) => {
     setSelectedType(event.target.value);
   };
 
-  // Function to set sorting order based on type
+  // handles sorting products; Function to set sorting order based on type
   const sortBy = (type) => {
     setSortOrder((prevOrder) => ({
       type,
@@ -51,7 +51,7 @@ function ProductListings() {
     }));
   };
 
-  // Filtering products based on selected product type
+  // Filtering products using dropdown based on selected product type
   const filteredProducts = selectedType === 'All' ? products : products.filter(product => product.prodType === selectedType);
 
   // Sorting products based on selected sorting type
@@ -102,7 +102,7 @@ function ProductListings() {
     }
   };
 
-  // Function to clear form fields
+  // Function to clear form fields; clears from
   const clearForm = () => {
     setprodName('');
     setprodType('');
@@ -112,7 +112,7 @@ function ProductListings() {
     setImage('');
   };
 
-  // Event handler to handle editing of products
+  // Event handler to handle editing of products/form
   const handleEdit = (product) => {
     setprodName(product.prodName);
     setprodType(product.prodType);

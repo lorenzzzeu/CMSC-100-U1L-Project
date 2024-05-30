@@ -8,7 +8,7 @@ const OrderFulfillment = () => {
   const [orders, setOrders] = useState([]);
   const [products, setProducts] = useState([]);
 
-  // useEffect hook to fetch orders when the component mounts
+  // fetches orders; useEffect hook to fetch orders when the component mounts
   useEffect(() => {
     // Declaring an asynchronous function to fetch orders
     const fetchOrders = async () => {
@@ -24,7 +24,7 @@ const OrderFulfillment = () => {
     fetchOrders();
   }, []); // Empty dependency array ensures this effect runs only once when component mounts
 
-  // useEffect hook to fetch products when the component mounts
+  // fetches products; useEffect hook to fetch products when the component mounts
   useEffect(() => {
     // Declaring an asynchronous function to fetch products
     const fetchProducts = async () => {
@@ -42,7 +42,7 @@ const OrderFulfillment = () => {
     fetchProducts();
   }, []); // Empty dependency array ensures this effect runs only once when component mounts
 
-  // Function to handle confirming orders
+  // used in confirming orders; Function to handle confirming orders
   const handleConfirmOrder = async (orderId) => {
     try {
       // Making a PUT request to confirm the order with the given orderId
@@ -58,7 +58,7 @@ const OrderFulfillment = () => {
     }
   };
 
-  // Function to handle completing orders
+  // used in completing orders; Function to handle completing orders
   const handleCompleteOrder = async (orderId) => {
     try {
       // Making a PUT request to mark the order with the given orderId as completed
@@ -74,7 +74,7 @@ const OrderFulfillment = () => {
     }
   };
 
-  // Function to handle rejecting orders
+  // used in rejecting orders; Function to handle rejecting orders
   const handleRejectOrder = async (orderId) => {
     try {
       // Making a PUT request to reject the order with the given orderId
@@ -90,13 +90,13 @@ const OrderFulfillment = () => {
     }
   };
 
-  // Function to get product name using order product id
+  // gets products name using a foreign key order product id; Function to get product name using order product id
   const getProductName = (ordProdId) => {
     const product = products.find(p => p._id === ordProdId); // Finding the product with the given ordProdId
     return product ? product.prodName : 'Unknown'; // Returning the product name if found, else returning 'Unknown'
   };
 
-  // Function to get product type using order product id
+  // gets products type using a foreign key order product id; Function to get product type using order product id
   const getProductType = (ordProdId) => {
     const product = products.find(p => p._id === ordProdId); // Finding the product with the given ordProdId
     return product ? product.prodType : 'Unknown'; // Returning the product type if found, else returning 'Unknown'

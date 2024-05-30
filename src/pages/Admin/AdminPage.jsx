@@ -3,7 +3,7 @@ import React from 'react'; // Importing React library to create React components
 import { Link, Navigate, Outlet, useNavigate } from 'react-router-dom'; // Importing necessary components and hooks from react-router-dom
 
 const AdminPage = () => { // Defining a functional component named AdminPage
-  const navigate = useNavigate(); // Declaring a constant variable navigate and initializing it with the useNavigate hook from react-router-dom, which will be used to navigate between different pages
+  const navigate = useNavigate(); // use to navigate to different pages; Declaring a constant variable navigate and initializing it with the useNavigate hook from react-router-dom, which will be used to navigate between different pages
   const isUserSignedIn = !!localStorage.getItem('token'); // Declaring a constant variable isUserSignedIn and initializing it with the value of whether a token exists in the local storage (if token exists, isUserSignedIn is true, otherwise false)
   
   const handleLogout = () => { // Declaring a function handleLogout, which will be called when the user clicks on the "LOG OUT" button
