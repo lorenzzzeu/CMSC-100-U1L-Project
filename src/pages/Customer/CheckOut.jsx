@@ -86,22 +86,22 @@ const CheckOut = () => {
     // JSX to render the component
     return (
         <>
-        <div className='headerCustomer'></div>  // Header section (empty div)
+        <div className='headerCustomer'></div>
         <div className='titleCustomer'>
-            <h1>SUMMARY</h1>  // Title of the page
+            <h1>SUMMARY</h1>
         </div>
         <div className='checkOut'>
-            <button onClick={goToCart} className='backBtn'>GO BACK</button>  // Button to navigate back to cart
-            <h2>Order Total: {total}</h2>  // Display total order price
-            <button onClick={() => handleClick()} className='checkOutbtn'>PLACE ORDER</button>  // Button to place order
+            <button onClick={goToCart} className='backBtn'>GO BACK</button>
+            <h2>Order Total: {total}</h2>
+            <button onClick={() => handleClick()} className='checkOutbtn'>PLACE ORDER</button>
         </div>
         <div className='cart'>
         {cartItems.map((item) => (
-            <div className='cartCard' key={item.prodId}>  // Key prop for each cart item
-                <div className='cart-img'><img src={item.prodImage} alt={item.prodName}/></div>  // Product image
-                <h3>{item.prodName}</h3>  // Product name
-                <div>Quantity: {item.prodQuant}</div>  // Product quantity
-                <p>Price: ${item.prodPrice}</p>  // Product price
+            <div className='cartCard' key={item.prodId}>
+                <div className='cart-img'><img src={item.prodImage} alt={item.prodName}/></div>
+                <h3>{item.prodName}</h3>
+                <div>Quantity: {item.prodQuant}</div>
+                <p>Price: ${item.prodPrice}</p>
             </div>
         ))}
         </div>
