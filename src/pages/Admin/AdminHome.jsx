@@ -58,7 +58,7 @@ const AdminHome = () => {
         <div className='admin-cards'>
           {/* Order Fulfillment Icon */}
           <FontAwesomeIcon icon={faList} size='5x' className='icon'/>
-          <h1>ORDER FULFILLMENT</h1>
+          <center><h1>ORDER FULFILLMENT</h1></center>
           <p>View any pending orders</p>
           <button onClick={goToOrder}>VIEW ORDER</button>
         </div>
