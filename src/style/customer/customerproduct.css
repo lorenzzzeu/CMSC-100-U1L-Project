@@ -1,11 +1,12 @@
 /* style for filtering and sorting of products */
 .sortProduct{
     display: flex;
-    justify-content: start;
     align-items: center; 
     margin-left: 50px;
     flex-wrap: wrap;
     flex-grow: 1;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .sortProduct > * {
@@ -14,8 +15,10 @@
 
 .searchProduct{
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .searchProduct > select{
@@ -28,7 +31,8 @@
 
 .sorting{
     display: flex;
-    justify-content: start;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 }

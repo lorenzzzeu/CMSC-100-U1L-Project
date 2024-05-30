@@ -45,7 +45,7 @@
 
 .filterAdmin, .sortAdmin{
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   margin: 20px;
