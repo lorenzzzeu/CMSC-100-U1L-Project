@@ -180,7 +180,7 @@ const CustomerProfile = () => {
           <h3>History of Items Purchased</h3>
           <br/>
           <div className='product-container'>
-          {orderList.length === 0 ? (
+          {orderList.length === 0 || orderList.every(order => order.ordStatus != 'Completed') ? (
             <div className='noItem'>
             <p>No Purchased Yet.</p>
             </div>
