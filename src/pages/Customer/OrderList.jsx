@@ -103,7 +103,7 @@ const OrderList = () => {
         <h1>ORDER LIST</h1>
       </div>
       <div>
-        {orderList.length === 0 ? (
+        {orderList.length === 0 || orderList.every(order => order.ordStatus === 'Completed') ? (
           <div className='noItem'>
             <p>No Orders Yet.</p>
           </div>

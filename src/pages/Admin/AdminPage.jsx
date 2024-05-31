@@ -1,11 +1,16 @@
 // pages/AdminHome.jsx
 import React from 'react'; // Importing React library to create React components
 import { Link, Navigate, Outlet, useNavigate } from 'react-router-dom'; // Importing necessary components and hooks from react-router-dom
+import { jwtDecode } from 'jwt-decode';
 
 const AdminPage = () => { // Defining a functional component named AdminPage
   const navigate = useNavigate(); // use to navigate to different pages; Declaring a constant variable navigate and initializing it with the useNavigate hook from react-router-dom, which will be used to navigate between different pages
   const isUserSignedIn = !!localStorage.getItem('token'); // Declaring a constant variable isUserSignedIn and initializing it with the value of whether a token exists in the local storage (if token exists, isUserSignedIn is true, otherwise false)
-  
+  let decodedToken = null;
+  if(isUserSignedIn){
+    const token = localStorage.getItem('token')
+    decodedToken = jwtDecode(token);
+  }
   const handleLogout = () => { // Declaring a function handleLogout, which will be called when the user clicks on the "LOG OUT" button
     localStorage.removeItem('token'); // Removing the token from local storage
     navigate('/'); // Navigating to the home page after logout
@@ -13,7 +18,7 @@ const AdminPage = () => { // Defining a functional component named AdminPage
 
   return ( // Returning JSX to render the component
     <div> {/* Start of JSX - a wrapper div */}
-      {isUserSignedIn ? ( // Conditional rendering based on whether the user is signed in
+      {isUserSignedIn && decodedToken.type === 'admin' ? ( // Conditional rendering based on whether the user is signed in
         <div> {/* Start of JSX - a div containing navigation links and logout button */}
           <nav className='navRootAdmin'> {/* Navigation container with a class name */}
             <div className='navLinksAdmin'> {/* Container for navigation links with a class name */}
@@ -31,11 +36,17 @@ const AdminPage = () => { // Defining a functional component named AdminPage
           </nav>
           <Outlet/> {/* Outlet for nested routes */}
         </div>
-      ) : (
+      ) : ( // If user is not signed in
+      isUserSignedIn && decodedToken.type != 'admin' ? (
         <> {/* Fragment used for conditional rendering */}
-          <Navigate to = '/'/> {/* Navigate to the home page if the user is not signed in */}
+          <Navigate to='/customer-page'/> {/* Redirect to customer page */}
         </>
-      )}
+      ): (
+        <>
+          <Navigate to='/'/> {/* Redirect to home page */}
+        </>
+      )
+    )}
     </div>
   );
 };

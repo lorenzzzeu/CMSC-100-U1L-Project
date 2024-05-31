@@ -5,11 +5,17 @@ import React from 'react';
 import { Link, Navigate, Outlet, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
+import { jwtDecode } from 'jwt-decode';
 
 // Defining the functional component CustomerPage
 const CustomerPage = () => {
   
   const isUserSignedIn = !!localStorage.getItem('token');   // Checking if the user is signed in by looking for a token in localStorage
+  let decodedToken = null;
+  if(isUserSignedIn){
+    const token = localStorage.getItem('token')
+    decodedToken = jwtDecode(token);
+  }
   const navigate = useNavigate();   // Using the useNavigate hook to programmatically navigate
 
   // Defining the handleLogout function to remove the token and navigate to the home page
@@ -21,7 +27,7 @@ const CustomerPage = () => {
   // Returning the JSX for the component
   return (
     <div>
-      {isUserSignedIn ? ( // Conditional rendering based on whether the user is signed in
+      {isUserSignedIn && decodedToken.type === 'customer' ? ( // Conditional rendering based on whether the user is signed in
         <div>
           <nav className='navRoot'>
             <div className='navLinks'>
@@ -42,9 +48,15 @@ const CustomerPage = () => {
           <Outlet /> {/* Render nested routes here */}
         </div>
       ) : ( // If user is not signed in
+        isUserSignedIn && decodedToken.type != 'customer' ? (
+          <>
+            <Navigate to='/admin-page'/> {/* Redirect to admin page */}
+          </>
+      ): (
         <>
           <Navigate to='/'/> {/* Redirect to home page */}
         </>
+      )
       )}
     </div>
   );
